@@ -1,0 +1,3429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoirAura - Luxury Fragrances</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oregano&family=Yesteryear&family=Bricolage+Grotesque:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+     :root {
+    --bg: #000000;
+    --text: #f5f5f5;
+    --accent: #bba0f2;
+    --gold: #d4af37;
+    --dark-plum: #2c1e3a;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oregano', cursive;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header & Navigation */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    transition: var(--transition);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Oregano', cursive;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--gold);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    padding: 0.5rem 0;
+    transition: var(--transition);
+}
+
+.nav-links a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to right, var(--gold), var(--accent));
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+.nav-links a:hover:after {
+    width: 100%;
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.nav-icons i {
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-icons i:hover {
+    color: var(--gold);
+    transform: translateY(-2px);
+}
+
+.cart-count, .order-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--accent);
+    color: var(--bg);
+    font-size: 0.7rem;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-greeting {
+    font-size: 0.9rem;
+    color: var(--gold);
+    margin-right: 10px;
+}
+
+.mobile-menu-btn {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Mega Menu Styles */
+.nav-links li {
+    position: relative;
+}
+
+.mega-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 450px;
+    background-color: var(--dark-plum);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+    display: none;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    z-index: 1000;
+    border-top: 2px solid var(--gold);
+    margin: 0 auto;
+}
+
+.mega-menu.active {
+    display: grid;
+}
+
+.mega-column h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.mega-column h4:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--accent);
+}
+
+.mega-links {
+    list-style: none;
+}
+
+.mega-links li {
+    margin-bottom: 0.7rem;
+}
+
+.mega-links a {
+    color: rgba(245, 245, 245, 0.8);
+    font-size: 0.9rem;
+    transition: var(--transition);
+    display: block;
+    padding: 0.2rem 0;
+}
+
+.mega-links a:hover {
+    color: var(--accent);
+    padding-left: 5px;
+}
+
+/* Footer */
+footer {
+    background-color: #0a0a0a;
+    padding: 4rem 0 2rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.footer-column h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-column h3:after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--gold);
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: rgba(245, 245, 245, 0.7);
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+    padding-left: 5px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+}
+
+.social-icons a:hover {
+    background-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(245, 245, 245, 0.5);
+    font-size: 0.9rem;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--dark-plum);
+    width: 90%;
+    max-width: 500px;
+    border-radius: 15px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    transform: translateY(50px);
+    transition: var(--transition);
+}
+
+.modal.active .modal-content {
+    transform: translateY(0);
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-modal:hover {
+    color: var(--accent);
+}
+
+.modal-tabs {
+    display: flex;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 1rem;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-family: 'Bricolage Grotesque', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+}
+
+.tab-btn.active {
+    color: var(--gold);
+}
+
+.tab-btn.active:after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--gold);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: rgba(245, 245, 245, 0.8);
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    font-family: 'Bricolage Grotesque', sans-serif;
+    transition: var(--transition);
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.forgot-password {
+    color: var(--accent);
+    transition: var(--transition);
+}
+
+.forgot-password:hover {
+    color: var(--gold);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background: linear-gradient(to right, var(--gold), var(--accent));
+    border: none;
+    border-radius: 5px;
+    color: var(--bg);
+    font-family: 'Bricolage Grotesque', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.submit-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* Profile Modal */
+.profile-modal .modal-content {
+    max-width: 600px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.profile-header {
+    background: linear-gradient(135deg, var(--dark-plum) 0%, #1a1625 100%);
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+    border-bottom: 2px solid var(--accent);
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(to right, var(--gold), var(--accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 1rem;
+    color: var(--bg);
+    font-weight: bold;
+}
+
+.profile-username {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--text);
+}
+
+.profile-email {
+    color: rgba(245, 245, 245, 0.7);
+    font-size: 0.9rem;
+}
+
+.profile-content {
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.profile-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.profile-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.profile-content::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+.profile-section {
+    margin-bottom: 25px;
+}
+
+.profile-section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--gold);
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(187, 160, 242, 0.3);
+}
+
+.profile-info-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-info-label {
+    font-weight: 500;
+    color: rgba(245, 245, 245, 0.8);
+}
+
+.profile-info-value {
+    color: var(--text);
+    font-weight: 500;
+}
+
+.profile-footer {
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+}
+
+.logout-btn {
+    background: linear-gradient(to right, var(--gold), var(--accent));
+    color: var(--bg);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(187, 160, 242, 0.4);
+}
+
+/* Cart Styles */
+.cart-modal {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    background-color: var(--dark-plum);
+    z-index: 1500;
+    transition: var(--transition);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-modal.active {
+    right: 0;
+}
+
+.cart-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-header h3 {
+    font-size: 1.2rem;
+}
+
+.close-cart {
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-cart:hover {
+    color: var(--accent);
+}
+
+.cart-items {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-item-img {
+    width: 80px;
+    height: 80px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-details h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.cart-item-details p {
+    color: var(--gold);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.quantity-btn {
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.quantity-btn:hover {
+    background-color: var(--accent);
+}
+
+.remove-item {
+    color: rgba(245, 245, 245, 0.5);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.remove-item:hover {
+    color: var(--accent);
+}
+
+.cart-footer {
+    padding: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.cart-total span:last-child {
+    color: var(--gold);
+    font-weight: 500;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background: linear-gradient(to right, var(--gold), var(--accent));
+    border: none;
+    border-radius: 5px;
+    color: var(--bg);
+    font-family: 'Bricolage Grotesque', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.checkout-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* Checkout Modal */
+.checkout-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.checkout-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.checkout-content {
+    background-color: var(--dark-plum);
+    width: 90%;
+    max-width: 600px;
+    border-radius: 15px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    transform: translateY(50px);
+    transition: var(--transition);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.checkout-modal.active .checkout-content {
+    transform: translateY(0);
+}
+
+.checkout-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.checkout-steps:before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    transition: var(--transition);
+}
+
+.step.active .step-number {
+    background-color: var(--gold);
+    color: var(--bg);
+}
+
+.step-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.step.active .step-label {
+    color: var(--gold);
+}
+
+.checkout-form {
+    display: none;
+}
+
+.checkout-form.active {
+    display: block;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.payment-method {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.payment-method:hover {
+    border-color: var(--accent);
+}
+
+.payment-method.selected {
+    border-color: var(--gold);
+    background-color: rgba(212, 175, 55, 0.1);
+}
+
+.order-summary {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.nav-btn {
+    padding: 0.8rem 1.5rem;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--gold);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.nav-btn:hover {
+    background-color: rgba(212, 175, 55, 0.1);
+}
+
+.nav-btn.primary {
+    background: linear-gradient(to right, var(--gold), var(--accent));
+    color: var(--bg);
+    border: none;
+}
+
+.nav-btn.primary:hover {
+    opacity: 0.9;
+}
+
+/* Orders Modal */
+.orders-modal .modal-content {
+    max-width: 700px;
+}
+
+.orders-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.order-card {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.order-id {
+    font-weight: bold;
+    color: var(--gold);
+}
+
+.order-date {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.order-items {
+    margin-bottom: 1rem;
+}
+
+.order-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.status-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.status-processing {
+    background-color: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+}
+
+.status-shipped {
+    background-color: rgba(0, 123, 255, 0.2);
+    color: #007bff;
+}
+
+.status-delivered {
+    background-color: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+}
+
+.tracking-info {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tracking-info p {
+    margin-bottom: 0.5rem;
+}
+
+.delete-order {
+    background: rgba(255, 0, 0, 0.2);
+    border: 1px solid rgba(255, 0, 0, 0.5);
+    color: #ff6b6b;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.8rem;
+    margin-left: auto;
+}
+
+.delete-order:hover {
+    background: rgba(255, 0, 0, 0.3);
+    color: #ff5252;
+    transform: translateY(-1px);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+
+.order-header > div:first-child {
+    flex: 1;
+}
+
+/* Scroll Animation Styles */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.perfume-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.perfume-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-title {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.section-title.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.footer-column {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.footer-column.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.footer-column:nth-child(1) { transition-delay: 0.1s; }
+.footer-column:nth-child(2) { transition-delay: 0.2s; }
+.footer-column:nth-child(3) { transition-delay: 0.3s; }
+.footer-column:nth-child(4) { transition-delay: 0.4s; }
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+}
+
+.about-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('imgs/rabg.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 150px 0 80px;
+    text-align: center;
+    margin-top: 70px;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.about-hero .container1 {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.about-hero .container1 h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, var(--text), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.about-hero .container1 p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    color: rgba(245, 245, 245, 0.8);
+}
+
+.about-hero .container1 {
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+}
+
+.about-hero .container1 {
+    animation-delay: 0.3s;
+}
+
+.about-hero .container1 {
+    animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* AI Advisor Styles */
+.ai-advisor-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, var(--dark-plum) 0%, #1a1625 100%);
+}
+
+.ai-advisor-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--accent);
+}
+
+.ai-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.ai-header h2 {
+    font-size: 2rem;
+    background: linear-gradient(to right, var(--gold), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.ai-header p {
+    color: rgba(245, 245, 245, 0.8);
+}
+
+.questions-display {
+    background: rgba(187, 160, 242, 0.1);
+    border-radius: 15px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--accent);
+}
+
+.questions-display h3 {
+    color: var(--gold);
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.questions-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    max-height: 120px;
+    overflow-y: auto;
+    padding: 0.2rem;
+}
+
+.questions-grid::-webkit-scrollbar {
+    width: 5px;
+}
+
+.questions-grid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.questions-grid::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 10px;
+}
+
+.question-chip {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--gold);
+    border-radius: 20px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.7rem;
+    color: var(--text);
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.question-chip:hover {
+    background: linear-gradient(to right, var(--gold), var(--accent));
+    transform: translateY(-2px);
+    color: var(--bg);
+}
+
+.chat-container {
+    height: 300px;
+    overflow-y: auto;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+}
+
+.chat-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+.message {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+}
+
+.message.bot {
+    justify-content: flex-start;
+}
+
+.message.user {
+    justify-content: flex-end;
+}
+
+.message-content {
+    max-width: 80%;
+    padding: 0.8rem;
+    border-radius: 15px;
+    position: relative;
+}
+
+.bot .message-content {
+    background: rgba(187, 160, 242, 0.2);
+    border-bottom-left-radius: 5px;
+}
+
+.user .message-content {
+    background: rgba(212, 175, 55, 0.2);
+    border-bottom-right-radius: 5px;
+}
+
+.chat-input-container {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.chat-input {
+    flex: 1;
+    padding: 0.8rem;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+.chat-input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.send-btn {
+    padding: 0.8rem 1.2rem;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(to right, var(--gold), var(--accent));
+    color: var(--bg);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.send-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.floating-chat-icon {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(to right, var(--gold), var(--accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg);
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+.floating-chat-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Reviews Section Styles */
+.reviews-section {
+    padding: 5rem 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: inline-block;
+}
+
+.section-title:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, var(--gold), var(--accent));
+    margin: 1rem auto;
+}
+
+/* ========== NEW REVIEWS LAYOUT (Form Left, Reviews Right) ========== */
+.reviews-layout {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.review-form-side {
+    flex: 1.2;
+    min-width: 300px;
+    position: sticky;
+    top: 100px;
+    align-self: flex-start;
+}
+
+.reviews-grid-side {
+    flex: 2;
+    min-width: 300px;
+}
+
+.review-form-container {
+    background: var(--dark-plum);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.review-form-container h3 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--gold);
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.review-card {
+    background: var(--dark-plum);
+    border-radius: 15px;
+    padding: 1.2rem;
+    transition: var(--transition);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(187, 160, 242, 0.2);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.reviewer-name {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.review-date {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.review-rating {
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+}
+
+.review-perfume {
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+    font-size: 0.85rem;
+}
+
+.review-text {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+}
+
+.review-actions {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: flex-end;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.edit-btn, .delete-btn {
+    padding: 0.3rem 0.8rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.7rem;
+}
+
+.edit-btn {
+    background: rgba(212, 175, 55, 0.2);
+    color: var(--gold);
+    border: 1px solid var(--gold);
+}
+
+.edit-btn:hover {
+    background: rgba(212, 175, 55, 0.3);
+}
+
+.delete-btn {
+    background: rgba(255, 0, 0, 0.2);
+    color: #ff6b6b;
+    border: 1px solid rgba(255, 0, 0, 0.5);
+}
+
+.delete-btn:hover {
+    background: rgba(255, 0, 0, 0.3);
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.page-btn {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--text);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.page-btn.active {
+    background: var(--gold);
+    color: var(--bg);
+}
+
+.page-btn:hover:not(.active) {
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.rating-input {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.rating-star {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.rating-star.active {
+    color: var(--gold);
+}
+
+.submit-review-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background: linear-gradient(to right, var(--gold), var(--accent));
+    border: none;
+    border-radius: 8px;
+    color: var(--bg);
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 0.5rem;
+}
+
+.submit-review-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* Edit Review Modal */
+.edit-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.edit-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.edit-modal-content {
+    background-color: var(--dark-plum);
+    width: 90%;
+    max-width: 500px;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    transform: translateY(50px);
+    transition: var(--transition);
+}
+
+.edit-modal.active .edit-modal-content {
+    transform: translateY(0);
+}
+
+.close-edit-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-edit-modal:hover {
+    color: var(--accent);
+}
+
+/* Mobile Responsive for New Layout */
+@media (max-width: 900px) {
+    .reviews-layout {
+        flex-direction: column;
+    }
+    
+    .review-form-side {
+        position: static;
+        order: 2;
+    }
+    
+    .reviews-grid-side {
+        order: 1;
+    }
+}
+    </style>
+    <link rel="stylesheet" href="noiraura-luxury.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Noir<span>Aura</span></a>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="has-mega-menu">
+                        <a href="#">Collections</a>
+                        <div class="mega-menu">
+                            <div class="mega-column">
+                                <h4>Men</h4>
+                                <ul class="mega-links">
+                                    <li><a href="men1.html">Living Floral Body Mist</a></li>
+                                    <li><a href="men2.html">Lost Light Body Mist</a></li>
+                                    <li><a href="men3.html">Heavenly Vibes Body Mist</a></li>
+                                    <li><a href="men4.html">Daur Body Mist</a></li>
+                                    <li><a href="men5.html">Zor Body Mist</a></li>
+                                    <li><a href="men6.html">Catch 22 Gold Edition - For Men</a></li>
+                                    <li><a href="men7.html">Reset - For Men</a></li>
+                                    <li><a href="men8.html">Iqbal</a></li>
+                                    <li><a href="men9.html">Executive</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-column">
+                                <h4>Women</h4>
+                                <ul class="mega-links">
+                                    <li><a href="women1.html">Living Floral Body Mist</a></li>
+                                    <li><a href="women2.html">Lost Light Body Mist</a></li>
+                                    <li><a href="women3.html">Heavenly Vibes Body Mist</a></li>
+                                    <li><a href="women4.html">Barg Body Mist</a></li>
+                                    <li><a href="women5.html">Daur Body Mist</a></li>
+                                    <li><a href="women6.html">Zor Body Mist</a></li>
+                                    <li><a href="women7.html">Poetic</a></li>
+                                    <li><a href="women8.html">Rest Sailers</a></li>
+                                    <li><a href="women9.html">Samula Set</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-column">
+                                <h4>Type</h4>
+                                <ul class="mega-links">
+                                    <li><a href="c.html">Citrus</a></li>
+                                    <li><a href="w.html">Woody</a></li>
+                                    <li><a href="o.html">Oriental</a></li>
+                                    <li><a href="s.html">Sweet</a></li>
+                                    <li><a href="se.html">Sensory</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-column">
+                                <h4>Shop By</h4>
+                                <ul class="mega-links">
+                                    <li><a href="bestse.html">Best Sellers</a></li>
+                                    <li><a href="sam.html">Sample Sets</a></li>
+                                    <li><a href="gif.html">Gift Sets</a></li>
+                                    <li><a href="new.html">New Arrivals</a></li>
+                                    <li><a href="limi.html">Limited Edition</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="ab.html">About</a></li>
+                    <li><a href="ra.html">Reviews & Aura Advisor</a></li>
+                    <li><a href="co.html">Contact</a></li>
+                    <li><a href="he.html">Help</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <div class="user-greeting" id="userGreeting"></div>
+                    <i class="fas fa-shipping-fast" id="ordersIcon" title="Track Orders"></i>
+                    <span class="order-count" id="orderCount">0</span>
+                    <div class="cart-icon-container">
+                        <i class="fas fa-shopping-bag" id="cartIcon"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                    <i class="fas fa-user" id="userIcon"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="container1">
+            <h1 style="opacity: 1; transform: translateY(0);">Ask Anything & Give Us A Review</h1>
+            <p style="opacity: 1; transform: translateY(0);">Let our AI Aura Advisor guide you to your signature scent and explore genuine reviews from fellow perfume enthusiasts</p>
+        </div>
+    </section>
+
+    <!-- AI Perfume Advisor Section -->
+    <section class="ai-advisor-section">
+        <div class="container">
+            <div class="ai-advisor-container">
+                <div class="ai-header">
+                    <h2>✨ Ask NoirAura AI</h2>
+                    <p>Find Your Perfect Scent - With Aura Advisor!</p>
+                </div>
+                
+                <!-- NEW: Questions Display Section - All questions from const -->
+                <div class="questions-display">
+                    <h3>
+                        <i class="fas fa-question-circle"></i>
+                        Questions You Can Ask (Click any question)
+                    </h3>
+                    <div class="questions-grid" id="questionsGrid">
+                        <!-- Questions will be loaded here by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="chat-container" id="chatContainer">
+                    <div class="message bot">
+                        <div class="message-content">
+                            Hello! I'm your NoirAura perfume advisor. I can help you with perfume recommendations, gift suggestions, scent descriptions, and much more! What would you like to know? 🌸
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="Ask me anything about perfumes...">
+                    <button class="send-btn" id="sendBtn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+            </div>
+            <div class="reviews-layout">
+                <!-- LEFT SIDE - Review Form -->
+                <div class="review-form-side">
+                    <div class="review-form-container">
+                        <h3><i class="fas fa-pen-fancy"></i> Share Your Experience</h3>
+                        <form id="reviewForm">
+                            <div class="form-group">
+                                <label for="reviewerName">Your Name</label>
+                                <input type="text" id="reviewerName" placeholder="e.g., Sarah Khan" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="perfumeName">Perfume Name</label>
+                                <input type="text" id="perfumeName" placeholder="e.g., Living Floral" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Rating</label>
+                                <div class="rating-input" id="ratingInput">
+                                    <span class="rating-star" data-rating="1">★</span>
+                                    <span class="rating-star" data-rating="2">★</span>
+                                    <span class="rating-star" data-rating="3">★</span>
+                                    <span class="rating-star" data-rating="4">★</span>
+                                    <span class="rating-star" data-rating="5">★</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="reviewText">Your Review</label>
+                                <textarea id="reviewText" rows="4" placeholder="Share your experience with this fragrance..." required></textarea>
+                            </div>
+                            <button type="submit" class="submit-review-btn"><i class="fas fa-paper-plane"></i> Submit Review</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- RIGHT SIDE - Reviews Grid -->
+                <div class="reviews-grid-side">
+                    <div class="reviews-grid" id="reviewsGrid"></div>
+                    <div class="pagination" id="pagination"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Edit Review Modal -->
+    <div class="edit-modal" id="editModal">
+        <div class="edit-modal-content">
+            <span class="close-edit-modal" id="closeEditModal">&times;</span>
+            <h3>Edit Your Review</h3>
+            <form id="editReviewForm">
+                <input type="hidden" id="editReviewId">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editReviewerName">Your Name</label>
+                        <input type="text" id="editReviewerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editPerfumeName">Perfume Name</label>
+                        <input type="text" id="editPerfumeName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Rating</label>
+                    <div class="rating-input" id="editRatingInput">
+                        <span class="rating-star" data-rating="1">★</span>
+                        <span class="rating-star" data-rating="2">★</span>
+                        <span class="rating-star" data-rating="3">★</span>
+                        <span class="rating-star" data-rating="4">★</span>
+                        <span class="rating-star" data-rating="5">★</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editReviewText">Your Review</label>
+                    <textarea id="editReviewText" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-review-btn">Update Review</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>NoirAura</h3>
+                    <p>The Essence of Elegance. Crafting luxury fragrances that tell your unique story.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Shop</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">For Her</a></li>
+                        <li><a href="#">For Him</a></li>
+                        <li><a href="#">Unisex</a></li>
+                        <li><a href="#">Exclusive Edition</a></li>
+                        <li><a href="#">Gift Sets</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Help</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Luxury Avenue, Karachi</li>
+                        <li><i class="fas fa-phone"></i> +92 (300) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@noiraura.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 NoirAura. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login/Signup Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div class="modal-tabs">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="signup">Sign Up</button>
+            </div>
+            <div class="tab-content active" id="loginTab">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <div class="form-options">
+                        <div class="remember-me">
+                            <input type="checkbox" id="rememberMe">
+                            <label for="rememberMe">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="submit-btn">Login</button>
+                </form>
+            </div>
+            <div class="tab-content" id="signupTab">
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+                        <input type="text" id="signupName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupZipCode">ZIP Code</label>
+                        <input type="text" id="signupZipCode" placeholder="e.g. 54000" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIXED Profile Modal -->
+    <div class="modal profile-modal" id="profileModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeProfileModal">&times;</span>
+            <div class="profile-header">
+                <div class="profile-avatar" id="profileAvatar">E</div>
+                <h2 class="profile-username" id="profileUsername">eshaldeveloper3</h2>
+                <p class="profile-email" id="profileEmail">eshalkhan@example.com</p>
+            </div>
+            <div class="profile-content">
+                <div class="profile-section">
+                    <h3 class="profile-section-title">Personal Information</h3>
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">Full Name:</span>
+                        <span class="profile-info-value" id="profileFullName">Eshal Khan</span>
+                    </div>
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">Email:</span>
+                        <span class="profile-info-value" id="profileEmailValue">eshalkhan@example.com</span>
+                    </div>
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">ZIP Code:</span>
+                        <span class="profile-info-value" id="profileZipCode">54000</span>
+                    </div>
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">Default Country:</span>
+                        <span class="profile-info-value" id="profileCountry">Pakistan</span>
+                    </div>
+                </div>
+                <div class="profile-section">
+                    <h3 class="profile-section-title">Payment Information</h3>
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">Card Number:</span>
+                        <span class="profile-info-value" id="profileCardNumber">**** **** **** 1234</span>
+                    </div>
+                    <div class="profile-info-item">
+                        <span class="profile-info-label">CVV:</span>
+                        <span class="profile-info-value" id="profileCVV">123</span>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-footer">
+                <button class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div class="modal product-modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeProductModal">&times;</span>
+            <div class="product-image" id="productModalImage"></div>
+            <div class="product-details">
+                <h2 id="productModalTitle">Product Name</h2>
+                <p class="product-price" id="productModalPrice">PKR 0.00</p>
+                <p class="product-description" id="productModalDescription">Product description will appear here.</p>
+                <div class="product-features">
+                    <h4>Key Features:</h4>
+                    <ul id="productModalFeatures">
+                        <li>Feature 1</li>
+                        <li>Feature 2</li>
+                        <li>Feature 3</li>
+                    </ul>
+                </div>
+                <div class="product-actions">
+                    <button class="btn" id="addToCartFromModal">Add to Cart</button>
+                    <button class="btn btn-primary" id="buyNowFromModal">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <span class="close-cart" id="closeCart">&times;</span>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">PKR 0.00</span>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-content">
+            <span class="close-modal" id="closeCheckout">&times;</span>
+            <h2>Checkout</h2>
+            
+            <div class="checkout-steps">
+                <div class="step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Shipping</div>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Payment</div>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Confirmation</div>
+                </div>
+            </div>
+            
+            <!-- Shipping Form -->
+            <div class="checkout-form active" id="shippingForm">
+                <h3>Shipping Information</h3>
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Complete Address</label>
+                    <textarea id="address" rows="3" placeholder="House #, Street, Area, City" required></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="zipCode">ZIP Code</label>
+                        <input type="text" id="zipCode" placeholder="e.g. 54000" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <select id="country" required>
+                        <option value="">Select Country</option>
+                        <option value="Pakistan" selected>Pakistan</option>
+                        <option value="India">India</option>
+                        <option value="USA">United States</option>
+                        <option value="UK">United Kingdom</option>
+                        <option value="UAE">United Arab Emirates</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Australia">Australia</option>
+                    </select>
+                </div>
+                <div class="navigation-buttons">
+                    <button type="button" class="nav-btn" id="cancelCheckout">Cancel</button>
+                    <button type="button" class="nav-btn primary" id="nextToPayment">Next</button>
+                </div>
+            </div>
+            
+            <!-- Payment Form -->
+            <div class="checkout-form" id="paymentForm">
+                <h3>Payment Method</h3>
+                <div class="payment-methods">
+                    <div class="payment-method selected" data-method="credit">
+                        <input type="radio" name="payment" id="creditCard" checked>
+                        <label for="creditCard">Credit Card</label>
+                    </div>
+                    <div class="payment-method" data-method="paypal">
+                        <input type="radio" name="payment" id="paypal">
+                        <label for="paypal">PayPal</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cardNumber">Card Number</label>
+                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" placeholder="123" required>
+                </div>
+                <div class="form-group">
+                    <label for="cardName">Name on Card</label>
+                    <input type="text" id="cardName" required>
+                </div>
+                
+                <div class="order-summary">
+                    <h4>Order Summary</h4>
+                    <div id="checkoutItems">
+                        <!-- Order items will be dynamically added here -->
+                    </div>
+                    <div class="order-total">
+                        <span>Total:</span>
+                        <span id="checkoutTotal">PKR 0.00</span>
+                    </div>
+                </div>
+                
+                <div class="navigation-buttons">
+                    <button type="button" class="nav-btn" id="backToShipping">Back</button>
+                    <button type="button" class="nav-btn primary" id="placeOrder">Place Order</button>
+                </div>
+            </div>
+            
+            <!-- Confirmation -->
+            <div class="checkout-form" id="confirmation">
+                <div style="text-align: center; padding: 2rem 0;">
+                    <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--gold); margin-bottom: 1rem;"></i>
+                    <h3>Order Confirmed!</h3>
+                    <p>Thank you for your purchase. Your order has been successfully placed.</p>
+                    <p>Order ID: <strong id="orderId">#NOIR-2023-001</strong></p>
+                    <p>You will receive a confirmation email shortly.</p>
+                    <button type="button" class="nav-btn primary" id="closeConfirmation" style="margin-top: 2rem;">Continue Shopping</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orders Modal -->
+    <div class="modal orders-modal" id="ordersModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeOrdersModal">&times;</span>
+            <h2>Your Orders</h2>
+            <div class="orders-list" id="ordersList">
+                <!-- Orders will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Chat Icon -->
+    <div class="floating-chat-icon" id="floatingChatIcon">
+        <i class="fas fa-comment-alt"></i>
+    </div>
+
+    <script>
+        // AI Perfume Advisor Functionality
+        const chatContainer = document.getElementById('chatContainer');
+        const chatInput = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const floatingChatIcon = document.getElementById('floatingChatIcon');
+        const authModal = document.getElementById('authModal');
+        const cartModal = document.getElementById('cartModal');
+        const checkoutModal = document.getElementById('checkoutModal');
+        const productModal = document.getElementById('productModal');
+        const ordersModal = document.getElementById('ordersModal');
+        const profileModal = document.getElementById('profileModal');
+        const userIcon = document.getElementById('userIcon');
+        const cartIcon = document.getElementById('cartIcon');
+        const ordersIcon = document.getElementById('ordersIcon');
+        const closeModal = document.getElementById('closeModal');
+        const closeCart = document.getElementById('closeCart');
+        const closeCheckout = document.getElementById('closeCheckout');
+        const closeProductModal = document.getElementById('closeProductModal');
+        const closeOrdersModal = document.getElementById('closeOrdersModal');
+        const closeProfileModal = document.getElementById('closeProfileModal');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const userGreeting = document.getElementById('userGreeting');
+        const cartCount = document.getElementById('cartCount');
+        const orderCount = document.getElementById('orderCount');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const cancelCheckout = document.getElementById('cancelCheckout');
+        const nextToPayment = document.getElementById('nextToPayment');
+        const backToShipping = document.getElementById('backToShipping');
+        const placeOrder = document.getElementById('placeOrder');
+        const closeConfirmation = document.getElementById('closeConfirmation');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const steps = document.querySelectorAll('.step');
+        const checkoutForms = document.querySelectorAll('.checkout-form');
+        const paymentMethods = document.querySelectorAll('.payment-method');
+        const addToCartFromModal = document.getElementById('addToCartFromModal');
+        const buyNowFromModal = document.getElementById('buyNowFromModal');
+        const questionsGrid = document.getElementById('questionsGrid');
+
+        // Comprehensive perfume knowledge base with 40+ responses
+        const perfumeKnowledge = {
+            // Greetings
+            "hello": "Hello! 👋 I'm your NoirAura perfume advisor. How can I help you find your perfect scent today?",
+            "hi": "Hi there! 😊 Ready to explore our luxury fragrance collection? What are you looking for?",
+            "hey": "Hey! 👋 I'm here to help you discover amazing perfumes. What's on your mind?",
+            
+            // General questions
+            "what do you sell": "We offer premium luxury fragrances for both men and women! Our collection includes floral, woody, citrus, and oriental scents. Which type interests you?",
+            "how to choose perfume": "Choosing a perfume depends on your personality, occasion, and preferences. Tell me about yourself and I'll recommend something perfect!",
+            "what is your best seller": "Our best sellers are 'Catch 22 Gold Edition' for men and 'Poetic' for women. Both are incredibly popular for their unique, long-lasting scents!",
+            
+            // For parties
+            "party": "For parties, I recommend 'Catch 22 Gold Edition' - it's bold, captivating and lasts all night! 🎉",
+            "night out": "For a night out, try 'Lost Light Body Mist' - mysterious and alluring, perfect for evening events! 🌙",
+            "club": "Heading to a club? 'Zor Body Mist' has energizing citrus notes that will keep you feeling fresh and confident! 💃",
+            
+            // For gifts
+            "gift for her": "For her, I'd suggest 'Poetic' - it's romantic, floral and absolutely beautiful! 💖 Perfect for making her feel special.",
+            "gift for him": "For him, 'Executive' is a fantastic choice - sophisticated, woody and very masculine! 👔 He'll love it.",
+            "birthday gift": "For a birthday gift, our 'Samula Set' is perfect - it includes multiple fragrances so they can choose their favorite! 🎁",
+            "anniversary gift": "For anniversaries, 'Heavenly Vibes Body Mist' creates a romantic, uplifting atmosphere - perfect for celebrating love! 💑",
+            
+            // For specific occasions
+            "wedding": "For weddings, 'Living Floral Body Mist' offers a beautiful bouquet scent that's elegant and memorable! 💐",
+            "date": "For dates, 'Barg Body Mist' is seductive and memorable - it creates an unforgettable impression! 💘",
+            "office": "For office wear, 'Reset - For Men' is professional and subtle - won't overwhelm your colleagues! 💼",
+            "summer": "For summer, 'Heavenly Vibes Body Mist' is light, fresh and uplifting - perfect for hot days! ☀️",
+            "winter": "For winter, 'Floral Leather' has warm, comforting notes that are perfect for cold weather! ❄️",
+            
+            // Scent types
+            "floral": "If you love floral scents, try 'Living Floral Body Mist' - it's a beautiful bouquet that blooms throughout the day! 🌸",
+            "woody": "For woody scents, 'Executive' has sophisticated notes that exude confidence and elegance! 🌲",
+            "citrus": "If you prefer citrus, 'Zor Body Mist' offers zesty, energizing notes that awaken your senses! 🍊",
+            "sweet": "For sweet scents, 'Poetic' has delicate, romantic notes that are subtly sweet and very feminine! 🍬",
+            "fresh": "For fresh scents, 'Reset - For Men' is clean, crisp and perfect for daily wear! 🌊",
+            
+            // Longevity questions
+            "how long does it last": "Our premium fragrances typically last 6-12 hours! 'Catch 22 Gold Edition' and 'Rose & Oud' have the longest lasting power at 10-12 hours! ⏱️",
+            "long lasting": "For maximum longevity, I recommend 'Catch 22 Gold Edition' or 'Rose & Oud' - both last 10-12 hours! 💪",
+            
+            // Price questions
+            "how much": "Our perfumes range from PKR 3,100 to PKR 4,200. Which type are you interested in? I can recommend something within your budget! 💰",
+            "expensive": "Our most premium option is 'Rose & Oud' at PKR 4,200 - it uses exclusive ingredients and lasts 12+ hours! 💎",
+            "cheap": "Our most affordable option is 'Lavender Storm' at PKR 3,100 - it's high quality at a great price! 👍",
+            
+            // Specific perfumes
+            "living floral": "'Living Floral Body Mist' is a beautiful bouquet of flowers that blooms throughout the day. Perfect for feminine, elegant vibes! 🌸",
+            "catch 22": "'Catch 22 Gold Edition' is rich, woody and captivating - our most popular men's fragrance! 🏆",
+            "poetic": "'Poetic' is romantic, soft and timeless - creates an intimate, feminine atmosphere! 💖",
+            "executive": "'Executive' is sophisticated, woody and professional - perfect for business settings! 👔",
+            "reset": "'Reset - For Men' is clean, fresh and subtle - ideal for daily office wear! 💼",
+            "barg": "'Barg Body Mist' is seductive and memorable - creates an unforgettable impression! 🔥",
+            "heavenly vibes": "'Heavenly Vibes Body Mist' is light, fresh and uplifting - perfect for summer days! ☀️",
+            "lost light": "'Lost Light Body Mist' is mysterious and alluring - great for evening events! 🌙",
+            "zor": "'Zor Body Mist' has energizing citrus notes that awaken your senses! 🍊",
+            "rose & oud": "'Rose & Oud' combines luxurious rose with premium oud - exotic and sophisticated! 🌹",
+            "floral leather": "'Floral Leather' blends bold leather with delicate florals - unique and masculine! 🎭",
+            "floral wood": "'Floral Wood' balances earthy woody notes with masculine floral accents! 🌳",
+            "lavender storm": "'Lavender Storm' features powerful lavender with stormy undertones - calming yet commanding! ⚡",
+            "floral spice": "'Floral Spice' combines warm spices with subtle florals - comforting yet masculine! 🌶️",
+            "night bloom": "'Night Bloom' features night-blooming flowers with masculine musk - evening elegance! 🌌",
+            "floral noir": "'Floral Noir' offers dark floral blend with masculine undertones - sophisticated and modern! 🖤",
+            "rosewood elite": "'Rosewood Elite' combines premium rosewood with subtle florals - discerning gentleman's choice! 🎩",
+            "jasmine noir": "'Jasmine Noir' blends dark jasmine with masculine spices - mysterious and alluring! 🌺",
+            
+            // Shipping and delivery
+            "shipping": "We offer free shipping on orders over PKR 5,000! Delivery takes 3-5 business days across Pakistan. 🚚",
+            "delivery": "Standard delivery is 3-5 business days. Express delivery (1-2 days) is available for an additional PKR 500! ⚡",
+            "return": "We offer 30-day returns if you're not completely satisfied with your purchase! 🔄",
+            
+            // Contact information
+            "contact": "You can reach us at info@noiraura.com or call +92 (300) 123-4567. We're here to help! 📞",
+            "location": "Our store is located at 123 Luxury Avenue, Karachi. Come visit us! 📍",
+            
+            // Thank you responses
+            "thank you": "You're very welcome! 😊 Let me know if you need any other perfume recommendations!",
+            "thanks": "My pleasure! 🌸 Happy to help you find the perfect fragrance!",
+            
+            // Default response
+            "default": "I'd love to help you with that! Could you tell me more about what you're looking for in a perfume? Maybe the occasion, scent preference, or who it's for? 😊"
+        };
+
+        // NEW: Function to display all questions from perfumeKnowledge
+        function displayAllQuestions() {
+            if (!questionsGrid) return;
+            
+            questionsGrid.innerHTML = '';
+            
+            // Get all questions except 'default'
+            const questions = Object.keys(perfumeKnowledge).filter(key => key !== 'default');
+            
+            // Create question chips
+            questions.forEach(question => {
+                const chip = document.createElement('span');
+                chip.className = 'question-chip';
+                
+                // Add appropriate icon based on question type
+                let icon = '❓';
+                if (question.includes('hello') || question.includes('hi') || question.includes('hey')) icon = '👋';
+                else if (question.includes('gift')) icon = '🎁';
+                else if (question.includes('party') || question.includes('night') || question.includes('club')) icon = '🎉';
+                else if (question.includes('wedding') || question.includes('date')) icon = '💑';
+                else if (question.includes('summer')) icon = '☀️';
+                else if (question.includes('winter')) icon = '❄️';
+                else if (question.includes('floral')) icon = '🌸';
+                else if (question.includes('woody')) icon = '🌲';
+                else if (question.includes('citrus')) icon = '🍊';
+                else if (question.includes('sweet')) icon = '🍬';
+                else if (question.includes('long')) icon = '⏱️';
+                else if (question.includes('how much') || question.includes('expensive')) icon = '💰';
+                else if (question.includes('shipping') || question.includes('delivery')) icon = '🚚';
+                else if (question.includes('contact')) icon = '📞';
+                else if (question.includes('thank')) icon = '🙏';
+                
+                chip.innerHTML = `${icon} ${question.charAt(0).toUpperCase() + question.slice(1)}`;
+                
+                // Click to fill input and send
+                chip.addEventListener('click', () => {
+                    chatInput.value = question;
+                    sendMessage();
+                });
+                
+                questionsGrid.appendChild(chip);
+            });
+        }
+
+        // Function to add a message to the chat
+        function addMessage(content, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+            
+            const messageContent = document.createElement('div');
+            messageContent.className = 'message-content';
+            messageContent.innerHTML = content;
+            
+            messageDiv.appendChild(messageContent);
+            chatContainer.appendChild(messageDiv);
+            
+            // Scroll to bottom
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Function to show typing indicator
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message bot typing-indicator';
+            typingDiv.id = 'typingIndicator';
+            
+            typingDiv.innerHTML = `
+                <div class="message-content">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            `;
+            
+            chatContainer.appendChild(typingDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            
+            return typingDiv;
+        }
+
+        // Function to find the best response for user input
+        function findBestResponse(input) {
+            input = input.toLowerCase();
+            
+            // Check for exact matches first
+            for (const keyword in perfumeKnowledge) {
+                if (input === keyword) {
+                    return perfumeKnowledge[keyword];
+                }
+            }
+            
+            // Check for partial matches
+            for (const keyword in perfumeKnowledge) {
+                if (input.includes(keyword)) {
+                    return perfumeKnowledge[keyword];
+                }
+            }
+            
+            // Return default response if no match found
+            return perfumeKnowledge["default"];
+        }
+
+        // Function to handle sending a message
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message === "") return;
+            
+            // Add user message
+            addMessage(message, true);
+            
+            // Clear input
+            chatInput.value = "";
+            
+            // Show typing indicator
+            const typingIndicator = showTypingIndicator();
+            
+            // Simulate AI thinking time
+            setTimeout(() => {
+                // Remove typing indicator
+                typingIndicator.remove();
+                
+                // Generate and add bot response
+                const response = findBestResponse(message);
+                addMessage(response);
+            }, 1500);
+        }
+
+        // Event listeners for chat
+        sendBtn.addEventListener('click', sendMessage);
+        
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        floatingChatIcon.addEventListener('click', () => {
+            document.querySelector('.ai-advisor-section').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        });
+
+        // Reviews Functionality
+        const reviewsGrid = document.getElementById('reviewsGrid');
+        const pagination = document.getElementById('pagination');
+        const reviewForm = document.getElementById('reviewForm');
+        const ratingInput = document.getElementById('ratingInput');
+        const ratingStars = ratingInput.querySelectorAll('.rating-star');
+        
+        // Edit Review Modal Elements
+        const editModal = document.getElementById('editModal');
+        const closeEditModal = document.getElementById('closeEditModal');
+        const editReviewForm = document.getElementById('editReviewForm');
+        const editRatingInput = document.getElementById('editRatingInput');
+        const editRatingStars = editRatingInput.querySelectorAll('.rating-star');
+        
+        // Sample reviews data (50+ reviews)
+        let reviews = [
+            { id: 1, name: "Sarah K.", date: "2023-10-15", rating: 5, perfume: "Living Floral Body Mist", text: "Absolutely love this fragrance! It lasts all day and I get so many compliments." },
+            { id: 2, name: "Michael T.", date: "2023-10-12", rating: 4, perfume: "Executive", text: "Perfect for the office. Subtle yet sophisticated." },
+            { id: 3, name: "Aisha R.", date: "2023-10-10", rating: 5, perfume: "Poetic", text: "This is my new signature scent. So romantic and feminine!" },
+            { id: 4, name: "David L.", date: "2023-10-08", rating: 4, perfume: "Zor Body Mist", text: "Great citrus scent that's not overpowering. Perfect for summer." },
+            { id: 5, name: "Fatima A.", date: "2023-10-05", rating: 5, perfume: "Samula Set", text: "The entire set is amazing! Each fragrance is unique and beautiful." },
+            { id: 6, name: "James P.", date: "2023-10-03", rating: 4, perfume: "Reset - For Men", text: "Clean, fresh scent that lasts. My go-to daily fragrance." },
+            { id: 7, name: "Nadia S.", date: "2023-09-28", rating: 5, perfume: "Barg Body Mist", text: "Such a unique and captivating scent. I feel so confident wearing it." },
+            { id: 8, name: "Omar H.", date: "2023-09-25", rating: 4, perfume: "Lost Light Body Mist", text: "Perfect for evening events. Mysterious and alluring." },
+            { id: 9, name: "Zara M.", date: "2023-09-20", rating: 5, perfume: "Heavenly Vibes Body Mist", text: "This fragrance truly lives up to its name. Uplifting and beautiful." },
+            { id: 10, name: "Ryan C.", date: "2023-09-18", rating: 4, perfume: "Catch 22 Gold Edition", text: "Bold and sophisticated. Perfect for special occasions." },
+            { id: 11, name: "Hina J.", date: "2023-09-15", rating: 5, perfume: "Rose & Oud", text: "Exotic and luxurious. The rose and oud combination is divine." },
+            { id: 12, name: "Bilal K.", date: "2023-09-12", rating: 4, perfume: "Floral Leather", text: "Unique scent that gets me compliments every time I wear it." },
+            { id: 13, name: "Sana R.", date: "2023-09-10", rating: 5, perfume: "Night Bloom", text: "Perfect for date nights. Romantic and mysterious." },
+            { id: 14, name: "Ali M.", date: "2023-09-08", rating: 4, perfume: "Floral Wood", text: "Earthy yet refined. Great for everyday wear." },
+            { id: 15, name: "Mehak S.", date: "2023-09-05", rating: 5, perfume: "Jasmine Noir", text: "Dark and mysterious jasmine scent. Absolutely love it!" },
+            { id: 16, name: "Usman K.", date: "2023-09-01", rating: 5, perfume: "Rosewood Elite", text: "Premium quality! Lasts all day long. Worth every penny." },
+            { id: 17, name: "Fatima Z.", date: "2023-08-28", rating: 4, perfume: "Floral Spice", text: "Beautiful blend of spices and flowers. Very unique." },
+            { id: 18, name: "Hamza A.", date: "2023-08-25", rating: 5, perfume: "Lavender Storm", text: "Calming yet powerful. My new favorite!" },
+            { id: 19, name: "Ayesha M.", date: "2023-08-22", rating: 4, perfume: "Floral Noir", text: "Sophisticated and modern. Perfect for evenings." },
+            { id: 20, name: "Zain R.", date: "2023-08-20", rating: 5, perfume: "Reset - For Men", text: "Best daily wear perfume. Fresh and clean." },
+            { id: 21, name: "Mahnoor S.", date: "2023-08-18", rating: 5, perfume: "Poetic", text: "So romantic and feminine. I get compliments everywhere!" },
+            { id: 22, name: "Hassan T.", date: "2023-08-15", rating: 4, perfume: "Executive", text: "Perfect for business meetings. Very professional." },
+            { id: 23, name: "Anaya K.", date: "2023-08-12", rating: 5, perfume: "Living Floral", text: "Beautiful floral scent that lasts all day." },
+            { id: 24, name: "Rayan P.", date: "2023-08-10", rating: 4, perfume: "Catch 22", text: "Bold and confident. Perfect for parties." },
+            { id: 25, name: "Iman F.", date: "2023-08-08", rating: 5, perfume: "Barg", text: "Seductive and memorable. My husband loves it!" },
+            { id: 26, name: "Saad Q.", date: "2023-08-05", rating: 4, perfume: "Zor", text: "Energizing citrus scent. Great for summer." },
+            { id: 27, name: "Hira N.", date: "2023-08-03", rating: 5, perfume: "Heavenly Vibes", text: "Light, fresh and uplifting. Perfect for everyday." },
+            { id: 28, name: "Obaid L.", date: "2023-08-01", rating: 5, perfume: "Lost Light", text: "Mysterious and alluring. Great for night outs." },
+            { id: 29, name: "Saba W.", date: "2023-07-28", rating: 4, perfume: "Samula Set", text: "Great value for money. All fragrances are amazing." },
+            { id: 30, name: "Taha M.", date: "2023-07-25", rating: 5, perfume: "Rose & Oud", text: "Exotic and luxurious. Best perfume I've ever owned." },
+            { id: 31, name: "Nimra J.", date: "2023-07-22", rating: 5, perfume: "Night Bloom", text: "Perfect for date nights. Romantic and mysterious." },
+            { id: 32, name: "Farhan K.", date: "2023-07-20", rating: 4, perfume: "Floral Wood", text: "Earthy yet refined. Very unique scent." },
+            { id: 33, name: "Laiba R.", date: "2023-07-18", rating: 5, perfume: "Jasmine Noir", text: "Dark and beautiful. Gets me so many compliments." },
+            { id: 34, name: "Salman A.", date: "2023-07-15", rating: 4, perfume: "Floral Leather", text: "Bold and masculine. Very unique combination." },
+            { id: 35, name: "Eman S.", date: "2023-07-12", rating: 5, perfume: "Rosewood Elite", text: "Sophisticated and elegant. Worth every penny." },
+            { id: 36, name: "Waleed T.", date: "2023-07-10", rating: 4, perfume: "Floral Spice", text: "Warm and comforting. Great for winter." },
+            { id: 37, name: "Marium K.", date: "2023-07-08", rating: 5, perfume: "Lavender Storm", text: "Calming yet commanding. I feel so confident!" },
+            { id: 38, name: "Raza H.", date: "2023-07-05", rating: 4, perfume: "Floral Noir", text: "Modern and sophisticated. Perfect for evenings." },
+            { id: 39, name: "Aleeza N.", date: "2023-07-03", rating: 5, perfume: "Reset", text: "Clean, fresh and subtle. Perfect for office." },
+            { id: 40, name: "Shayan M.", date: "2023-07-01", rating: 4, perfume: "Executive", text: "Professional and sophisticated. Great for work." },
+            { id: 41, name: "Noor F.", date: "2023-06-28", rating: 5, perfume: "Poetic", text: "Romantic and feminine. My signature scent now!" },
+            { id: 42, name: "Haris L.", date: "2023-06-25", rating: 4, perfume: "Catch 22", text: "Bold and captivating. Perfect for special occasions." },
+            { id: 43, name: "Aiza K.", date: "2023-06-22", rating: 5, perfume: "Living Floral", text: "Beautiful bouquet of flowers. Lasts all day." },
+            { id: 44, name: "Daniyal P.", date: "2023-06-20", rating: 4, perfume: "Zor", text: "Energizing and fresh. Great for gym." },
+            { id: 45, name: "Esha R.", date: "2023-06-18", rating: 5, perfume: "Heavenly Vibes", text: "Uplifting and beautiful. Makes my day better!" },
+            { id: 46, name: "Affan S.", date: "2023-06-15", rating: 4, perfume: "Lost Light", text: "Mysterious and alluring. Great for parties." },
+            { id: 47, name: "Aleena W.", date: "2023-06-12", rating: 5, perfume: "Barg", text: "Seductive and unforgettable. My husband's favorite!" },
+            { id: 48, name: "Shahmir T.", date: "2023-06-10", rating: 4, perfume: "Reset", text: "Fresh and clean. Great daily wear." },
+            { id: 49, name: "Zimal K.", date: "2023-06-08", rating: 5, perfume: "Samula Set", text: "All fragrances are amazing. Great variety!" },
+            { id: 50, name: "Rayyan M.", date: "2023-06-05", rating: 5, perfume: "Rose & Oud", text: "Exotic, luxurious, long-lasting. Perfect!" }
+        ];
+        
+        // Load reviews from localStorage if available - FIXED
+        if (localStorage.getItem('noirAuraReviews')) {
+            try {
+                const savedReviews = JSON.parse(localStorage.getItem('noirAuraReviews'));
+                // Agar savedReviews array hai aur usme items hain
+                if (Array.isArray(savedReviews) && savedReviews.length > 0) {
+                    // Saved reviews ko array mein add karo, replace nahi
+                    reviews = [...savedReviews, ...reviews];
+                }
+            } catch (e) {
+                console.error('Error parsing reviews:', e);
+            }
+        }
+        
+        // Pagination variables
+        const reviewsPerPage = 6;
+        let currentPage = 1;
+        
+        // Rating variables
+        let selectedRating = 0;
+        let editSelectedRating = 0;
+        
+        // Function to generate star rating HTML
+        function generateStarRating(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= rating) {
+                    stars += '★';
+                } else {
+                    stars += '☆';
+                }
+            }
+            return stars;
+        }
+        
+        // Function to display reviews for current page - FIXED
+        function displayReviews() {
+            if (!reviewsGrid) return;
+            
+            reviewsGrid.innerHTML = '';
+            
+            // Check if reviews array has data
+            if (reviews.length === 0) {
+                reviewsGrid.innerHTML = '<p style="text-align: center; color: rgba(255,255,255,0.5);">No reviews yet. Be the first to review!</p>';
+                return;
+            }
+            
+            const startIndex = (currentPage - 1) * reviewsPerPage;
+            const endIndex = startIndex + reviewsPerPage;
+            const pageReviews = reviews.slice(startIndex, endIndex);
+            
+            pageReviews.forEach(review => {
+                const reviewCard = document.createElement('div');
+                reviewCard.className = 'review-card';
+                
+                reviewCard.innerHTML = `
+                    <div class="review-header">
+                        <div class="reviewer-name">${review.name}</div>
+                        <div class="review-date">${review.date}</div>
+                    </div>
+                    <div class="review-rating">${generateStarRating(review.rating)}</div>
+                    <div class="review-perfume">${review.perfume}</div>
+                    <div class="review-text">${review.text}</div>
+                    <div class="review-actions">
+                        <button class="edit-btn" data-id="${review.id}">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="delete-btn" data-id="${review.id}">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                `;
+                
+                reviewsGrid.appendChild(reviewCard);
+            });
+            
+            // Add event listeners to edit and delete buttons
+            document.querySelectorAll('.edit-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const reviewId = parseInt(btn.getAttribute('data-id'));
+                    openEditModal(reviewId);
+                });
+            });
+            
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const reviewId = parseInt(btn.getAttribute('data-id'));
+                    deleteReview(reviewId);
+                });
+            });
+            
+            // Add scroll animation
+            setTimeout(() => {
+                document.querySelectorAll('.review-card').forEach(card => {
+                    card.classList.add('visible');
+                });
+            }, 100);
+        }
+        
+        // Function to setup pagination - FIXED
+        function setupPagination() {
+            if (!pagination) return;
+            
+            pagination.innerHTML = '';
+            
+            const pageCount = Math.ceil(reviews.length / reviewsPerPage);
+            
+            // Agar sirf ek page hai to pagination mat dikhao
+            if (pageCount <= 1) {
+                return;
+            }
+            
+            // Previous button
+            if (currentPage > 1) {
+                const prevBtn = document.createElement('button');
+                prevBtn.className = 'page-btn';
+                prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+                prevBtn.addEventListener('click', () => {
+                    currentPage--;
+                    displayReviews();
+                    setupPagination();
+                });
+                pagination.appendChild(prevBtn);
+            }
+            
+            // Page number buttons
+            for (let i = 1; i <= pageCount; i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+                pageBtn.textContent = i;
+                pageBtn.addEventListener('click', () => {
+                    currentPage = i;
+                    displayReviews();
+                    setupPagination();
+                });
+                pagination.appendChild(pageBtn);
+            }
+            
+            // Next button
+            if (currentPage < pageCount) {
+                const nextBtn = document.createElement('button');
+                nextBtn.className = 'page-btn';
+                nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                nextBtn.addEventListener('click', () => {
+                    currentPage++;
+                    displayReviews();
+                    setupPagination();
+                });
+                pagination.appendChild(nextBtn);
+            }
+        }
+        
+        // Function to open edit modal
+        function openEditModal(reviewId) {
+            const review = reviews.find(r => r.id === reviewId);
+            if (!review) return;
+            
+            // Fill form with review data
+            document.getElementById('editReviewId').value = review.id;
+            document.getElementById('editReviewerName').value = review.name;
+            document.getElementById('editPerfumeName').value = review.perfume;
+            document.getElementById('editReviewText').value = review.text;
+            
+            // Set rating
+            editSelectedRating = review.rating;
+            editRatingStars.forEach(star => {
+                const rating = parseInt(star.getAttribute('data-rating'));
+                if (rating <= editSelectedRating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+            
+            // Show modal
+            editModal.classList.add('active');
+        }
+        
+        // Function to delete review
+        function deleteReview(reviewId) {
+            if (confirm('Are you sure you want to delete this review?')) {
+                reviews = reviews.filter(review => review.id !== reviewId);
+                saveReviews();
+                displayReviews();
+                setupPagination();
+            }
+        }
+        
+        // Function to save reviews to localStorage
+        function saveReviews() {
+            localStorage.setItem('noirAuraReviews', JSON.stringify(reviews));
+        }
+        
+        // Rating stars functionality for new review
+        ratingStars.forEach(star => {
+            star.addEventListener('click', () => {
+                const rating = parseInt(star.getAttribute('data-rating'));
+                selectedRating = rating;
+                
+                ratingStars.forEach(s => {
+                    if (parseInt(s.getAttribute('data-rating')) <= rating) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+            });
+        });
+        
+        // Rating stars functionality for edit review
+        editRatingStars.forEach(star => {
+            star.addEventListener('click', () => {
+                const rating = parseInt(star.getAttribute('data-rating'));
+                editSelectedRating = rating;
+                
+                editRatingStars.forEach(s => {
+                    if (parseInt(s.getAttribute('data-rating')) <= rating) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+            });
+        });
+        
+        // New review form submission
+        reviewForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('reviewerName').value;
+            const perfume = document.getElementById('perfumeName').value;
+            const text = document.getElementById('reviewText').value;
+            
+            if (!name || !perfume || !text || selectedRating === 0) {
+                alert('Please fill in all fields and select a rating');
+                return;
+            }
+            
+            // Create new review
+            const newReview = {
+                id: reviews.length > 0 ? Math.max(...reviews.map(r => r.id)) + 1 : 1,
+                name: name,
+                date: new Date().toISOString().split('T')[0],
+                rating: selectedRating,
+                perfume: perfume,
+                text: text
+            };
+            
+            // Add to beginning of reviews array
+            reviews.unshift(newReview);
+            
+            // Save to localStorage
+            saveReviews();
+            
+            // Reset form
+            reviewForm.reset();
+            selectedRating = 0;
+            ratingStars.forEach(star => star.classList.remove('active'));
+            
+            // Reset to first page and update display
+            currentPage = 1;
+            displayReviews();
+            setupPagination();
+            
+            alert('Thank you for your review!');
+        });
+        
+        // Edit review form submission
+        editReviewForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const reviewId = parseInt(document.getElementById('editReviewId').value);
+            const name = document.getElementById('editReviewerName').value;
+            const perfume = document.getElementById('editPerfumeName').value;
+            const text = document.getElementById('editReviewText').value;
+            
+            if (!name || !perfume || !text || editSelectedRating === 0) {
+                alert('Please fill in all fields and select a rating');
+                return;
+            }
+            
+            // Find and update review
+            const reviewIndex = reviews.findIndex(r => r.id === reviewId);
+            if (reviewIndex !== -1) {
+                reviews[reviewIndex] = {
+                    ...reviews[reviewIndex],
+                    name: name,
+                    perfume: perfume,
+                    rating: editSelectedRating,
+                    text: text
+                };
+                
+                // Save to localStorage
+                saveReviews();
+                
+                // Close modal and update display
+                editModal.classList.remove('active');
+                displayReviews();
+                
+                alert('Review updated successfully!');
+            }
+        });
+        
+        // Close edit modal
+        closeEditModal.addEventListener('click', () => {
+            editModal.classList.remove('active');
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === editModal) {
+                editModal.classList.remove('active');
+            }
+        });
+
+        // Mega Menu Elements
+        const collectionsLink = document.querySelector('.has-mega-menu > a');
+        const megaMenu = document.querySelector('.mega-menu');
+
+        // Check if user is logged in
+        function checkLoginStatus() {
+            const user = localStorage.getItem('noirAuraUser');
+            if (user) {
+                userGreeting.textContent = `Hello, ${user}`;
+            }
+        }
+
+        // Scroll Animation Functionality
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Agar element mein staggered children hain
+                        const staggeredChildren = entry.target.querySelectorAll('.perfume-card, .footer-column');
+                        if (staggeredChildren.length > 0) {
+                            staggeredChildren.forEach(child => {
+                                child.classList.add('visible');
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Elements ko observe karen
+            const elementsToAnimate = [
+               '.about-hero',
+                '.section-title',
+                '.footer-content',
+                '.footer-column'
+            ];
+
+            elementsToAnimate.forEach(selector => {
+                document.querySelectorAll(selector).forEach(element => {
+                    observer.observe(element);
+                });
+            });
+        }
+
+        // Initialize on page load - FIXED with reviews display
+        window.addEventListener('DOMContentLoaded', () => {
+            checkLoginStatus();
+            
+            // Only show modal if user is not logged in
+            if (!localStorage.getItem('noirAuraUser')) {
+                setTimeout(() => {
+                    authModal.classList.add('active');
+                }, 1000);
+            }
+            
+            // Load cart from localStorage
+            updateCartDisplay();
+            updateOrderCount();
+            
+            // Scroll animations initialize karen
+            initScrollAnimations();
+            
+            // Display all questions from perfumeKnowledge
+            displayAllQuestions();
+            
+            // IMPORTANT: Reviews display karo page load hote hi
+            console.log('Loading reviews... Total:', reviews.length);
+            displayReviews();
+            setupPagination();
+        });
+
+        // Mega Menu Functionality
+        if (collectionsLink && megaMenu) {
+            collectionsLink.addEventListener('mouseenter', () => {
+                megaMenu.classList.add('active');
+            });
+
+            megaMenu.addEventListener('mouseleave', () => {
+                megaMenu.classList.remove('active');
+            });
+
+            if (window.innerWidth <= 768) {
+                collectionsLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    megaMenu.classList.toggle('active');
+                });
+            }
+        }
+
+        // Tab switching
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(`${tabId}Tab`).classList.add('active');
+            });
+        });
+
+        // Modal controls
+        userIcon.addEventListener('click', () => {
+            if (localStorage.getItem('noirAuraUser')) {
+                profileModal.classList.add('active');
+                updateProfileDisplay();
+            } else {
+                authModal.classList.add('active');
+            }
+        });
+
+        closeModal.addEventListener('click', () => {
+            authModal.classList.remove('active');
+        });
+
+        cartIcon.addEventListener('click', () => {
+            cartModal.classList.add('active');
+        });
+
+        closeCart.addEventListener('click', () => {
+            cartModal.classList.remove('active');
+        });
+
+        closeCheckout.addEventListener('click', () => {
+            checkoutModal.classList.remove('active');
+        });
+
+        closeProductModal.addEventListener('click', () => {
+            productModal.classList.remove('active');
+        });
+
+        closeProfileModal.addEventListener('click', () => {
+            profileModal.classList.remove('active');
+        });
+
+        ordersIcon.addEventListener('click', () => {
+            if (!localStorage.getItem('noirAuraUser')) {
+                authModal.classList.add('active');
+                return;
+            }
+            ordersModal.classList.add('active');
+            updateOrdersDisplay();
+        });
+
+        closeOrdersModal.addEventListener('click', () => {
+            ordersModal.classList.remove('active');
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === authModal) authModal.classList.remove('active');
+            if (e.target === checkoutModal) checkoutModal.classList.remove('active');
+            if (e.target === ordersModal) ordersModal.classList.remove('active');
+            if (e.target === profileModal) profileModal.classList.remove('active');
+            if (e.target === productModal) productModal.classList.remove('active');
+        });
+
+        // Logout functionality
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('noirAuraUser');
+            localStorage.removeItem('noirAuraUserEmail');
+            localStorage.removeItem('noirAuraUserZipCode');
+            userGreeting.textContent = '';
+            profileModal.classList.remove('active');
+            authModal.classList.add('active');
+        });
+
+        // Form submissions
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (email && password) {
+                const userName = email.split('@')[0];
+                localStorage.setItem('noirAuraUser', userName);
+                localStorage.setItem('noirAuraUserEmail', email);
+                localStorage.setItem('noirAuraUserZipCode', '54000');
+                userGreeting.textContent = `Hello, ${userName}`;
+                authModal.classList.remove('active');
+                loginForm.reset();
+            } else {
+                alert('Please fill in all fields');
+            }
+        });
+
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const zipCode = document.getElementById('signupZipCode').value;
+            
+            if (name && email && password && confirmPassword && zipCode) {
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match');
+                    return;
+                }
+                
+                localStorage.setItem('noirAuraUser', name);
+                localStorage.setItem('noirAuraUserEmail', email);
+                localStorage.setItem('noirAuraUserZipCode', zipCode);
+                userGreeting.textContent = `Hello, ${name}`;
+                authModal.classList.remove('active');
+                signupForm.reset();
+                tabBtns[0].click();
+            } else {
+                alert('Please fill in all fields');
+            }
+        });
+
+        // Update profile display
+        function updateProfileDisplay() {
+            const userName = localStorage.getItem('noirAuraUser') || 'eshaldeveloper3';
+            const userEmail = localStorage.getItem('noirAuraUserEmail') || 'eshalkhan@example.com';
+            const userZipCode = localStorage.getItem('noirAuraUserZipCode') || '54000';
+            
+            document.getElementById('profileUsername').textContent = userName;
+            document.getElementById('profileEmail').textContent = userEmail;
+            document.getElementById('profileFullName').textContent = userName;
+            document.getElementById('profileEmailValue').textContent = userEmail;
+            document.getElementById('profileZipCode').textContent = userZipCode;
+            document.getElementById('profileAvatar').textContent = userName.charAt(0).toUpperCase();
+        }
+
+        // Cart functionality
+        function getCart() {
+            return JSON.parse(localStorage.getItem('noirAuraCart')) || [];
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem('noirAuraCart', JSON.stringify(cart));
+        }
+
+        function updateCartDisplay() {
+            const cart = getCart();
+            let total = 0;
+            let count = 0;
+            
+            cart.forEach(item => {
+                count += item.quantity;
+                total += item.price * item.quantity;
+            });
+            
+            cartCount.textContent = count;
+            cartTotal.textContent = `PKR ${total.toLocaleString()}`;
+            
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p>Your cart is empty</p>';
+                return;
+            }
+            
+            cart.forEach((item, index) => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-img" style="background-image: url('${item.image}')"></div>
+                    <div class="cart-item-details">
+                        <h4>${item.name}</h4>
+                        <p>PKR ${item.price.toLocaleString()}</p>
+                        <div class="cart-item-controls">
+                            <button class="quantity-btn minus" data-index="${index}">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn plus" data-index="${index}">+</button>
+                            <span class="remove-item" data-index="${index}">Remove</span>
+                        </div>
+                    </div>
+                `;
+                cartItems.appendChild(cartItem);
+            });
+            
+            document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const index = parseInt(btn.getAttribute('data-index'));
+                    decreaseQuantity(index);
+                });
+            });
+            
+            document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const index = parseInt(btn.getAttribute('data-index'));
+                    increaseQuantity(index);
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const index = parseInt(btn.getAttribute('data-index'));
+                    removeFromCart(index);
+                });
+            });
+        }
+
+        // Sample products (for demo)
+        const products = {
+            'living-floral': { name: 'Living Floral Body Mist', price: 3500, image: '', description: 'A beautiful bouquet of flowers' },
+            'catch-22': { name: 'Catch 22 Gold Edition', price: 4200, image: '', description: 'Rich, woody and captivating' },
+            'poetic': { name: 'Poetic', price: 3800, image: '', description: 'Romantic, soft and timeless' }
+        };
+
+        function addToCart(productId) {
+            const product = products[productId];
+            if (!product) return;
+            
+            const cart = getCart();
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: productId,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    quantity: 1
+                });
+            }
+            
+            saveCart(cart);
+            updateCartDisplay();
+            alert(`${product.name} added to cart!`);
+        }
+
+        function increaseQuantity(index) {
+            const cart = getCart();
+            cart[index].quantity += 1;
+            saveCart(cart);
+            updateCartDisplay();
+        }
+
+        function decreaseQuantity(index) {
+            const cart = getCart();
+            if (cart[index].quantity > 1) {
+                cart[index].quantity -= 1;
+            } else {
+                cart.splice(index, 1);
+            }
+            saveCart(cart);
+            updateCartDisplay();
+        }
+
+        function removeFromCart(index) {
+            const cart = getCart();
+            cart.splice(index, 1);
+            saveCart(cart);
+            updateCartDisplay();
+        }
+
+        // Checkout functionality
+        checkoutBtn.addEventListener('click', () => {
+            if (!localStorage.getItem('noirAuraUser')) {
+                authModal.classList.add('active');
+                return;
+            }
+            
+            const cart = getCart();
+            if (cart.length === 0) {
+                alert('Your cart is empty');
+                return;
+            }
+            
+            cartModal.classList.remove('active');
+            checkoutModal.classList.add('active');
+            updateCheckoutDisplay();
+            
+            const userZipCode = localStorage.getItem('noirAuraUserZipCode');
+            if (userZipCode) {
+                document.getElementById('zipCode').value = userZipCode;
+            }
+        });
+
+        cancelCheckout.addEventListener('click', () => {
+            checkoutModal.classList.remove('active');
+        });
+
+        nextToPayment.addEventListener('click', () => {
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const city = document.getElementById('city').value;
+            const zipCode = document.getElementById('zipCode').value;
+            const country = document.getElementById('country').value;
+            
+            if (!fullName || !email || !address || !city || !zipCode || !country) {
+                alert('Please fill in all shipping information');
+                return;
+            }
+            
+            setActiveStep(2);
+            setActiveForm('paymentForm');
+        });
+
+        backToShipping.addEventListener('click', () => {
+            setActiveStep(1);
+            setActiveForm('shippingForm');
+        });
+
+        placeOrder.addEventListener('click', () => {
+            const cardNumber = document.getElementById('cardNumber').value;
+            const cvv = document.getElementById('cvv').value;
+            const cardName = document.getElementById('cardName').value;
+            
+            if (!cardNumber || !cvv || !cardName) {
+                alert('Please fill in all payment information');
+                return;
+            }
+            
+            const orderId = `#NOIR-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
+            document.getElementById('orderId').textContent = orderId;
+            
+            saveOrder(orderId);
+            
+            setActiveStep(3);
+            setActiveForm('confirmation');
+            
+            localStorage.removeItem('noirAuraCart');
+            updateCartDisplay();
+            updateOrderCount();
+        });
+
+        closeConfirmation.addEventListener('click', () => {
+            checkoutModal.classList.remove('active');
+        });
+
+        // Payment method selection
+        paymentMethods.forEach(method => {
+            method.addEventListener('click', () => {
+                paymentMethods.forEach(m => m.classList.remove('selected'));
+                method.classList.add('selected');
+                
+                const radio = method.querySelector('input[type="radio"]');
+                radio.checked = true;
+            });
+        });
+
+        function setActiveStep(stepNumber) {
+            steps.forEach(step => {
+                if (parseInt(step.getAttribute('data-step')) === stepNumber) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+        }
+
+        function setActiveForm(formId) {
+            checkoutForms.forEach(form => {
+                if (form.id === formId) {
+                    form.classList.add('active');
+                } else {
+                    form.classList.remove('active');
+                }
+            });
+        }
+
+        function updateCheckoutDisplay() {
+            const cart = getCart();
+            const checkoutItems = document.getElementById('checkoutItems');
+            const checkoutTotal = document.getElementById('checkoutTotal');
+            let total = 0;
+            
+            checkoutItems.innerHTML = '';
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                const orderItem = document.createElement('div');
+                orderItem.className = 'order-item';
+                orderItem.innerHTML = `
+                    <span>${item.name} x ${item.quantity}</span>
+                    <span>PKR ${itemTotal.toLocaleString()}</span>
+                `;
+                checkoutItems.appendChild(orderItem);
+            });
+            
+            checkoutTotal.textContent = `PKR ${total.toLocaleString()}`;
+        }
+
+        // Orders functionality
+        function getOrders() {
+            return JSON.parse(localStorage.getItem('noirAuraOrders')) || [];
+        }
+
+        function saveOrder(orderId) {
+            const cart = getCart();
+            const orders = getOrders();
+            
+            const order = {
+                id: orderId,
+                date: new Date().toLocaleDateString(),
+                items: [...cart],
+                total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+                status: 'processing',
+                tracking: 'TRK' + Math.floor(100000 + Math.random() * 900000),
+                estimatedDelivery: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toLocaleDateString()
+            };
+            
+            orders.unshift(order);
+            localStorage.setItem('noirAuraOrders', JSON.stringify(orders));
+        }
+
+        function deleteOrder(orderId) {
+            const orders = getOrders();
+            const updatedOrders = orders.filter(order => order.id !== orderId);
+            localStorage.setItem('noirAuraOrders', JSON.stringify(updatedOrders));
+            updateOrdersDisplay();
+            updateOrderCount();
+        }
+
+        function updateOrderCount() {
+            const orders = getOrders();
+            orderCount.textContent = orders.length;
+        }
+
+        function updateOrdersDisplay() {
+            const orders = getOrders();
+            const ordersList = document.getElementById('ordersList');
+            
+            ordersList.innerHTML = '';
+            
+            if (orders.length === 0) {
+                ordersList.innerHTML = '<p>You have no orders yet.</p>';
+                return;
+            }
+            
+            orders.forEach(order => {
+                const orderCard = document.createElement('div');
+                orderCard.className = 'order-card';
+                
+                let statusClass = 'status-processing';
+                if (order.status === 'shipped') statusClass = 'status-shipped';
+                if (order.status === 'delivered') statusClass = 'status-delivered';
+                
+                orderCard.innerHTML = `
+                    <div class="order-header">
+                        <div>
+                            <div class="order-id">${order.id}</div>
+                            <div class="order-date">${order.date}</div>
+                        </div>
+                        <button class="delete-order" data-order-id="${order.id}">Delete</button>
+                    </div>
+                    <div class="order-items">
+                        ${order.items.map(item => `
+                            <div class="order-item">
+                                <span>${item.name} x ${item.quantity}</span>
+                                <span>PKR ${(item.price * item.quantity).toLocaleString()}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="order-status">
+                        <span>Status:</span>
+                        <span class="status-badge ${statusClass}">${order.status.charAt(0).toUpperCase() + order.status.slice(1)}</span>
+                    </div>
+                    <div class="tracking-info">
+                        <p><strong>Tracking Number:</strong> ${order.tracking}</p>
+                        <p><strong>Estimated Delivery:</strong> ${order.estimatedDelivery}</p>
+                    </div>
+                `;
+                
+                ordersList.appendChild(orderCard);
+            });
+            
+            // Add event listeners to delete buttons
+            document.querySelectorAll('.delete-order').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const orderId = btn.getAttribute('data-order-id');
+                    if (confirm('Are you sure you want to delete this order?')) {
+                        deleteOrder(orderId);
+                    }
+                });
+            });
+        }
+    </script>
+    <script src="noiraura-products.js"></script>
+    <script src="noiraura-luxury.js"></script>
+</body>
+</html>
+
+

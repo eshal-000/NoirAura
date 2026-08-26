@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Aura - NoirAura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oregano&family=Yesteryear&family=Bricolage+Grotesque:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="noiraura-luxury.css">
+</head>
+<body data-page="dashboard">
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">Noir<span>Aura</span></a>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="has-mega-menu">
+                        <a href="#">Collections</a>
+                        <div class="mega-menu">
+                            <div class="mega-column">
+                                <h4>Men</h4>
+                                <ul class="mega-links">
+                                    <li><a href="men1.html">Living Floral Body Mist</a></li>
+                                    <li><a href="men2.html">Lost Light Body Mist</a></li>
+                                    <li><a href="men3.html">Heavenly Vibes Body Mist</a></li>
+                                    <li><a href="men4.html">Daur Body Mist</a></li>
+                                    <li><a href="men5.html">Zor Body Mist</a></li>
+                                    <li><a href="men6.html">Catch 22 Gold Edition - For Men</a></li>
+                                    <li><a href="men7.html">Reset - For Men</a></li>
+                                    <li><a href="men8.html">Iqbal</a></li>
+                                    <li><a href="men9.html">Executive</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-column">
+                                <h4>Women</h4>
+                                <ul class="mega-links">
+                                    <li><a href="women1.html">Living Floral Body Mist</a></li>
+                                    <li><a href="women2.html">Lost Light Body Mist</a></li>
+                                    <li><a href="women3.html">Heavenly Vibes Body Mist</a></li>
+                                    <li><a href="women4.html">Barg Body Mist</a></li>
+                                    <li><a href="women5.html">Daur Body Mist</a></li>
+                                    <li><a href="women6.html">Zor Body Mist</a></li>
+                                    <li><a href="women7.html">Poetic</a></li>
+                                    <li><a href="women8.html">Rest Sailers</a></li>
+                                    <li><a href="women9.html">Samula Set</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-column">
+                                <h4>Type</h4>
+                                <ul class="mega-links">
+                                    <li><a href="c.html">Citrus</a></li>
+                                    <li><a href="w.html">Woody</a></li>
+                                    <li><a href="o.html">Oriental</a></li>
+                                    <li><a href="s.html">Sweet</a></li>
+                                    <li><a href="se.html">Sensory</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-column">
+                                <h4>Shop By</h4>
+                                <ul class="mega-links">
+                                    <li><a href="bestse.html">Best Sellers</a></li>
+                                    <li><a href="sam.html">Sample Sets</a></li>
+                                    <li><a href="gif.html">Gift Sets</a></li>
+                                    <li><a href="new.html">New Arrivals</a></li>
+                                    <li><a href="limi.html">Limited Edition</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="ab.html">About</a></li>
+                    <li><a href="ra.html">Reviews & Aura Advisor</a></li>
+                    <li><a href="co.html">Contact</a></li>
+                    <li><a href="he.html">Help</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <div class="user-greeting" id="userGreeting"></div>
+                    <i class="fas fa-shipping-fast" id="ordersIcon" title="Track Orders"></i>
+                    <span class="order-count" id="orderCount">0</span>
+                    <div class="cart-icon-container">
+                        <i class="fas fa-shopping-bag" id="cartIcon"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                    <i class="fas fa-user" id="userIcon"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="noir-dashboard-page">
+        <section class="dashboard-hero">
+            <div class="container">
+                <span class="luxury-eyebrow">My Aura</span>
+                <h1>Welcome back, <span id="heroDashboardName">Guest</span></h1>
+                <p>Your NoirAura world, in one place. Orders, saved scents, tracking, account details, and the small rituals that make a fragrance feel personal.</p>
+            </div>
+        </section>
+
+        <section class="dashboard-shell">
+            <div class="container dashboard-layout">
+                <aside class="dashboard-sidebar" aria-label="My Aura sections">
+                    <button class="dashboard-tab is-active" data-target="dashboardOverview"><i class="fas fa-gem"></i> Overview</button>
+                    <button class="dashboard-tab" data-target="dashboardOrders"><i class="fas fa-receipt"></i> My Orders</button>
+                    <button class="dashboard-tab" data-target="dashboardTrack"><i class="fas fa-shipping-fast"></i> Track Order</button>
+                    <button class="dashboard-tab" data-target="dashboardWishlist"><i class="fas fa-heart"></i> Wishlist</button>
+                    <button class="dashboard-tab" data-target="dashboardSaved"><i class="fas fa-bookmark"></i> Saved Items</button>
+                    <button class="dashboard-tab" data-target="dashboardAddresses"><i class="fas fa-map-marker-alt"></i> Addresses</button>
+                    <button class="dashboard-tab" data-target="dashboardAccount"><i class="fas fa-user"></i> Account Details</button>
+                    <button class="dashboard-tab" id="dashboardLogout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                </aside>
+
+                <div class="dashboard-main">
+                    <section class="dashboard-section is-active" id="dashboardOverview">
+                        <div class="dashboard-grid">
+                            <div class="dashboard-card"><span>Total Orders</span><strong id="dashboardOrdersCount">0</strong></div>
+                            <div class="dashboard-card"><span>Wishlist Items</span><strong id="dashboardWishlistCount">0</strong></div>
+                            <div class="dashboard-card"><span>Active Shipment</span><strong id="dashboardShipmentCount">0</strong></div>
+                        </div>
+                        <div class="dashboard-panel">
+                            <span class="luxury-eyebrow">Recent Orders</span>
+                            <h2>Latest Rituals</h2>
+                            <div class="dashboard-list" id="dashboardOrdersList"></div>
+                        </div>
+                    </section>
+
+                    <section class="dashboard-section" id="dashboardOrders">
+                        <div class="dashboard-panel">
+                            <span class="luxury-eyebrow">My Orders</span>
+                            <h2>Order History</h2>
+                            <div class="dashboard-list" id="dashboardOrdersListFull"></div>
+                        </div>
+                    </section>
+
+                    <section class="dashboard-section" id="dashboardTrack">
+                        <div class="dashboard-panel">
+                            <span class="luxury-eyebrow">Track Order</span>
+                            <h2>Shipment Timeline</h2>
+                            <div id="dashboardTracking"></div>
+                        </div>
+                    </section>
+
+                    <section class="dashboard-section" id="dashboardWishlist">
+                        <div class="dashboard-panel">
+                            <span class="luxury-eyebrow">Saved Items</span>
+                            <h2>Wishlist</h2>
+                            <div class="dashboard-list" id="dashboardWishlistList"></div>
+                        </div>
+                    </section>
+
+                    <section class="dashboard-section" id="dashboardSaved">
+                        <div class="dashboard-panel">
+                            <span class="luxury-eyebrow">Saved Items</span>
+                            <h2>Saved Scents</h2>
+                            <div class="dashboard-list" id="dashboardSavedList"></div>
+                        </div>
+                    </section>
+
+                    <section class="dashboard-section" id="dashboardAddresses">
+                        <div class="dashboard-panel">
+                            <span class="luxury-eyebrow">Addresses</span>
+                            <h2>Shipping Places</h2>
+                            <div class="dashboard-list" id="dashboardAddresses"></div>
+                        </div>
+                    </section>
+
+                    <section class="dashboard-section" id="dashboardAccount">
+                        <div class="dashboard-panel">
+                            <span class="luxury-eyebrow">Account Details</span>
+                            <h2><span id="dashboardName">Guest</span></h2>
+                            <p id="dashboardEmail">guest@noiraura.com</p>
+                            <div class="dashboard-detail-grid" id="dashboardAccountDetails"></div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Your Bag</h3>
+            <span class="close-cart" id="closeCart">&times;</span>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">PKR 0.00</span>
+            </div>
+            <a class="checkout-btn" href="index.html">Continue Checkout</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>NoirAura</h3>
+                    <p>The Essence of Elegance. Crafting luxury fragrances that tell your unique story.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Shop</h3>
+                    <ul class="footer-links">
+                        <li><a href="women1.html">For Her</a></li>
+                        <li><a href="men1.html">For Him</a></li>
+                        <li><a href="bestse.html">Best Sellers</a></li>
+                        <li><a href="gif.html">Gift Sets</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Care</h3>
+                    <ul class="footer-links">
+                        <li><a href="he.html">Help</a></li>
+                        <li><a href="he.html">Track Order</a></li>
+                        <li><a href="co.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Luxury Avenue, Karachi</li>
+                        <li><i class="fas fa-phone"></i> +92 (300) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@noiraura.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 NoirAura. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="noiraura-products.js"></script>
+    <script src="noiraura-luxury.js"></script>
+</body>
+</html>
