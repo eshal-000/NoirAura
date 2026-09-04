@@ -146,56 +146,56 @@ NoirAura uses a dark luxury visual direction with:
 
 ## Pages
 
-| File | Purpose |
-| --- | --- |
-| `index.html` | Homepage with hero video, featured products, Find Your Aura section, story content, testimonials, newsletter, product modal, cart, checkout, and account modals. |
-| `ab.html` | About page with NoirAura story, philosophy, experience, craftsmanship, and brand sections. |
-| `ra.html` | Reviews & Aura Advisor page with guided advisor chat, review form, review cards, edit/delete review modal, and pagination. |
-| `co.html` | Contact page with contact content, form flow, and support/social details. |
-| `he.html` | Help & Support page with account-scoped order tracking, FAQs, and support content. |
-| `dashboard.html` | User dashboard with overview metrics, order history, tracking, wishlist, addresses, account details, profile editing, logout, and cart access. |
-| `bestse.html` | Best Sellers collection page. |
-| `sam.html` | Sample Sets collection page. |
-| `gif.html` | Gift Sets collection page. |
-| `new.html` | New Arrivals collection page with animated promo banner. |
-| `limi.html` | Limited Edition collection page with animated promo banner. |
-| `c.html` | Citrus fragrance family collection. |
-| `w.html` | Woody fragrance family collection. |
-| `o.html` | Oriental fragrance family collection. |
-| `s.html` | Sweet fragrance family collection. |
-| `se.html` | Sensory fragrance family collection. |
-| `men1.html` | Living Floral Body Mist - For Men collection. |
-| `men2.html` | Lost Light Body Mist collection. |
-| `men3.html` | Heavenly Vibes Body Mist collection. |
-| `men4.html` | Daur Body Mist - For Men collection. |
-| `men5.html` | Zor Body Mist collection. |
-| `men6.html` | Catch 22 Gold Edition collection. |
-| `men7.html` | Reset - For Men collection. |
-| `men8.html` | Iqbal - For Men collection. |
-| `men9.html` | Executive - For Men collection. |
-| `women1.html` | Living Floral Body Mist collection. |
-| `women2.html` | Lost Light Body Mist - For Women collection. |
-| `women3.html` | Heavenly Vibes Body Mist - For Women collection. |
-| `women4.html` | Barg Body Mist - For Women collection. |
-| `women5.html` | Daur Body Mist - For Women collection. |
-| `women6.html` | Zor Body Mist - For Women collection. |
-| `women7.html` | Poetic - For Women collection. |
-| `women8.html` | Rest Sailers - For Women collection. |
-| `women9.html` | Samula Set - For Women collection. |
-| `test.html` | Standalone contact/test page that loads the shared NoirAura assets. |
+| File               | Purpose                                                                                                                                                          |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `index.html`     | Homepage with hero video, featured products, Find Your Aura section, story content, testimonials, newsletter, product modal, cart, checkout, and account modals. |
+| `ab.html`        | About page with NoirAura story, philosophy, experience, craftsmanship, and brand sections.                                                                       |
+| `ra.html`        | Reviews & Aura Advisor page with guided advisor chat, review form, review cards, edit/delete review modal, and pagination.                                       |
+| `co.html`        | Contact page with contact content, form flow, and support/social details.                                                                                        |
+| `he.html`        | Help & Support page with account-scoped order tracking, FAQs, and support content.                                                                               |
+| `dashboard.html` | User dashboard with overview metrics, order history, tracking, wishlist, addresses, account details, profile editing, logout, and cart access.                   |
+| `bestse.html`    | Best Sellers collection page.                                                                                                                                    |
+| `sam.html`       | Sample Sets collection page.                                                                                                                                     |
+| `gif.html`       | Gift Sets collection page.                                                                                                                                       |
+| `new.html`       | New Arrivals collection page with animated promo banner.                                                                                                         |
+| `limi.html`      | Limited Edition collection page with animated promo banner.                                                                                                      |
+| `c.html`         | Citrus fragrance family collection.                                                                                                                              |
+| `w.html`         | Woody fragrance family collection.                                                                                                                               |
+| `o.html`         | Oriental fragrance family collection.                                                                                                                            |
+| `s.html`         | Sweet fragrance family collection.                                                                                                                               |
+| `se.html`        | Sensory fragrance family collection.                                                                                                                             |
+| `men1.html`      | Living Floral Body Mist - For Men collection.                                                                                                                    |
+| `men2.html`      | Lost Light Body Mist collection.                                                                                                                                 |
+| `men3.html`      | Heavenly Vibes Body Mist collection.                                                                                                                             |
+| `men4.html`      | Daur Body Mist - For Men collection.                                                                                                                             |
+| `men5.html`      | Zor Body Mist collection.                                                                                                                                        |
+| `men6.html`      | Catch 22 Gold Edition collection.                                                                                                                                |
+| `men7.html`      | Reset - For Men collection.                                                                                                                                      |
+| `men8.html`      | Iqbal - For Men collection.                                                                                                                                      |
+| `men9.html`      | Executive - For Men collection.                                                                                                                                  |
+| `women1.html`    | Living Floral Body Mist collection.                                                                                                                              |
+| `women2.html`    | Lost Light Body Mist - For Women collection.                                                                                                                     |
+| `women3.html`    | Heavenly Vibes Body Mist - For Women collection.                                                                                                                 |
+| `women4.html`    | Barg Body Mist - For Women collection.                                                                                                                           |
+| `women5.html`    | Daur Body Mist - For Women collection.                                                                                                                           |
+| `women6.html`    | Zor Body Mist - For Women collection.                                                                                                                            |
+| `women7.html`    | Poetic - For Women collection.                                                                                                                                   |
+| `women8.html`    | Rest Sailers - For Women collection.                                                                                                                             |
+| `women9.html`    | Samula Set - For Women collection.                                                                                                                               |
+| `test.html`      | Standalone contact/test page that loads the shared NoirAura assets.                                                                                              |
 
 ## Tech Stack
 
-| Technology | Usage |
-| --- | --- |
-| HTML5 | Static page structure, modals, product grids, dashboard, forms, and checkout markup. |
-| CSS3 | Responsive layout, design tokens, animations, card glow, modals, navigation, banners, and dashboard styling. |
-| Vanilla JavaScript | Account flows, LocalStorage routing, cart, wishlist, orders, checkout, filters, search, advisor behavior, animations, and dashboard rendering. |
-| LocalStorage | Frontend persistence for users, sessions, cart, wishlist, orders, and reviews. |
-| Google Fonts | Oregano, Yesteryear, and Bricolage Grotesque. |
-| Font Awesome | Navbar, buttons, dashboard, cart, search, review, and UI icons. |
-| IntersectionObserver | Scroll-based reveal animations. |
-| CSS media queries and matchMedia | Desktop, tablet, and mobile responsive behavior. |
+| Technology                       | Usage                                                                                                                                          |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| HTML5                            | Static page structure, modals, product grids, dashboard, forms, and checkout markup.                                                           |
+| CSS3                             | Responsive layout, design tokens, animations, card glow, modals, navigation, banners, and dashboard styling.                                   |
+| Vanilla JavaScript               | Account flows, LocalStorage routing, cart, wishlist, orders, checkout, filters, search, advisor behavior, animations, and dashboard rendering. |
+| LocalStorage                     | Frontend persistence for users, sessions, cart, wishlist, orders, and reviews.                                                                 |
+| Google Fonts                     | Oregano, Yesteryear, and Bricolage Grotesque.                                                                                                  |
+| Font Awesome                     | Navbar, buttons, dashboard, cart, search, review, and UI icons.                                                                                |
+| IntersectionObserver             | Scroll-based reveal animations.                                                                                                                |
+| CSS media queries and matchMedia | Desktop, tablet, and mobile responsive behavior.                                                                                               |
 
 No package manager, bundler, or framework is required for the current project.
 
@@ -301,7 +301,7 @@ A visual look at the NoirAura luxury fragrance shopping experience.
 
 ## Developer
 
-**Developer:** Eshal Noor
+**Developer:** Eshal Noor Asghar
 
 - GitHub: [github.com/eshal-000](https://github.com/eshal-000)
 - LinkedIn: [linkedin.com/in/eshal-noor-dev](https://www.linkedin.com/in/eshal-noor-dev)
