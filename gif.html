@@ -1379,6 +1379,31 @@
                 font-size: 2rem;
             }
         }
+
+        @media (max-width: 640px) {
+            .products-grid.noir-reveal,
+            .products-grid.noir-reveal.visible,
+            .products-grid.noir-reveal.is-visible {
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                clip-path: none !important;
+                filter: none !important;
+            }
+
+            .products-grid .perfume-card,
+            .products-grid .perfume-card.noir-reveal {
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                clip-path: none !important;
+                filter: none !important;
+            }
+
+            .products-grid .perfume-card.hidden-by-filter {
+                display: none !important;
+            }
+        }
         .gift-box {
             text-align: center;
             margin: 3rem 0;
