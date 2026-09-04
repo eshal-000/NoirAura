@@ -489,7 +489,7 @@
         loginAccount: function (email, password) { return publicAccountResult(loginAccount(email, password)); },
         logout: clearCurrentUser,
         readCart: function () { return readUserData("noirAuraCart", []); },
-        readWishlist: function () { return readUserData("noirAuraWishlist", []); },
+        readWishlist: function () { return wishlistItems(); },
         readOrders: function () { return readUserData("noirAuraOrders", []); }
     };
 
@@ -515,7 +515,7 @@
     }
 
     function currentPage() {
-        return location.pathname.split("/").pop() || "index.html";
+        return (location.pathname.split("/").pop() || "index.html").toLowerCase();
     }
 
     function getProfileNotes(profile) {
@@ -1147,8 +1147,69 @@
         });
     }
 
+    function normalizeWishlistItems(items) {
+        var source = Array.isArray(items) ? items : [];
+        var changed = !Array.isArray(items);
+        var seen = {};
+        var normalized = [];
+
+        source.forEach(function (item) {
+            if (!item || typeof item !== "object") {
+                changed = true;
+                return;
+            }
+
+            var copy = Object.assign({}, item);
+            var originalPage = copy.page;
+            if (copy.page) {
+                copy.page = (String(copy.page).split("/").pop() || "index.html").toLowerCase();
+                if (copy.page !== originalPage) changed = true;
+            }
+
+            var id = String(copy.id || "");
+            if (id.charAt(0) === ":") {
+                id = "index.html" + id;
+                changed = true;
+            }
+
+            var separator = id.indexOf(":");
+            if (separator > 0) {
+                var idPage = id.slice(0, separator);
+                var normalizedPage = (idPage.split("/").pop() || "index.html").toLowerCase();
+                if (idPage !== normalizedPage) {
+                    id = normalizedPage + id.slice(separator);
+                    changed = true;
+                }
+            }
+
+            if (!id && copy.productId && copy.name) {
+                id = (copy.page || "index.html") + ":" + copy.productId + ":" + copy.name;
+                changed = true;
+            }
+
+            if (id !== copy.id) copy.id = id;
+            if (!copy.page && id) {
+                var pageSeparator = id.indexOf(":");
+                copy.page = pageSeparator > 0 ? id.slice(0, pageSeparator) : "index.html";
+                changed = true;
+            }
+
+            if (!copy.id || seen[copy.id]) {
+                changed = true;
+                return;
+            }
+
+            seen[copy.id] = true;
+            normalized.push(copy);
+        });
+
+        return { items: normalized, changed: changed || normalized.length !== source.length };
+    }
+
     function wishlistItems() {
-        return safeJson("noirAuraWishlist", []);
+        var normalized = normalizeWishlistItems(safeJson("noirAuraWishlist", []));
+        if (normalized.changed) saveJson("noirAuraWishlist", normalized.items);
+        return normalized.items;
     }
 
     function setWishlist(items) {
@@ -1191,7 +1252,8 @@
             var info = $(".perfume-info", card);
             var action = $(".view-details, .add-to-cart, .buy-now", card);
             var productId = action ? action.getAttribute("data-id") : String(index + 1);
-            var id = location.pathname.split("/").pop() + ":" + productId + ":" + title.textContent.trim();
+            var pageKey = currentPage();
+            var id = pageKey + ":" + productId + ":" + title.textContent.trim();
             var familyName = profile.family.replace(" Amber", "").replace(" Musk", "").replace(" Floral", "");
             var tags = pageProductTags();
 
@@ -1245,7 +1307,7 @@
                 var saved = toggleWishlist({
                     id: id,
                     productId: productId,
-                    page: location.pathname.split("/").pop() || "index.html",
+                    page: pageKey,
                     name: title.textContent.trim(),
                     price: price ? price.textContent.trim() : "",
                     image: imageFromCard(card),
