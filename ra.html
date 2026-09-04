@@ -1633,7 +1633,7 @@ footer {
     </style>
     <link rel="stylesheet" href="noiraura-luxury.css">
 </head>
-<body>
+<body data-page="reviews">
     <!-- Header -->
     <header>
         <div class="container">
@@ -1729,8 +1729,9 @@ footer {
         <div class="container">
             <div class="ai-advisor-container">
                 <div class="ai-header">
-                    <h2>✨ Ask NoirAura AI</h2>
-                    <p>Find Your Perfect Scent - With Aura Advisor!</p>
+                    <span class="ai-eyebrow"><i class="fas fa-wand-magic-sparkles"></i> AURA ADVISOR</span>
+                    <h2>Your Personal Fragrance Guide</h2>
+                    <p>Ask about notes, moods, occasions, gifting, longevity, and the NoirAura scent that fits your ritual.</p>
                 </div>
                 
                 <!-- NEW: Questions Display Section - All questions from const -->
@@ -1889,7 +1890,7 @@ footer {
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 NoirAura. All rights reserved.</p>
+                <p>&copy; 2026 NoirAura. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -2183,7 +2184,7 @@ footer {
     </div>
 
     <script>
-        // AI Perfume Advisor Functionality
+        
         const chatContainer = document.getElementById('chatContainer');
         const chatInput = document.getElementById('chatInput');
         const sendBtn = document.getElementById('sendBtn');
@@ -2225,53 +2226,53 @@ footer {
         const buyNowFromModal = document.getElementById('buyNowFromModal');
         const questionsGrid = document.getElementById('questionsGrid');
 
-        // Comprehensive perfume knowledge base with 40+ responses
+        
         const perfumeKnowledge = {
-            // Greetings
+            
             "hello": "Hello! 👋 I'm your NoirAura perfume advisor. How can I help you find your perfect scent today?",
             "hi": "Hi there! 😊 Ready to explore our luxury fragrance collection? What are you looking for?",
             "hey": "Hey! 👋 I'm here to help you discover amazing perfumes. What's on your mind?",
             
-            // General questions
+            
             "what do you sell": "We offer premium luxury fragrances for both men and women! Our collection includes floral, woody, citrus, and oriental scents. Which type interests you?",
             "how to choose perfume": "Choosing a perfume depends on your personality, occasion, and preferences. Tell me about yourself and I'll recommend something perfect!",
             "what is your best seller": "Our best sellers are 'Catch 22 Gold Edition' for men and 'Poetic' for women. Both are incredibly popular for their unique, long-lasting scents!",
             
-            // For parties
+            
             "party": "For parties, I recommend 'Catch 22 Gold Edition' - it's bold, captivating and lasts all night! 🎉",
             "night out": "For a night out, try 'Lost Light Body Mist' - mysterious and alluring, perfect for evening events! 🌙",
             "club": "Heading to a club? 'Zor Body Mist' has energizing citrus notes that will keep you feeling fresh and confident! 💃",
             
-            // For gifts
+            
             "gift for her": "For her, I'd suggest 'Poetic' - it's romantic, floral and absolutely beautiful! 💖 Perfect for making her feel special.",
             "gift for him": "For him, 'Executive' is a fantastic choice - sophisticated, woody and very masculine! 👔 He'll love it.",
             "birthday gift": "For a birthday gift, our 'Samula Set' is perfect - it includes multiple fragrances so they can choose their favorite! 🎁",
             "anniversary gift": "For anniversaries, 'Heavenly Vibes Body Mist' creates a romantic, uplifting atmosphere - perfect for celebrating love! 💑",
             
-            // For specific occasions
+            
             "wedding": "For weddings, 'Living Floral Body Mist' offers a beautiful bouquet scent that's elegant and memorable! 💐",
             "date": "For dates, 'Barg Body Mist' is seductive and memorable - it creates an unforgettable impression! 💘",
             "office": "For office wear, 'Reset - For Men' is professional and subtle - won't overwhelm your colleagues! 💼",
             "summer": "For summer, 'Heavenly Vibes Body Mist' is light, fresh and uplifting - perfect for hot days! ☀️",
             "winter": "For winter, 'Floral Leather' has warm, comforting notes that are perfect for cold weather! ❄️",
             
-            // Scent types
+            
             "floral": "If you love floral scents, try 'Living Floral Body Mist' - it's a beautiful bouquet that blooms throughout the day! 🌸",
             "woody": "For woody scents, 'Executive' has sophisticated notes that exude confidence and elegance! 🌲",
             "citrus": "If you prefer citrus, 'Zor Body Mist' offers zesty, energizing notes that awaken your senses! 🍊",
             "sweet": "For sweet scents, 'Poetic' has delicate, romantic notes that are subtly sweet and very feminine! 🍬",
             "fresh": "For fresh scents, 'Reset - For Men' is clean, crisp and perfect for daily wear! 🌊",
             
-            // Longevity questions
+            
             "how long does it last": "Our premium fragrances typically last 6-12 hours! 'Catch 22 Gold Edition' and 'Rose & Oud' have the longest lasting power at 10-12 hours! ⏱️",
             "long lasting": "For maximum longevity, I recommend 'Catch 22 Gold Edition' or 'Rose & Oud' - both last 10-12 hours! 💪",
             
-            // Price questions
+            
             "how much": "Our perfumes range from PKR 3,100 to PKR 4,200. Which type are you interested in? I can recommend something within your budget! 💰",
             "expensive": "Our most premium option is 'Rose & Oud' at PKR 4,200 - it uses exclusive ingredients and lasts 12+ hours! 💎",
             "cheap": "Our most affordable option is 'Lavender Storm' at PKR 3,100 - it's high quality at a great price! 👍",
             
-            // Specific perfumes
+            
             "living floral": "'Living Floral Body Mist' is a beautiful bouquet of flowers that blooms throughout the day. Perfect for feminine, elegant vibes! 🌸",
             "catch 22": "'Catch 22 Gold Edition' is rich, woody and captivating - our most popular men's fragrance! 🏆",
             "poetic": "'Poetic' is romantic, soft and timeless - creates an intimate, feminine atmosphere! 💖",
@@ -2291,38 +2292,40 @@ footer {
             "rosewood elite": "'Rosewood Elite' combines premium rosewood with subtle florals - discerning gentleman's choice! 🎩",
             "jasmine noir": "'Jasmine Noir' blends dark jasmine with masculine spices - mysterious and alluring! 🌺",
             
-            // Shipping and delivery
+            
             "shipping": "We offer free shipping on orders over PKR 5,000! Delivery takes 3-5 business days across Pakistan. 🚚",
             "delivery": "Standard delivery is 3-5 business days. Express delivery (1-2 days) is available for an additional PKR 500! ⚡",
             "return": "We offer 30-day returns if you're not completely satisfied with your purchase! 🔄",
             
-            // Contact information
+            
             "contact": "You can reach us at info@noiraura.com or call +92 (300) 123-4567. We're here to help! 📞",
             "location": "Our store is located at 123 Luxury Avenue, Karachi. Come visit us! 📍",
             
-            // Thank you responses
+            
             "thank you": "You're very welcome! 😊 Let me know if you need any other perfume recommendations!",
             "thanks": "My pleasure! 🌸 Happy to help you find the perfect fragrance!",
             
-            // Default response
+            
             "default": "I'd love to help you with that! Could you tell me more about what you're looking for in a perfume? Maybe the occasion, scent preference, or who it's for? 😊"
         };
 
-        // NEW: Function to display all questions from perfumeKnowledge
+        
         function displayAllQuestions() {
             if (!questionsGrid) return;
             
             questionsGrid.innerHTML = '';
             
-            // Get all questions except 'default'
+            
             const questions = Object.keys(perfumeKnowledge).filter(key => key !== 'default');
             
-            // Create question chips
+            
             questions.forEach(question => {
-                const chip = document.createElement('span');
+                const chip = document.createElement('button');
+                chip.type = 'button';
                 chip.className = 'question-chip';
+                chip.dataset.question = question;
                 
-                // Add appropriate icon based on question type
+                
                 let icon = '❓';
                 if (question.includes('hello') || question.includes('hi') || question.includes('hey')) icon = '👋';
                 else if (question.includes('gift')) icon = '🎁';
@@ -2342,17 +2345,29 @@ footer {
                 
                 chip.innerHTML = `${icon} ${question.charAt(0).toUpperCase() + question.slice(1)}`;
                 
-                // Click to fill input and send
+                
                 chip.addEventListener('click', () => {
                     chatInput.value = question;
-                    sendMessage();
+                    sendMessage(chip);
                 });
                 
                 questionsGrid.appendChild(chip);
             });
         }
 
-        // Function to add a message to the chat
+        function setSelectedQuestionChip(question, sourceChip) {
+            document.querySelectorAll('.question-chip').forEach(chip => {
+                const isMatch = chip === sourceChip || chip.dataset.question === question;
+                chip.classList.toggle('is-selected', isMatch);
+                if (isMatch) {
+                    chip.setAttribute('aria-pressed', 'true');
+                } else {
+                    chip.setAttribute('aria-pressed', 'false');
+                }
+            });
+        }
+
+        
         function addMessage(content, isUser = false) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
@@ -2363,12 +2378,13 @@ footer {
             
             messageDiv.appendChild(messageContent);
             chatContainer.appendChild(messageDiv);
+            requestAnimationFrame(() => messageDiv.classList.add('is-visible'));
             
-            // Scroll to bottom
+            
             chatContainer.scrollTop = chatContainer.scrollHeight;
         }
 
-        // Function to show typing indicator
+        
         function showTypingIndicator() {
             const typingDiv = document.createElement('div');
             typingDiv.className = 'message bot typing-indicator';
@@ -2388,54 +2404,61 @@ footer {
             return typingDiv;
         }
 
-        // Function to find the best response for user input
+        
         function findBestResponse(input) {
             input = input.toLowerCase();
             
-            // Check for exact matches first
+            
             for (const keyword in perfumeKnowledge) {
                 if (input === keyword) {
                     return perfumeKnowledge[keyword];
                 }
             }
             
-            // Check for partial matches
+            
             for (const keyword in perfumeKnowledge) {
                 if (input.includes(keyword)) {
                     return perfumeKnowledge[keyword];
                 }
             }
             
-            // Return default response if no match found
+            
             return perfumeKnowledge["default"];
         }
 
-        // Function to handle sending a message
-        function sendMessage() {
+        
+        function sendMessage(sourceChip) {
             const message = chatInput.value.trim();
             if (message === "") return;
+
+            setSelectedQuestionChip(message.toLowerCase(), sourceChip);
+            const advisorPanel = document.querySelector('.ai-advisor-container');
+            if (advisorPanel) advisorPanel.classList.add('is-interacting');
             
-            // Add user message
+            
             addMessage(message, true);
             
-            // Clear input
+            
             chatInput.value = "";
             
-            // Show typing indicator
+            
             const typingIndicator = showTypingIndicator();
             
-            // Simulate AI thinking time
+            
             setTimeout(() => {
-                // Remove typing indicator
+                
                 typingIndicator.remove();
                 
-                // Generate and add bot response
+                
                 const response = findBestResponse(message);
                 addMessage(response);
-            }, 1500);
+                if (advisorPanel) {
+                    setTimeout(() => advisorPanel.classList.remove('is-interacting'), 520);
+                }
+            }, 850);
         }
 
-        // Event listeners for chat
+        
         sendBtn.addEventListener('click', sendMessage);
         
         chatInput.addEventListener('keypress', (e) => {
@@ -2450,21 +2473,21 @@ footer {
             });
         });
 
-        // Reviews Functionality
+        
         const reviewsGrid = document.getElementById('reviewsGrid');
         const pagination = document.getElementById('pagination');
         const reviewForm = document.getElementById('reviewForm');
         const ratingInput = document.getElementById('ratingInput');
         const ratingStars = ratingInput.querySelectorAll('.rating-star');
         
-        // Edit Review Modal Elements
+        
         const editModal = document.getElementById('editModal');
         const closeEditModal = document.getElementById('closeEditModal');
         const editReviewForm = document.getElementById('editReviewForm');
         const editRatingInput = document.getElementById('editRatingInput');
         const editRatingStars = editRatingInput.querySelectorAll('.rating-star');
         
-        // Sample reviews data (50+ reviews)
+        
         let reviews = [
             { id: 1, name: "Sarah K.", date: "2023-10-15", rating: 5, perfume: "Living Floral Body Mist", text: "Absolutely love this fragrance! It lasts all day and I get so many compliments." },
             { id: 2, name: "Michael T.", date: "2023-10-12", rating: 4, perfume: "Executive", text: "Perfect for the office. Subtle yet sophisticated." },
@@ -2518,13 +2541,13 @@ footer {
             { id: 50, name: "Rayyan M.", date: "2023-06-05", rating: 5, perfume: "Rose & Oud", text: "Exotic, luxurious, long-lasting. Perfect!" }
         ];
         
-        // Load reviews from localStorage if available - FIXED
+        
         if (localStorage.getItem('noirAuraReviews')) {
             try {
                 const savedReviews = JSON.parse(localStorage.getItem('noirAuraReviews'));
-                // Agar savedReviews array hai aur usme items hain
+                
                 if (Array.isArray(savedReviews) && savedReviews.length > 0) {
-                    // Saved reviews ko array mein add karo, replace nahi
+                    
                     reviews = [...savedReviews, ...reviews];
                 }
             } catch (e) {
@@ -2532,15 +2555,15 @@ footer {
             }
         }
         
-        // Pagination variables
+        
         const reviewsPerPage = 6;
         let currentPage = 1;
         
-        // Rating variables
+        
         let selectedRating = 0;
         let editSelectedRating = 0;
         
-        // Function to generate star rating HTML
+        
         function generateStarRating(rating) {
             let stars = '';
             for (let i = 1; i <= 5; i++) {
@@ -2553,13 +2576,13 @@ footer {
             return stars;
         }
         
-        // Function to display reviews for current page - FIXED
+        
         function displayReviews() {
             if (!reviewsGrid) return;
             
             reviewsGrid.innerHTML = '';
             
-            // Check if reviews array has data
+            
             if (reviews.length === 0) {
                 reviewsGrid.innerHTML = '<p style="text-align: center; color: rgba(255,255,255,0.5);">No reviews yet. Be the first to review!</p>';
                 return;
@@ -2594,7 +2617,7 @@ footer {
                 reviewsGrid.appendChild(reviewCard);
             });
             
-            // Add event listeners to edit and delete buttons
+            
             document.querySelectorAll('.edit-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     const reviewId = parseInt(btn.getAttribute('data-id'));
@@ -2609,7 +2632,7 @@ footer {
                 });
             });
             
-            // Add scroll animation
+            
             setTimeout(() => {
                 document.querySelectorAll('.review-card').forEach(card => {
                     card.classList.add('visible');
@@ -2617,71 +2640,104 @@ footer {
             }, 100);
         }
         
-        // Function to setup pagination - FIXED
+        function getVisibleReviewPages(current, total) {
+            const visible = new Set([1, total, current, current - 1, current + 1]);
+
+            if (current <= 3) {
+                visible.add(2);
+                visible.add(3);
+            }
+
+            if (current >= total - 2) {
+                visible.add(total - 1);
+                visible.add(total - 2);
+            }
+
+            return Array.from(visible)
+                .filter(page => page >= 1 && page <= total)
+                .sort((a, b) => a - b);
+        }
+
+        function createPaginationButton(label, page, options = {}) {
+            const pageBtn = document.createElement('button');
+            pageBtn.type = 'button';
+            pageBtn.className = `page-btn${options.active ? ' active' : ''}${options.direction ? ` ${options.direction}` : ''}`;
+            pageBtn.textContent = label;
+            pageBtn.setAttribute('aria-label', options.ariaLabel || `Go to review page ${page}`);
+
+            if (options.active) {
+                pageBtn.setAttribute('aria-current', 'page');
+            }
+
+            pageBtn.addEventListener('click', () => {
+                currentPage = page;
+                displayReviews();
+                setupPagination();
+            });
+
+            return pageBtn;
+        }
+
+        
         function setupPagination() {
             if (!pagination) return;
             
             pagination.innerHTML = '';
+            pagination.setAttribute('aria-label', 'Reviews pagination');
             
             const pageCount = Math.ceil(reviews.length / reviewsPerPage);
             
-            // Agar sirf ek page hai to pagination mat dikhao
+            
             if (pageCount <= 1) {
                 return;
             }
             
-            // Previous button
+            
             if (currentPage > 1) {
-                const prevBtn = document.createElement('button');
-                prevBtn.className = 'page-btn';
-                prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
-                prevBtn.addEventListener('click', () => {
-                    currentPage--;
-                    displayReviews();
-                    setupPagination();
-                });
-                pagination.appendChild(prevBtn);
+                pagination.appendChild(createPaginationButton('Previous', currentPage - 1, {
+                    direction: 'page-prev',
+                    ariaLabel: 'Go to previous reviews page'
+                }));
             }
             
-            // Page number buttons
-            for (let i = 1; i <= pageCount; i++) {
-                const pageBtn = document.createElement('button');
-                pageBtn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
-                pageBtn.textContent = i;
-                pageBtn.addEventListener('click', () => {
-                    currentPage = i;
-                    displayReviews();
-                    setupPagination();
-                });
-                pagination.appendChild(pageBtn);
-            }
             
-            // Next button
+            const visiblePages = getVisibleReviewPages(currentPage, pageCount);
+            visiblePages.forEach((page, index) => {
+                const previousPage = visiblePages[index - 1];
+                if (previousPage && page - previousPage > 1) {
+                    const ellipsis = document.createElement('span');
+                    ellipsis.className = 'page-ellipsis';
+                    ellipsis.textContent = '...';
+                    ellipsis.setAttribute('aria-hidden', 'true');
+                    pagination.appendChild(ellipsis);
+                }
+
+                pagination.appendChild(createPaginationButton(page, page, {
+                    active: page === currentPage
+                }));
+            });
+            
+            
             if (currentPage < pageCount) {
-                const nextBtn = document.createElement('button');
-                nextBtn.className = 'page-btn';
-                nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
-                nextBtn.addEventListener('click', () => {
-                    currentPage++;
-                    displayReviews();
-                    setupPagination();
-                });
-                pagination.appendChild(nextBtn);
+                pagination.appendChild(createPaginationButton('Next', currentPage + 1, {
+                    direction: 'page-next',
+                    ariaLabel: 'Go to next reviews page'
+                }));
             }
         }
         
-        // Function to open edit modal
+        
         function openEditModal(reviewId) {
             const review = reviews.find(r => r.id === reviewId);
             if (!review) return;
             
-            // Fill form with review data
+            
             document.getElementById('editReviewId').value = review.id;
             document.getElementById('editReviewerName').value = review.name;
             document.getElementById('editPerfumeName').value = review.perfume;
             document.getElementById('editReviewText').value = review.text;
             
-            // Set rating
+            
             editSelectedRating = review.rating;
             editRatingStars.forEach(star => {
                 const rating = parseInt(star.getAttribute('data-rating'));
@@ -2692,11 +2748,11 @@ footer {
                 }
             });
             
-            // Show modal
+            
             editModal.classList.add('active');
         }
         
-        // Function to delete review
+        
         function deleteReview(reviewId) {
             if (confirm('Are you sure you want to delete this review?')) {
                 reviews = reviews.filter(review => review.id !== reviewId);
@@ -2706,12 +2762,12 @@ footer {
             }
         }
         
-        // Function to save reviews to localStorage
+        
         function saveReviews() {
             localStorage.setItem('noirAuraReviews', JSON.stringify(reviews));
         }
         
-        // Rating stars functionality for new review
+        
         ratingStars.forEach(star => {
             star.addEventListener('click', () => {
                 const rating = parseInt(star.getAttribute('data-rating'));
@@ -2727,7 +2783,7 @@ footer {
             });
         });
         
-        // Rating stars functionality for edit review
+        
         editRatingStars.forEach(star => {
             star.addEventListener('click', () => {
                 const rating = parseInt(star.getAttribute('data-rating'));
@@ -2743,7 +2799,7 @@ footer {
             });
         });
         
-        // New review form submission
+        
         reviewForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
@@ -2756,7 +2812,7 @@ footer {
                 return;
             }
             
-            // Create new review
+            
             const newReview = {
                 id: reviews.length > 0 ? Math.max(...reviews.map(r => r.id)) + 1 : 1,
                 name: name,
@@ -2766,18 +2822,18 @@ footer {
                 text: text
             };
             
-            // Add to beginning of reviews array
+            
             reviews.unshift(newReview);
             
-            // Save to localStorage
+            
             saveReviews();
             
-            // Reset form
+            
             reviewForm.reset();
             selectedRating = 0;
             ratingStars.forEach(star => star.classList.remove('active'));
             
-            // Reset to first page and update display
+            
             currentPage = 1;
             displayReviews();
             setupPagination();
@@ -2785,7 +2841,7 @@ footer {
             alert('Thank you for your review!');
         });
         
-        // Edit review form submission
+        
         editReviewForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
@@ -2799,7 +2855,7 @@ footer {
                 return;
             }
             
-            // Find and update review
+            
             const reviewIndex = reviews.findIndex(r => r.id === reviewId);
             if (reviewIndex !== -1) {
                 reviews[reviewIndex] = {
@@ -2810,10 +2866,10 @@ footer {
                     text: text
                 };
                 
-                // Save to localStorage
+                
                 saveReviews();
                 
-                // Close modal and update display
+                
                 editModal.classList.remove('active');
                 displayReviews();
                 
@@ -2821,23 +2877,23 @@ footer {
             }
         });
         
-        // Close edit modal
+        
         closeEditModal.addEventListener('click', () => {
             editModal.classList.remove('active');
         });
         
-        // Close modal when clicking outside
+        
         window.addEventListener('click', (e) => {
             if (e.target === editModal) {
                 editModal.classList.remove('active');
             }
         });
 
-        // Mega Menu Elements
+        
         const collectionsLink = document.querySelector('.has-mega-menu > a');
         const megaMenu = document.querySelector('.mega-menu');
 
-        // Check if user is logged in
+        
         function checkLoginStatus() {
             const user = localStorage.getItem('noirAuraUser');
             if (user) {
@@ -2845,7 +2901,7 @@ footer {
             }
         }
 
-        // Scroll Animation Functionality
+        
         function initScrollAnimations() {
             const observerOptions = {
                 threshold: 0.1,
@@ -2857,7 +2913,7 @@ footer {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
                         
-                        // Agar element mein staggered children hain
+                        
                         const staggeredChildren = entry.target.querySelectorAll('.perfume-card, .footer-column');
                         if (staggeredChildren.length > 0) {
                             staggeredChildren.forEach(child => {
@@ -2868,7 +2924,7 @@ footer {
                 });
             }, observerOptions);
 
-            // Elements ko observe karen
+            
             const elementsToAnimate = [
                '.about-hero',
                 '.section-title',
@@ -2883,34 +2939,34 @@ footer {
             });
         }
 
-        // Initialize on page load - FIXED with reviews display
+        
         window.addEventListener('DOMContentLoaded', () => {
             checkLoginStatus();
             
-            // Only show modal if user is not logged in
+            
             if (!localStorage.getItem('noirAuraUser')) {
                 setTimeout(() => {
                     authModal.classList.add('active');
                 }, 1000);
             }
             
-            // Load cart from localStorage
+            
             updateCartDisplay();
             updateOrderCount();
             
-            // Scroll animations initialize karen
+            
             initScrollAnimations();
             
-            // Display all questions from perfumeKnowledge
+            
             displayAllQuestions();
             
-            // IMPORTANT: Reviews display karo page load hote hi
+            
             console.log('Loading reviews... Total:', reviews.length);
             displayReviews();
             setupPagination();
         });
 
-        // Mega Menu Functionality
+        
         if (collectionsLink && megaMenu) {
             collectionsLink.addEventListener('mouseenter', () => {
                 megaMenu.classList.add('active');
@@ -2928,7 +2984,7 @@ footer {
             }
         }
 
-        // Tab switching
+        
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const tabId = btn.getAttribute('data-tab');
@@ -2943,7 +2999,7 @@ footer {
             });
         });
 
-        // Modal controls
+        
         userIcon.addEventListener('click', () => {
             if (localStorage.getItem('noirAuraUser')) {
                 profileModal.classList.add('active');
@@ -2990,7 +3046,7 @@ footer {
             ordersModal.classList.remove('active');
         });
 
-        // Close modals when clicking outside
+        
         window.addEventListener('click', (e) => {
             if (e.target === authModal) authModal.classList.remove('active');
             if (e.target === checkoutModal) checkoutModal.classList.remove('active');
@@ -2999,7 +3055,7 @@ footer {
             if (e.target === productModal) productModal.classList.remove('active');
         });
 
-        // Logout functionality
+        
         logoutBtn.addEventListener('click', () => {
             localStorage.removeItem('noirAuraUser');
             localStorage.removeItem('noirAuraUserEmail');
@@ -3009,7 +3065,7 @@ footer {
             authModal.classList.add('active');
         });
 
-        // Form submissions
+        
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
@@ -3054,7 +3110,7 @@ footer {
             }
         });
 
-        // Update profile display
+        
         function updateProfileDisplay() {
             const userName = localStorage.getItem('noirAuraUser') || 'eshaldeveloper3';
             const userEmail = localStorage.getItem('noirAuraUserEmail') || 'eshalkhan@example.com';
@@ -3068,7 +3124,7 @@ footer {
             document.getElementById('profileAvatar').textContent = userName.charAt(0).toUpperCase();
         }
 
-        // Cart functionality
+        
         function getCart() {
             return JSON.parse(localStorage.getItem('noirAuraCart')) || [];
         }
@@ -3138,7 +3194,7 @@ footer {
             });
         }
 
-        // Sample products (for demo)
+        
         const products = {
             'living-floral': { name: 'Living Floral Body Mist', price: 3500, image: '', description: 'A beautiful bouquet of flowers' },
             'catch-22': { name: 'Catch 22 Gold Edition', price: 4200, image: '', description: 'Rich, woody and captivating' },
@@ -3194,7 +3250,7 @@ footer {
             updateCartDisplay();
         }
 
-        // Checkout functionality
+        
         checkoutBtn.addEventListener('click', () => {
             if (!localStorage.getItem('noirAuraUser')) {
                 authModal.classList.add('active');
@@ -3270,7 +3326,7 @@ footer {
             checkoutModal.classList.remove('active');
         });
 
-        // Payment method selection
+        
         paymentMethods.forEach(method => {
             method.addEventListener('click', () => {
                 paymentMethods.forEach(m => m.classList.remove('selected'));
@@ -3325,7 +3381,7 @@ footer {
             checkoutTotal.textContent = `PKR ${total.toLocaleString()}`;
         }
 
-        // Orders functionality
+        
         function getOrders() {
             return JSON.parse(localStorage.getItem('noirAuraOrders')) || [];
         }
@@ -3409,7 +3465,7 @@ footer {
                 ordersList.appendChild(orderCard);
             });
             
-            // Add event listeners to delete buttons
+
             document.querySelectorAll('.delete-order').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.stopPropagation();

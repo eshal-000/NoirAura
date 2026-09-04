@@ -1645,7 +1645,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 NoirAura. All rights reserved.</p>
+                <p>&copy; 2026 NoirAura. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -1935,7 +1935,7 @@
 
     <script>
 
-// Scroll Animation Functionality
+
 function initScrollAnimations() {
     const observerOptions = {
         threshold: 0.1,
@@ -1947,7 +1947,7 @@ function initScrollAnimations() {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
                 
-                // Agar element mein staggered children hain
+                
                 const staggeredChildren = entry.target.querySelectorAll('.perfume-card, .footer-column');
                 if (staggeredChildren.length > 0) {
                     staggeredChildren.forEach(child => {
@@ -1958,7 +1958,7 @@ function initScrollAnimations() {
         });
     }, observerOptions);
 
-    // Elements ko observe karen
+    
     const elementsToAnimate = [
         '.page-header h1',
         '.page-header p',
@@ -1976,31 +1976,31 @@ function initScrollAnimations() {
     });
 }
 
-// DOM loaded hone par animations initialize karen
+
 document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
 });
 
-// Existing code ke sath integrate karen
+
 window.addEventListener('DOMContentLoaded', () => {
     checkLoginStatus();
     
-    // Only show modal if user is not logged in
+    
     if (!localStorage.getItem('noirAuraUser')) {
         setTimeout(() => {
             authModal.classList.add('active');
         }, 1000);
     }
     
-    // Load cart from localStorage
+    
     updateCartDisplay();
     updateOrderCount();
     
-    // Scroll animations initialize karen
+    
     initScrollAnimations();
 });
 
-        // DOM Elements
+        
         const authModal = document.getElementById('authModal');
         const cartModal = document.getElementById('cartModal');
         const checkoutModal = document.getElementById('checkoutModal');
@@ -2037,13 +2037,13 @@ window.addEventListener('DOMContentLoaded', () => {
         const addToCartFromModal = document.getElementById('addToCartFromModal');
         const buyNowFromModal = document.getElementById('buyNowFromModal');
 
-        // Mega Menu Elements
+        
         const collectionsLink = document.querySelector('.has-mega-menu > a');
         const megaMenu = document.querySelector('.mega-menu');
 
- // Product data for Zor Body Mist
-// Product data for Catch 22 Gold Edition
-// Product data for Reset - For Men
+ 
+
+
 const products = {
     1: { 
         name: "Reset Original", 
@@ -2163,7 +2163,7 @@ const products = {
         ]
     }
 };
-        // Check if user is logged in
+        
         function checkLoginStatus() {
             const user = localStorage.getItem('noirAuraUser');
             if (user) {
@@ -2171,23 +2171,23 @@ const products = {
             }
         }
 
-        // Show auth modal on page load if not logged in
+        
         window.addEventListener('DOMContentLoaded', () => {
             checkLoginStatus();
             
-            // Only show modal if user is not logged in
+            
             if (!localStorage.getItem('noirAuraUser')) {
                 setTimeout(() => {
                     authModal.classList.add('active');
                 }, 1000);
             }
             
-            // Load cart from localStorage
+            
             updateCartDisplay();
             updateOrderCount();
         });
 
-        // Mega Menu Functionality
+        
         if (collectionsLink && megaMenu) {
             collectionsLink.addEventListener('mouseenter', () => {
                 megaMenu.classList.add('active');
@@ -2205,7 +2205,7 @@ const products = {
             }
         }
 
-        // Tab switching
+        
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const tabId = btn.getAttribute('data-tab');
@@ -2220,7 +2220,7 @@ const products = {
             });
         });
 
-        // Modal controls
+        
         userIcon.addEventListener('click', () => {
             if (localStorage.getItem('noirAuraUser')) {
                 profileModal.classList.add('active');
@@ -2267,7 +2267,7 @@ const products = {
             ordersModal.classList.remove('active');
         });
 
-        // Close modals when clicking outside
+        
         window.addEventListener('click', (e) => {
             if (e.target === authModal) authModal.classList.remove('active');
             if (e.target === checkoutModal) checkoutModal.classList.remove('active');
@@ -2276,7 +2276,7 @@ const products = {
             if (e.target === productModal) productModal.classList.remove('active');
         });
 
-        // Logout functionality
+        
         logoutBtn.addEventListener('click', () => {
             localStorage.removeItem('noirAuraUser');
             localStorage.removeItem('noirAuraUserEmail');
@@ -2286,7 +2286,7 @@ const products = {
             authModal.classList.add('active');
         });
 
-        // Form submissions
+        
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
@@ -2331,7 +2331,7 @@ const products = {
             }
         });
 
-        // Update profile display
+        
         function updateProfileDisplay() {
             const userName = localStorage.getItem('noirAuraUser') || 'eshaldeveloper3';
             const userEmail = localStorage.getItem('noirAuraUserEmail') || 'eshalkhan@example.com';
@@ -2345,7 +2345,7 @@ const products = {
             document.getElementById('profileAvatar').textContent = userName.charAt(0).toUpperCase();
         }
 
-        // Product detail modal functionality
+        
         function openProductModal(productId) {
             const product = products[productId];
             if (!product) return;
@@ -2369,7 +2369,7 @@ const products = {
             productModal.classList.add('active');
         }
 
-        // Add event listeners to view details buttons
+        
         document.querySelectorAll('.view-details').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -2378,14 +2378,14 @@ const products = {
             });
         });
 
-        // Add to cart from product modal
+        
         addToCartFromModal.addEventListener('click', () => {
             const productId = addToCartFromModal.getAttribute('data-id');
             addToCart(productId);
             productModal.classList.remove('active');
         });
 
-        // Buy now from product modal
+        
         buyNowFromModal.addEventListener('click', () => {
             const productId = buyNowFromModal.getAttribute('data-id');
             addToCart(productId);
@@ -2393,7 +2393,7 @@ const products = {
             cartModal.classList.add('active');
         });
 
-        // Cart functionality
+        
         function getCart() {
             return JSON.parse(localStorage.getItem('noirAuraCart')) || [];
         }
@@ -2512,7 +2512,7 @@ const products = {
             updateCartDisplay();
         }
 
-        // Add to cart buttons
+        
         document.querySelectorAll('.add-to-cart').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -2521,7 +2521,7 @@ const products = {
             });
         });
 
-        // Checkout functionality
+        
         checkoutBtn.addEventListener('click', () => {
             if (!localStorage.getItem('noirAuraUser')) {
                 authModal.classList.add('active');
@@ -2597,7 +2597,7 @@ const products = {
             checkoutModal.classList.remove('active');
         });
 
-        // Payment method selection
+        
         paymentMethods.forEach(method => {
             method.addEventListener('click', () => {
                 paymentMethods.forEach(m => m.classList.remove('selected'));
@@ -2652,8 +2652,8 @@ const products = {
             checkoutTotal.textContent = `PKR ${total.toLocaleString()}`;
         }
 
-        // Orders functionality with delete feature
-       // Orders functionality with delete feature - FIXED VERSION
+        
+       
 function getOrders() {
     return JSON.parse(localStorage.getItem('noirAuraOrders')) || [];
 }
@@ -2708,7 +2708,7 @@ function updateOrdersDisplay() {
         if (order.status === 'shipped') statusClass = 'status-shipped';
         if (order.status === 'delivered') statusClass = 'status-delivered';
         
-        // FIXED: Delete button moved to order-header section
+        
         orderCard.innerHTML = `
             <div class="order-header">
                 <div>
@@ -2738,10 +2738,10 @@ function updateOrdersDisplay() {
         ordersList.appendChild(orderCard);
     });
     
-    // Add event listeners to delete buttons
+
     document.querySelectorAll('.delete-order').forEach(btn => {
         btn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent event bubbling
+            e.stopPropagation(); 
             const orderId = btn.getAttribute('data-order-id');
             if (confirm('Are you sure you want to delete this order?')) {
                 deleteOrder(orderId);

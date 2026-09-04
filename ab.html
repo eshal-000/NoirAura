@@ -1488,7 +1488,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 NoirAura. All rights reserved.</p>
+                <p>&copy; 2026 NoirAura. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -1629,7 +1629,7 @@
     </div>
 </div>
     <script>
-        // DOM Elements
+        
         const authModal = document.getElementById('authModal');
         const cartModal = document.getElementById('cartModal');
         const profileModal = document.getElementById('profileModal');
@@ -1650,11 +1650,11 @@
         const checkoutBtn = document.getElementById('checkoutBtn');
         const logoutBtn = document.getElementById('logoutBtn');
 
-        // Mega Menu Elements
+        
         const collectionsLink = document.querySelector('.has-mega-menu > a');
         const megaMenu = document.querySelector('.mega-menu');
 
-        // Check if user is logged in
+        
         function checkLoginStatus() {
             const user = localStorage.getItem('noirAuraUser');
             if (user) {
@@ -1662,26 +1662,26 @@
             }
         }
 
-        // Show auth modal on page load if not logged in
+        
         window.addEventListener('DOMContentLoaded', () => {
             checkLoginStatus();
             
-            // Only show modal if user is not logged in
+            
             if (!localStorage.getItem('noirAuraUser')) {
                 setTimeout(() => {
                     authModal.classList.add('active');
                 }, 1000);
             }
             
-            // Load cart from localStorage
+            
             updateCartDisplay();
             updateOrderCount();
             
-            // Initialize scroll animations
+            
             initScrollAnimations();
         });
 
-        // Mega Menu Functionality
+        
         if (collectionsLink && megaMenu) {
             collectionsLink.addEventListener('mouseenter', () => {
                 megaMenu.classList.add('active');
@@ -1699,7 +1699,7 @@
             }
         }
 
-        // Tab switching
+        
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const tabId = btn.getAttribute('data-tab');
@@ -1714,7 +1714,7 @@
             });
         });
 
-        // Modal controls
+        
         userIcon.addEventListener('click', () => {
             if (localStorage.getItem('noirAuraUser')) {
                 profileModal.classList.add('active');
@@ -1742,13 +1742,13 @@
 
        
 
-        // Close modals when clicking outside
+        
         window.addEventListener('click', (e) => {
             if (e.target === authModal) authModal.classList.remove('active');
             if (e.target === profileModal) profileModal.classList.remove('active');
         });
 
-        // Logout functionality
+        
         logoutBtn.addEventListener('click', () => {
             localStorage.removeItem('noirAuraUser');
             localStorage.removeItem('noirAuraUserEmail');
@@ -1758,7 +1758,7 @@
             authModal.classList.add('active');
         });
 
-        // Form submissions
+        
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
@@ -1803,7 +1803,7 @@
             }
         });
 
-        // Update profile display
+        
         function updateProfileDisplay() {
             const userName = localStorage.getItem('noirAuraUser') || 'eshaldeveloper3';
             const userEmail = localStorage.getItem('noirAuraUserEmail') || 'eshalkhan@example.com';
@@ -1817,7 +1817,7 @@
             document.getElementById('profileAvatar').textContent = userName.charAt(0).toUpperCase();
         }
 
-        // Cart functionality
+        
         function getCart() {
             return JSON.parse(localStorage.getItem('noirAuraCart')) || [];
         }
@@ -1912,7 +1912,7 @@
             updateCartDisplay();
         }
 
-        // Checkout functionality
+        
         checkoutBtn.addEventListener('click', () => {
             if (!localStorage.getItem('noirAuraUser')) {
                 authModal.classList.add('active');
@@ -1928,7 +1928,7 @@
             alert('Checkout functionality will be implemented here');
         });
 
-        // Orders functionality
+        
         function updateOrderCount() {
             const orders = getOrders();
             orderCount.textContent = orders.length;
@@ -1938,7 +1938,7 @@
             return JSON.parse(localStorage.getItem('noirAuraOrders')) || [];
         }
 
-// Video Play Functionality
+
 document.addEventListener('DOMContentLoaded', function() {
     const videoCards = document.querySelectorAll('.video-card');
     
@@ -1969,7 +1969,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-        // Scroll Animation Functionality
+        
         function initScrollAnimations() {
             const observerOptions = {
                 threshold: 0.1,
@@ -1981,7 +1981,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
                         
-                        // If element has staggered children
+                        
                         const staggeredChildren = entry.target.querySelectorAll('.craftsmanship-card, .footer-column');
                         if (staggeredChildren.length > 0) {
                             staggeredChildren.forEach(child => {
@@ -1998,7 +1998,7 @@ document.addEventListener('DOMContentLoaded', function() {
     '.fade-right',
     '.craftsmanship-card',
     '.footer-column',
-    '.videos-section' // YEH LINE ADD KARO
+    '.videos-section' 
 ];
 
             elementsToAnimate.forEach(selector => {
@@ -2008,7 +2008,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        // Orders icon click event
+        
 ordersIcon.addEventListener('click', () => {
     if (!localStorage.getItem('noirAuraUser')) {
         authModal.classList.add('active');
@@ -2018,12 +2018,12 @@ ordersIcon.addEventListener('click', () => {
     updateOrdersDisplay();
 });
 
-// Close orders modal
+
 closeOrdersModal.addEventListener('click', () => {
     ordersModal.classList.remove('active');
 });
 
-// Close modal when clicking outside
+
 window.addEventListener('click', (e) => {
     if (e.target === ordersModal) ordersModal.classList.remove('active');
 });

@@ -232,9 +232,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url('imgs/perfumebggg.webp');
-            background-size: cover;
-            background-position: center;
+            background: #000;
             display: flex;
             align-items: center;
             text-align: center;
@@ -1629,7 +1627,12 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero home-video-hero">
+        <div class="hero-video-frame" aria-hidden="true">
+            <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto">
+                <source src="Video/NoirAura-home-hero-vid.mp4" type="video/mp4">
+            </video>
+        </div>
         <div class="container">
             <div class="hero-content fade-up">
                 <h1>Unveil Your Essence</h1>
@@ -1832,7 +1835,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 NoirAura. All rights reserved.</p>
+                <p>&copy; 2026 NoirAura. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -2067,10 +2070,6 @@
                         <input type="radio" name="payment" id="paypal">
                         <label for="paypal">PayPal</label>
                     </div>
-                    <div class="payment-method" data-method="paypal">
-                        <input type="radio" name="payment" id="paypal">
-                        <label for="paypal">MasterCard</label>
-                    </div>
                 </div>
                 
                 <div class="form-group">
@@ -2129,7 +2128,7 @@
     </div>
 
     <script>
-        // DOM Elements
+        
         const authModal = document.getElementById('authModal');
         const cartModal = document.getElementById('cartModal');
         const checkoutModal = document.getElementById('checkoutModal');
@@ -2170,11 +2169,11 @@
         const buyNowFromModal = document.getElementById('buyNowFromModal');
         const logoutBtn = document.getElementById('logoutBtn');
 
-        // Mega Menu Elements
+        
         const collectionsLink = document.querySelector('.has-mega-menu > a');
         const megaMenu = document.querySelector('.mega-menu');
 
-        // Product data (converted to PKR)
+        
         const products = {
             1: {
                 name: "Midnight Elixir",
@@ -2230,7 +2229,7 @@
             }
         };
 
-        // Check if user is logged in
+        
         function checkLoginStatus() {
             const user = localStorage.getItem('noirAuraUser');
             if (user) {
@@ -2238,42 +2237,42 @@
             }
         }
 
-        // Show auth modal on page load if not logged in
+        
         window.addEventListener('DOMContentLoaded', () => {
             checkLoginStatus();
             
-            // Only show modal if user is not logged in
+            
             if (!localStorage.getItem('noirAuraUser')) {
                 setTimeout(() => {
                     authModal.classList.add('active');
                 }, 1000);
             }
             
-            // Load cart from localStorage
+            
             updateCartDisplay();
             updateOrderCount();
             
-            // Initialize scroll animations
+            
             initScrollAnimations();
         });
 
-// Mega Menu Functionality
+
 document.addEventListener('DOMContentLoaded', function() {
     const collectionsLink = document.querySelector('.has-mega-menu > a');
     const megaMenu = document.querySelector('.mega-menu');
 
     if (collectionsLink && megaMenu) {
-        // Show mega menu on hover
+        
         collectionsLink.addEventListener('mouseenter', () => {
             megaMenu.classList.add('active');
         });
 
-        // Hide mega menu when mouse leaves
+        
         megaMenu.addEventListener('mouseleave', () => {
             megaMenu.classList.remove('active');
         });
 
-        // For mobile devices
+        
         if (window.innerWidth <= 768) {
             collectionsLink.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -2283,16 +2282,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-        // Tab switching
+        
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const tabId = btn.getAttribute('data-tab');
                 
-                // Update active tab button
+                
                 tabBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 
-                // Update active tab content
+                
                 document.querySelectorAll('.tab-content').forEach(content => {
                     content.classList.remove('active');
                 });
@@ -2300,10 +2299,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Modal controls
+        
         userIcon.addEventListener('click', () => {
             if (localStorage.getItem('noirAuraUser')) {
-                // If user is logged in, show profile modal
+                
                 profileModal.classList.add('active');
                 updateProfileDisplay();
             } else {
@@ -2348,7 +2347,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ordersModal.classList.remove('active');
         });
 
-        // Close modals when clicking outside
+        
         window.addEventListener('click', (e) => {
             if (e.target === authModal) {
                 authModal.classList.remove('active');
@@ -2367,7 +2366,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Logout functionality
+        
         logoutBtn.addEventListener('click', () => {
             localStorage.removeItem('noirAuraUser');
             localStorage.removeItem('noirAuraUserEmail');
@@ -2377,15 +2376,15 @@ document.addEventListener('DOMContentLoaded', function() {
             authModal.classList.add('active');
         });
 
-        // Form submissions
+        
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
             
-            // Simple validation
+            
             if (email && password) {
-                // Store user info (in a real app, this would be a server request)
+                
                 const userName = email.split('@')[0];
                 localStorage.setItem('noirAuraUser', userName);
                 localStorage.setItem('noirAuraUserEmail', email);
@@ -2393,7 +2392,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 userGreeting.textContent = `Hello, ${userName}`;
                 authModal.classList.remove('active');
                 
-                // Reset form
+                
                 loginForm.reset();
             } else {
                 alert('Please fill in all fields');
@@ -2408,31 +2407,31 @@ document.addEventListener('DOMContentLoaded', function() {
             const confirmPassword = document.getElementById('confirmPassword').value;
             const zipCode = document.getElementById('signupZipCode').value;
             
-            // Simple validation
+            
             if (name && email && password && confirmPassword && zipCode) {
                 if (password !== confirmPassword) {
                     alert('Passwords do not match');
                     return;
                 }
                 
-                // Store user info (in a real app, this would be a server request)
+                
                 localStorage.setItem('noirAuraUser', name);
                 localStorage.setItem('noirAuraUserEmail', email);
                 localStorage.setItem('noirAuraUserZipCode', zipCode);
                 userGreeting.textContent = `Hello, ${name}`;
                 authModal.classList.remove('active');
                 
-                // Reset form
+                
                 signupForm.reset();
                 
-                // Switch to login tab for next time
+                
                 tabBtns[0].click();
             } else {
                 alert('Please fill in all fields');
             }
         });
 
-        // Update profile display
+        
         function updateProfileDisplay() {
             const userName = localStorage.getItem('noirAuraUser') || 'eshaldeveloper3';
             const userEmail = localStorage.getItem('noirAuraUserEmail') || 'eshalkhan@example.com';
@@ -2446,7 +2445,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('profileAvatar').textContent = userName.charAt(0).toUpperCase();
         }
 
-        // Product detail modal
+        
         viewDetailsBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -2455,7 +2454,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Buy now buttons
+        
         buyNowBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -2468,14 +2467,14 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Add to cart from product modal
+        
         addToCartFromModal.addEventListener('click', () => {
             const productId = addToCartFromModal.getAttribute('data-id');
             addToCart(productId);
             productModal.classList.remove('active');
         });
 
-        // Buy now from product modal
+        
         buyNowFromModal.addEventListener('click', () => {
             const productId = buyNowFromModal.getAttribute('data-id');
             addToCart(productId);
@@ -2506,7 +2505,7 @@ document.addEventListener('DOMContentLoaded', function() {
             productModal.classList.add('active');
         }
 
-        // Cart functionality
+        
         function getCart() {
             return JSON.parse(localStorage.getItem('noirAuraCart')) || [];
         }
@@ -2520,7 +2519,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let total = 0;
             let count = 0;
             
-            // Update cart count
+            
             cart.forEach(item => {
                 count += item.quantity;
                 total += item.price * item.quantity;
@@ -2529,7 +2528,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cartCount.textContent = count;
             cartTotal.textContent = `PKR ${total.toLocaleString()}`;
             
-            // Update cart items
+            
             cartItems.innerHTML = '';
             
             if (cart.length === 0) {
@@ -2556,7 +2555,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 cartItems.appendChild(cartItem);
             });
             
-            // Add event listeners to cart controls
+            
             document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const index = parseInt(btn.getAttribute('data-index'));
@@ -2601,7 +2600,7 @@ document.addEventListener('DOMContentLoaded', function() {
             saveCart(cart);
             updateCartDisplay();
             
-            // Show confirmation
+            
             alert(`${product.name} added to cart!`);
         }
 
@@ -2630,7 +2629,7 @@ document.addEventListener('DOMContentLoaded', function() {
             updateCartDisplay();
         }
 
-        // Checkout functionality
+        
         checkoutBtn.addEventListener('click', () => {
             if (!localStorage.getItem('noirAuraUser')) {
                 authModal.classList.add('active');
@@ -2647,7 +2646,7 @@ document.addEventListener('DOMContentLoaded', function() {
             checkoutModal.classList.add('active');
             updateCheckoutDisplay();
             
-            // Pre-fill user information if available
+            
             const userZipCode = localStorage.getItem('noirAuraUserZipCode');
             if (userZipCode) {
                 document.getElementById('zipCode').value = userZipCode;
@@ -2659,7 +2658,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         nextToPayment.addEventListener('click', () => {
-            // Validate shipping form
+            
             const fullName = document.getElementById('fullName').value;
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
@@ -2673,7 +2672,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Move to payment step
+            
             setActiveStep(2);
             setActiveForm('paymentForm');
         });
@@ -2684,7 +2683,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         placeOrder.addEventListener('click', () => {
-            // Validate payment form
+            
             const cardNumber = document.getElementById('cardNumber').value;
             const cvv = document.getElementById('cvv').value;
             const cardName = document.getElementById('cardName').value;
@@ -2694,17 +2693,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
             
-            // Process order
+            
             const orderId = `#NOIR-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
             document.getElementById('orderId').textContent = orderId;
             
-            // Save order to localStorage
+            
             saveOrder(orderId);
             
             setActiveStep(3);
             setActiveForm('confirmation');
             
-            // Clear cart
+            
             localStorage.removeItem('noirAuraCart');
             updateCartDisplay();
             updateOrderCount();
@@ -2714,7 +2713,7 @@ document.addEventListener('DOMContentLoaded', function() {
             checkoutModal.classList.remove('active');
         });
 
-        // Payment method selection
+        
         paymentMethods.forEach(method => {
             method.addEventListener('click', () => {
                 paymentMethods.forEach(m => m.classList.remove('selected'));
@@ -2769,7 +2768,7 @@ document.addEventListener('DOMContentLoaded', function() {
             checkoutTotal.textContent = `PKR ${total.toLocaleString()}`;
         }
 
-        // Orders functionality
+        
         function getOrders() {
             return JSON.parse(localStorage.getItem('noirAuraOrders')) || [];
         }
@@ -2792,9 +2791,37 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.setItem('noirAuraOrders', JSON.stringify(orders));
         }
 
+        function deleteOrder(orderId) {
+            const orders = getOrders();
+            const updatedOrders = orders.filter(order => order.id !== orderId);
+            localStorage.setItem('noirAuraOrders', JSON.stringify(updatedOrders));
+            updateOrdersDisplay();
+            updateOrderCount();
+        }
+
         function updateOrderCount() {
             const orders = getOrders();
             orderCount.textContent = orders.length;
+        }
+
+        function orderStatusIndex(status) {
+            const text = String(status || 'processing').toLowerCase();
+            if (text.includes('out')) return 3;
+            if (text.includes('deliver')) return 4;
+            if (text.includes('ship')) return 2;
+            if (text.includes('pack')) return 1;
+            return 0;
+        }
+
+        function renderOrderTimeline(status) {
+            const activeIndex = orderStatusIndex(status);
+            return `
+                <div class="order-timeline">
+                    ${['Confirmed', 'Packed', 'Shipped', 'Out for Delivery', 'Delivered'].map((step, index) => `
+                        <span class="order-timeline-step ${index < activeIndex ? 'is-done' : index === activeIndex ? 'is-active' : ''}">${step}</span>
+                    `).join('')}
+                </div>
+            `;
         }
 
         function updateOrdersDisplay() {
@@ -2802,6 +2829,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const ordersList = document.getElementById('ordersList');
             
             ordersList.innerHTML = '';
+            updateOrderCount();
             
             if (orders.length === 0) {
                 ordersList.innerHTML = '<p>You have no orders yet.</p>';
@@ -2818,8 +2846,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 orderCard.innerHTML = `
                     <div class="order-header">
-                        <div class="order-id">${order.id}</div>
-                        <div class="order-date">${order.date}</div>
+                        <div>
+                            <div class="order-id">${order.id}</div>
+                            <div class="order-date">${order.date}</div>
+                        </div>
+                        <button class="delete-order" data-order-id="${order.id}">Delete</button>
                     </div>
                     <div class="order-items">
                         ${order.items.map(item => `
@@ -2837,13 +2868,24 @@ document.addEventListener('DOMContentLoaded', function() {
                         <p><strong>Tracking Number:</strong> ${order.tracking}</p>
                         <p><strong>Estimated Delivery:</strong> ${order.estimatedDelivery}</p>
                     </div>
+                    ${renderOrderTimeline(order.status)}
                 `;
                 
                 ordersList.appendChild(orderCard);
             });
+
+            document.querySelectorAll('.delete-order').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const orderId = btn.getAttribute('data-order-id');
+                    if (confirm('Are you sure you want to delete this order?')) {
+                        deleteOrder(orderId);
+                    }
+                });
+            });
         }
 
-        // Scroll Animations
+        
         function initScrollAnimations() {
             const fadeUpElements = document.querySelectorAll('.fade-up');
             

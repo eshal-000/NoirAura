@@ -1621,7 +1621,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 NoirAura. All rights reserved.</p>
+                <p>&copy; 2026 NoirAura. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -1785,7 +1785,7 @@
     <script>
 
  
-        // DOM Elements
+        
         const authModal = document.getElementById('authModal');
         const cartModal = document.getElementById('cartModal');
         const profileModal = document.getElementById('profileModal');
@@ -1806,11 +1806,11 @@
         const checkoutBtn = document.getElementById('checkoutBtn');
         const logoutBtn = document.getElementById('logoutBtn');
 
-        // Mega Menu Elements
+        
         const collectionsLink = document.querySelector('.has-mega-menu > a');
         const megaMenu = document.querySelector('.mega-menu');
 
-        // Check if user is logged in
+        
         function checkLoginStatus() {
             const user = localStorage.getItem('noirAuraUser');
             if (user) {
@@ -1818,26 +1818,26 @@
             }
         }
 
-        // Show auth modal on page load if not logged in
+        
         window.addEventListener('DOMContentLoaded', () => {
             checkLoginStatus();
             
-            // Only show modal if user is not logged in
+            
             if (!localStorage.getItem('noirAuraUser')) {
                 setTimeout(() => {
                     authModal.classList.add('active');
                 }, 1000);
             }
             
-            // Load cart from localStorage
+            
             updateCartDisplay();
             updateOrderCount();
             
-            // Initialize scroll animations
+            
             initScrollAnimations();
         });
 
-        // Mega Menu Functionality
+        
         if (collectionsLink && megaMenu) {
             collectionsLink.addEventListener('mouseenter', () => {
                 megaMenu.classList.add('active');
@@ -1855,7 +1855,7 @@
             }
         }
 
-        // Tab switching
+        
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const tabId = btn.getAttribute('data-tab');
@@ -1870,7 +1870,7 @@
             });
         });
 
-        // Modal controls
+        
         userIcon.addEventListener('click', () => {
             if (localStorage.getItem('noirAuraUser')) {
                 profileModal.classList.add('active');
@@ -1898,13 +1898,13 @@
 
        
 
-        // Close modals when clicking outside
+        
         window.addEventListener('click', (e) => {
             if (e.target === authModal) authModal.classList.remove('active');
             if (e.target === profileModal) profileModal.classList.remove('active');
         });
 
-        // Logout functionality
+        
         logoutBtn.addEventListener('click', () => {
             localStorage.removeItem('noirAuraUser');
             localStorage.removeItem('noirAuraUserEmail');
@@ -1914,7 +1914,7 @@
             authModal.classList.add('active');
         });
 
-        // Form submissions
+        
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
@@ -1959,7 +1959,7 @@
             }
         });
 
-        // Update profile display
+        
         function updateProfileDisplay() {
             const userName = localStorage.getItem('noirAuraUser') || 'eshaldeveloper3';
             const userEmail = localStorage.getItem('noirAuraUserEmail') || 'eshalkhan@example.com';
@@ -1973,7 +1973,7 @@
             document.getElementById('profileAvatar').textContent = userName.charAt(0).toUpperCase();
         }
 
-        // Cart functionality
+        
         function getCart() {
             return JSON.parse(localStorage.getItem('noirAuraCart')) || [];
         }
@@ -2068,7 +2068,7 @@
             updateCartDisplay();
         }
 
-        // Checkout functionality
+        
         checkoutBtn.addEventListener('click', () => {
             if (!localStorage.getItem('noirAuraUser')) {
                 authModal.classList.add('active');
@@ -2084,7 +2084,7 @@
             alert('Checkout functionality will be implemented here');
         });
 
-        // Orders functionality
+        
         function updateOrderCount() {
             const orders = getOrders();
             orderCount.textContent = orders.length;
@@ -2094,7 +2094,7 @@
             return JSON.parse(localStorage.getItem('noirAuraOrders')) || [];
         }
 
-        // Scroll Animation Functionality
+        
         function initScrollAnimations() {
             const observerOptions = {
                 threshold: 0.1,
@@ -2106,7 +2106,7 @@
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
                         
-                        // If element has staggered children
+                        
                         const staggeredChildren = entry.target.querySelectorAll('.craftsmanship-card, .footer-column');
                         if (staggeredChildren.length > 0) {
                             staggeredChildren.forEach(child => {
@@ -2117,7 +2117,7 @@
                 });
             }, observerOptions);
 
-            // Elements to observe
+            
             const elementsToAnimate = [
                 '.fade-in',
                 '.fade-left',
@@ -2132,7 +2132,7 @@
             });
         }
 
-        // Orders icon click event
+        
 ordersIcon.addEventListener('click', () => {
     if (!localStorage.getItem('noirAuraUser')) {
         authModal.classList.add('active');
@@ -2142,18 +2142,18 @@ ordersIcon.addEventListener('click', () => {
     updateOrdersDisplay();
 });
 
-// Close orders modal
+
 closeOrdersModal.addEventListener('click', () => {
     ordersModal.classList.remove('active');
 });
 
-// Close modal when clicking outside
+
 window.addEventListener('click', (e) => {
     if (e.target === ordersModal) ordersModal.classList.remove('active');
 });
     
 
-        // Create fragrance mist particles
+        
         function createFragranceMist() {
             const fragranceMist = document.getElementById('fragranceMist');
             for (let i = 0; i < 15; i++) {
@@ -2173,7 +2173,7 @@ window.addEventListener('click', (e) => {
             }
         }
 
-        // Form submission with FormSubmit - NO REDIRECT
+        
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault();
             
@@ -2182,10 +2182,10 @@ window.addEventListener('click', (e) => {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
             
-            // Get form data
+            
             const formData = new FormData(this);
             
-            // Send to FormSubmit
+            
             fetch('https://formsubmit.co/ajax/eshaldeveloper3@gmail.com', {
                 method: 'POST',
                 body: formData
@@ -2209,7 +2209,7 @@ window.addEventListener('click', (e) => {
             });
         });
 
-        // Scroll animations
+        
         function checkScroll() {
             const elements = document.querySelectorAll('.fade-in');
             elements.forEach(element => {
@@ -2222,7 +2222,7 @@ window.addEventListener('click', (e) => {
             });
         }
 
-        // Close success modal
+        
         document.getElementById('closeSuccessModal').addEventListener('click', () => {
             document.getElementById('successModal').classList.remove('active');
         });
@@ -2231,7 +2231,7 @@ window.addEventListener('click', (e) => {
             document.getElementById('successModal').classList.remove('active');
         });
 
-        // Scroll to top functionality
+        
         window.addEventListener('scroll', () => {
             const scrollToTop = document.getElementById('scrollToTop');
             if (window.pageYOffset > 300) {
@@ -2250,10 +2250,10 @@ window.addEventListener('click', (e) => {
             });
         });
 
-        // Initialize
+        
         document.addEventListener('DOMContentLoaded', () => {
             createFragranceMist();
-            checkScroll(); // Check on load
+            checkScroll(); 
         });
     </script>
     <script src="noiraura-products.js"></script>

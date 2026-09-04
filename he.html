@@ -1929,7 +1929,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>You can track your order using the tracking form above. Simply enter your Order ID and the email address used for the purchase. If you're having trouble, contact our support team.</p>
+                        <p>Sign in to your NoirAura account and enter your Order ID or tracking number above. For privacy, only orders saved to the current account can be shown.</p>
                     </div>
                 </div>
                 
@@ -2047,7 +2047,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 NoirAura. All rights reserved.</p>
+                <p>&copy; 2026 NoirAura. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -2317,8 +2317,8 @@
     </div>
 
     <script>
-        // ALL JAVASCRIPT FROM ra.html HERE
-        // Mega Menu Elements
+        
+        
         const collectionsLink = document.querySelector('.has-mega-menu > a');
         const megaMenu = document.querySelector('.mega-menu');
         const authModal = document.getElementById('authModal');
@@ -2353,7 +2353,7 @@
         const checkoutForms = document.querySelectorAll('.checkout-form');
         const paymentMethods = document.querySelectorAll('.payment-method');
 
-        // Check if user is logged in
+        
         function checkLoginStatus() {
             const user = localStorage.getItem('noirAuraUser');
             if (user) {
@@ -2361,33 +2361,33 @@
             }
         }
 
-        // Show auth modal on page load if not logged in
+        
         window.addEventListener('DOMContentLoaded', () => {
             checkLoginStatus();
             
-            // Only show modal if user is not logged in
+            
             if (!localStorage.getItem('noirAuraUser')) {
                 setTimeout(() => {
                     authModal.classList.add('active');
                 }, 1000);
             }
             
-            // Load cart from localStorage
+            
             updateCartDisplay();
             updateOrderCount();
             
-            // Pre-fill the tracking form with the data from screenshot
+            
             document.getElementById('order-id').value = 'TRK993457';
             document.getElementById('order-email').value = 'cina@gmail.com';
             
-            // Create fragrance mist
+            
             createFragranceMist();
             
-            // Initialize scroll animations
+            
             initScrollAnimations();
         });
 
-        // Mega Menu Functionality
+        
         if (collectionsLink && megaMenu) {
             collectionsLink.addEventListener('mouseenter', () => {
                 megaMenu.classList.add('active');
@@ -2405,7 +2405,7 @@
             }
         }
 
-        // Tab switching
+        
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const tabId = btn.getAttribute('data-tab');
@@ -2420,7 +2420,7 @@
             });
         });
 
-        // Modal controls
+        
         userIcon.addEventListener('click', () => {
             if (localStorage.getItem('noirAuraUser')) {
                 profileModal.classList.add('active');
@@ -2463,7 +2463,7 @@
             ordersModal.classList.remove('active');
         });
 
-        // Close modals when clicking outside
+        
         window.addEventListener('click', (e) => {
             if (e.target === authModal) authModal.classList.remove('active');
             if (e.target === checkoutModal) checkoutModal.classList.remove('active');
@@ -2471,7 +2471,7 @@
             if (e.target === profileModal) profileModal.classList.remove('active');
         });
 
-        // Logout functionality
+        
         logoutBtn.addEventListener('click', () => {
             localStorage.removeItem('noirAuraUser');
             localStorage.removeItem('noirAuraUserEmail');
@@ -2481,7 +2481,7 @@
             authModal.classList.add('active');
         });
 
-        // Form submissions
+        
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
@@ -2526,7 +2526,7 @@
             }
         });
 
-        // Update profile display
+        
         function updateProfileDisplay() {
             const userName = localStorage.getItem('noirAuraUser') || 'eshaldeveloper3';
             const userEmail = localStorage.getItem('noirAuraUserEmail') || 'eshalkhan@example.com';
@@ -2540,7 +2540,7 @@
             document.getElementById('profileAvatar').textContent = userName.charAt(0).toUpperCase();
         }
 
-        // Cart functionality
+        
         function getCart() {
             return JSON.parse(localStorage.getItem('noirAuraCart')) || [];
         }
@@ -2659,7 +2659,7 @@
             updateCartDisplay();
         }
 
-        // Checkout functionality
+        
         checkoutBtn.addEventListener('click', () => {
             if (!localStorage.getItem('noirAuraUser')) {
                 authModal.classList.add('active');
@@ -2735,7 +2735,7 @@
             checkoutModal.classList.remove('active');
         });
 
-        // Payment method selection
+        
         paymentMethods.forEach(method => {
             method.addEventListener('click', () => {
                 paymentMethods.forEach(m => m.classList.remove('selected'));
@@ -2790,7 +2790,7 @@
             checkoutTotal.textContent = `PKR ${total.toLocaleString()}`;
         }
 
-        // Orders functionality with delete feature
+        
         function getOrders() {
             return JSON.parse(localStorage.getItem('noirAuraOrders')) || [];
         }
@@ -2845,7 +2845,7 @@
                 if (order.status === 'shipped') statusClass = 'status-shipped';
                 if (order.status === 'delivered') statusClass = 'status-delivered';
                 
-                // FIXED: Delete button moved to order-header section
+                
                 orderCard.innerHTML = `
                     <div class="order-header">
                         <div>
@@ -2875,10 +2875,10 @@
                 ordersList.appendChild(orderCard);
             });
             
-            // Add event listeners to delete buttons
+
             document.querySelectorAll('.delete-order').forEach(btn => {
                 btn.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Prevent event bubbling
+                    e.stopPropagation(); 
                     const orderId = btn.getAttribute('data-order-id');
                     if (confirm('Are you sure you want to delete this order?')) {
                         deleteOrder(orderId);
@@ -2887,7 +2887,7 @@
             });
         }
 
-        // Scroll Animation Functionality
+
         function initScrollAnimations() {
             const observerOptions = {
                 threshold: 0.1,
@@ -2899,7 +2899,7 @@
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
                         
-                        // Agar element mein staggered children hain
+
                         const staggeredChildren = entry.target.querySelectorAll('.perfume-card, .footer-column');
                         if (staggeredChildren.length > 0) {
                             staggeredChildren.forEach(child => {
@@ -2910,7 +2910,7 @@
                 });
             }, observerOptions);
 
-            // Elements ko observe karen
+
             const elementsToAnimate = [
                 '.section-title',
                 '.footer-content',
@@ -2924,8 +2924,8 @@
             });
         }
 
-        // HELP PAGE SPECIFIC FUNCTIONALITY
-        // Create fragrance mist particles
+
+
         function createFragranceMist() {
             const fragranceMist = document.getElementById('fragranceMist');
             for (let i = 0; i < 15; i++) {
@@ -2945,7 +2945,7 @@
             }
         }
 
-        // Order Tracking Simulation - FIXED VERSION
+
         document.getElementById('tracking-form').addEventListener('submit', function(event) {
             event.preventDefault();
             
@@ -2955,30 +2955,30 @@
             const results = document.getElementById('tracking-results');
             const trackBtn = document.getElementById('track-order-btn');
             
-            // Show loading animation
+
             loader.style.display = 'block';
             results.style.display = 'none';
             trackBtn.disabled = true;
             
-            // Simulate API call delay
+
             setTimeout(() => {
-                // Hide loader and show results
+
                 loader.style.display = 'none';
                 results.style.display = 'block';
                 trackBtn.disabled = false;
                 
-                // Update order details based on order ID
+
                 document.getElementById('result-order-id').textContent = orderId;
                 
-                // YEH CHANGE KIYA HAI - Ab order hamesha track hoga
+
                 if (orderId.toUpperCase() === 'TRK993457' && email === 'cina@gmail.com') {
-                    // Specific order from screenshot - AB YE BHI TRACK HOGA
+
                     updateOrderStatus('Processing', 25, 'Jan 18, 2025', 'NoirAura Express', 'Lahore, Pakistan');
                     updateProgress(1);
                 } else if (orderId.startsWith('NA') || orderId.startsWith('TRK')) {
                     const lastChar = orderId.charAt(orderId.length - 1);
                     
-                    // Different scenarios based on last character of order ID
+
                     if (lastChar === '1' || lastChar === '2' || lastChar === '7') {
                         updateOrderStatus('Processing', 25, 'Jan 18, 2025', 'NoirAura Express', 'Lahore, Pakistan');
                         updateProgress(1);
@@ -2993,13 +2993,13 @@
                         updateProgress(4);
                     }
                 } else {
-                    // Koi bhi random order ID - YE BHI TRACK HOGA
+
                     updateOrderStatus('Shipped', 50, 'Jan 20, 2025', 'NoirAura Express', 'Karachi, Pakistan');
                     updateProgress(2);
                 }
 
                 document.querySelector('.tracking-confirmation').style.display = 'block';
-                // Order Not Found message HIDE kardo (message show nahi hoga)
+
                 document.querySelector('.order-not-found-message').style.display = 'none';
                 
             }, 2000);
@@ -3011,15 +3011,15 @@
             document.getElementById('courier').textContent = courier;
             document.getElementById('shipping-address').textContent = address;
             
-            // Update progress bar
+
             document.getElementById('progress-bar').style.width = `${progress}%`;
         }
 
         function updateProgress(step) {
-            // Reset all steps
+
             resetProgressSteps();
             
-            // Activate steps up to the current one
+
             for (let i = 1; i <= step; i++) {
                 const stepElement = document.getElementById(`step-${i}`);
                 stepElement.classList.add('completed');
@@ -3036,7 +3036,7 @@
             }
         }
 
-        // FAQ Accordion
+
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
                 const item = question.parentNode;
@@ -3044,7 +3044,7 @@
             });
         });
 
-        // Scroll animations
+
         function checkScroll() {
             const elements = document.querySelectorAll('.fade-in');
             elements.forEach(element => {
@@ -3057,7 +3057,7 @@
             });
         }
 
-        // Scroll to top functionality
+
         window.addEventListener('scroll', () => {
             const scrollToTop = document.getElementById('scrollToTop');
             if (window.pageYOffset > 300) {
@@ -3076,7 +3076,7 @@
             });
         });
 
-        // Product data (dummy data for cart functionality)
+
         const products = {
             'product1': {
                 name: 'Living Floral Body Mist',
@@ -3092,7 +3092,7 @@
                 description: 'Mysterious and alluring scent',
                 features: ['Unique blend', 'Evening wear', 'Lasts 8+ hours']
             }
-            // Add more products as needed
+
         };
     </script>
     <script src="noiraura-products.js"></script>

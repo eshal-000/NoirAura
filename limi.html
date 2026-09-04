@@ -1466,7 +1466,7 @@
     </style>
     <link rel="stylesheet" href="noiraura-luxury.css">
 </head>
-<body>
+<body data-page="limited">
     <!-- 50% OFF Promo Bar -->
     <div class="promo-bar-container">
         <div class="promo-bar">
@@ -1744,7 +1744,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 NoirAura. All rights reserved.</p>
+                <p>&copy; 2026 NoirAura. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -2033,7 +2033,7 @@
     </div>
 
     <script>
-        // Product data for Limited Edition
+        
         const products = {
             1: { 
                 name: "Diamond Elixir", 
@@ -2121,7 +2121,7 @@
             }
         };
 
-        // Scroll Animation Functionality
+        
         function initScrollAnimations() {
             const observerOptions = {
                 threshold: 0.1,
@@ -2160,7 +2160,7 @@
             });
         }
 
-        // DOM Elements
+        
         const authModal = document.getElementById('authModal');
         const cartModal = document.getElementById('cartModal');
         const checkoutModal = document.getElementById('checkoutModal');
@@ -2197,11 +2197,11 @@
         const addToCartFromModal = document.getElementById('addToCartFromModal');
         const buyNowFromModal = document.getElementById('buyNowFromModal');
 
-        // Mega Menu Elements
+        
         const collectionsLink = document.querySelector('.has-mega-menu > a');
         const megaMenu = document.querySelector('.mega-menu');
 
-        // Check if user is logged in
+        
         function checkLoginStatus() {
             const user = localStorage.getItem('noirAuraUser');
             if (user) {
@@ -2209,7 +2209,7 @@
             }
         }
 
-        // Show auth modal on page load if not logged in
+        
         window.addEventListener('DOMContentLoaded', () => {
             checkLoginStatus();
             
@@ -2224,7 +2224,7 @@
             initScrollAnimations();
         });
 
-        // Mega Menu Functionality
+        
         if (collectionsLink && megaMenu) {
             collectionsLink.addEventListener('mouseenter', () => {
                 megaMenu.classList.add('active');
@@ -2242,7 +2242,7 @@
             }
         }
 
-        // Tab switching
+        
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const tabId = btn.getAttribute('data-tab');
@@ -2257,7 +2257,7 @@
             });
         });
 
-        // Modal controls
+        
         userIcon.addEventListener('click', () => {
             if (localStorage.getItem('noirAuraUser')) {
                 profileModal.classList.add('active');
@@ -2304,7 +2304,7 @@
             ordersModal.classList.remove('active');
         });
 
-        // Close modals when clicking outside
+        
         window.addEventListener('click', (e) => {
             if (e.target === authModal) authModal.classList.remove('active');
             if (e.target === checkoutModal) checkoutModal.classList.remove('active');
@@ -2313,7 +2313,7 @@
             if (e.target === productModal) productModal.classList.remove('active');
         });
 
-        // Logout functionality
+        
         logoutBtn.addEventListener('click', () => {
             localStorage.removeItem('noirAuraUser');
             localStorage.removeItem('noirAuraUserEmail');
@@ -2323,7 +2323,7 @@
             authModal.classList.add('active');
         });
 
-        // Form submissions
+        
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
@@ -2368,7 +2368,7 @@
             }
         });
 
-        // Update profile display
+        
         function updateProfileDisplay() {
             const userName = localStorage.getItem('noirAuraUser') || 'eshaldeveloper3';
             const userEmail = localStorage.getItem('noirAuraUserEmail') || 'eshalkhan@example.com';
@@ -2382,7 +2382,7 @@
             document.getElementById('profileAvatar').textContent = userName.charAt(0).toUpperCase();
         }
 
-        // Product detail modal functionality
+        
         function openProductModal(productId) {
             const product = products[productId];
             if (!product) return;
@@ -2406,7 +2406,7 @@
             productModal.classList.add('active');
         }
 
-        // Add event listeners to view details buttons
+        
         document.querySelectorAll('.view-details').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -2415,14 +2415,14 @@
             });
         });
 
-        // Add to cart from product modal
+        
         addToCartFromModal.addEventListener('click', () => {
             const productId = addToCartFromModal.getAttribute('data-id');
             addToCart(productId);
             productModal.classList.remove('active');
         });
 
-        // Buy now from product modal
+        
         buyNowFromModal.addEventListener('click', () => {
             const productId = buyNowFromModal.getAttribute('data-id');
             addToCart(productId);
@@ -2430,7 +2430,7 @@
             cartModal.classList.add('active');
         });
 
-        // Cart functionality
+        
         function getCart() {
             return JSON.parse(localStorage.getItem('noirAuraCart')) || [];
         }
@@ -2549,7 +2549,7 @@
             updateCartDisplay();
         }
 
-        // Add to cart buttons
+        
         document.querySelectorAll('.add-to-cart').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -2558,7 +2558,7 @@
             });
         });
 
-        // Checkout functionality
+        
         checkoutBtn.addEventListener('click', () => {
             if (!localStorage.getItem('noirAuraUser')) {
                 authModal.classList.add('active');
@@ -2634,7 +2634,7 @@
             checkoutModal.classList.remove('active');
         });
 
-        // Payment method selection
+        
         paymentMethods.forEach(method => {
             method.addEventListener('click', () => {
                 paymentMethods.forEach(m => m.classList.remove('selected'));
@@ -2689,7 +2689,7 @@
             checkoutTotal.textContent = `PKR ${total.toLocaleString()}`;
         }
 
-        // Orders functionality with delete feature
+        
         function getOrders() {
             return JSON.parse(localStorage.getItem('noirAuraOrders')) || [];
         }
