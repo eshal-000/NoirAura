@@ -2599,7 +2599,9 @@
         ".dashboard-track-form button",
         ".dashboard-profile-form button",
         ".perfume-actions .btn",
-        ".checkout-btn"
+        ".checkout-btn",
+        ".developer-note-card",
+        ".noir-developer-credit"
     ].join(",");
 
     var revealCardTargets = [
@@ -3164,6 +3166,25 @@
         window.addEventListener("scroll", setVisible, { passive: true });
     }
 
+    function initDeveloperFooterCredit() {
+        $$("footer").forEach(function (footer) {
+            if ($(".noir-developer-credit", footer)) return;
+
+            var bottom = $(".footer-bottom", footer) || footer;
+            var credit = document.createElement("div");
+            credit.className = "noir-developer-credit";
+            credit.innerHTML = [
+                '<span>Designed &amp; Developed by Eshal Noor Asghar</span>',
+                '<nav class="noir-developer-links" aria-label="Developer professional links">',
+                '<a href="https://www.linkedin.com/in/eshal-noor-dev" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>',
+                '<a href="https://github.com/eshal-000" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>',
+                '<a href="mailto:eshaldeveloper3@gmail.com" aria-label="Email" title="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>',
+                '</nav>'
+            ].join("");
+            bottom.appendChild(credit);
+        });
+    }
+
     function initProductDeepLinks() {
         var params = new URLSearchParams(window.location.search);
         var productId = params.get("product");
@@ -3218,6 +3239,7 @@
         enhanceEmptyStates();
         initDashboard();
         initHelpOrderTracking();
+        initDeveloperFooterCredit();
         initBackToTop();
         initProductDeepLinks();
         initRevealSystem();
