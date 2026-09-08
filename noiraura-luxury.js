@@ -1372,7 +1372,7 @@
                     var productImageUrl = imageMatches[imageMatches.length - 1][1].replace(/"/g, "%22");
                     image.style.backgroundImage = 'url("' + productImageUrl + '")';
                 }
-                image.style.backgroundSize = "contain";
+                image.style.backgroundSize = "cover";
                 image.style.backgroundRepeat = "no-repeat";
                 image.style.backgroundPosition = "center";
                 image.style.filter = "none";
@@ -2085,6 +2085,136 @@
         var results = $(".noir-search-results", overlay);
         var meta = $(".noir-search-meta", overlay);
         var index = getSearchIndex();
+        var searchSortMenu = enhanceSearchSort();
+
+        function enhanceSearchSort() {
+            if (!sort || sort.dataset.noirCustomSelect === "ready") return null;
+            sort.dataset.noirCustomSelect = "ready";
+            sort.classList.add("noir-select-enhanced");
+            sort.setAttribute("aria-hidden", "true");
+            sort.setAttribute("tabindex", "-1");
+
+            var wrapper = document.createElement("div");
+            var button = document.createElement("button");
+            var label = document.createElement("span");
+            var menu = document.createElement("div");
+            var menuId = "noir-search-sort-menu";
+
+            wrapper.className = "noir-custom-select noir-search-sort-select";
+            button.className = "noir-custom-select-button";
+            button.type = "button";
+            button.setAttribute("aria-haspopup", "listbox");
+            button.setAttribute("aria-expanded", "false");
+            button.setAttribute("aria-controls", menuId);
+            label.className = "noir-custom-select-value";
+            button.appendChild(label);
+            button.insertAdjacentHTML("beforeend", '<span class="noir-custom-select-caret" aria-hidden="true">v</span>');
+
+            menu.className = "noir-custom-select-menu";
+            menu.id = menuId;
+            menu.setAttribute("role", "listbox");
+            menu.setAttribute("aria-label", sort.getAttribute("aria-label") || "Sort search results");
+
+            Array.prototype.slice.call(sort.options).forEach(function (option) {
+                var item = document.createElement("button");
+                item.type = "button";
+                item.className = "noir-custom-select-option";
+                item.dataset.value = option.value;
+                item.setAttribute("role", "option");
+                item.textContent = option.textContent;
+                item.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    sort.value = option.value;
+                    sort.dispatchEvent(new Event("change", { bubbles: true }));
+                    closeMenu();
+                    button.focus();
+                });
+                menu.appendChild(item);
+            });
+
+            wrapper.appendChild(button);
+            wrapper.appendChild(menu);
+            sort.insertAdjacentElement("afterend", wrapper);
+
+            function options() {
+                return $$(".noir-custom-select-option", menu);
+            }
+
+            function sync() {
+                var selectedOption = sort.options[sort.selectedIndex];
+                label.textContent = selectedOption ? selectedOption.textContent : "";
+                options().forEach(function (option) {
+                    var active = option.dataset.value === sort.value;
+                    option.classList.toggle("is-selected", active);
+                    option.setAttribute("aria-selected", active ? "true" : "false");
+                });
+            }
+
+            function closeMenu() {
+                wrapper.classList.remove("is-open");
+                button.setAttribute("aria-expanded", "false");
+            }
+
+            function openMenu() {
+                wrapper.classList.add("is-open");
+                button.setAttribute("aria-expanded", "true");
+            }
+
+            function focusSelectedOption() {
+                var active = $('.noir-custom-select-option[data-value="' + sort.value + '"]', menu) || $(".noir-custom-select-option", menu);
+                if (active) active.focus();
+            }
+
+            button.addEventListener("click", function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+                if (wrapper.classList.contains("is-open")) closeMenu();
+                else openMenu();
+            });
+
+            button.addEventListener("keydown", function (event) {
+                if (event.key === "ArrowDown" || event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    openMenu();
+                    focusSelectedOption();
+                }
+                if (event.key === "Escape") closeMenu();
+            });
+
+            menu.addEventListener("keydown", function (event) {
+                var menuOptions = options();
+                var activeIndex = menuOptions.indexOf(document.activeElement);
+                if (event.key === "Escape") {
+                    event.preventDefault();
+                    closeMenu();
+                    button.focus();
+                }
+                if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+                    event.preventDefault();
+                    var nextIndex = event.key === "ArrowDown" ? activeIndex + 1 : activeIndex - 1;
+                    if (nextIndex < 0) nextIndex = menuOptions.length - 1;
+                    if (nextIndex >= menuOptions.length) nextIndex = 0;
+                    if (menuOptions[nextIndex]) menuOptions[nextIndex].focus();
+                }
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    if (document.activeElement && document.activeElement.classList.contains("noir-custom-select-option")) {
+                        document.activeElement.click();
+                    }
+                }
+            });
+
+            overlay.addEventListener("click", function (event) {
+                if (!wrapper.contains(event.target)) closeMenu();
+            });
+            document.addEventListener("click", function (event) {
+                if (!wrapper.contains(event.target)) closeMenu();
+            });
+            sort.addEventListener("change", sync);
+            sync();
+            return { close: closeMenu, sync: sync };
+        }
 
         function open() {
             overlay.classList.add("is-open");
@@ -2100,6 +2230,7 @@
             trigger.classList.remove("is-active");
             trigger.setAttribute("aria-expanded", "false");
             body.classList.remove("noir-search-open");
+            if (searchSortMenu) searchSortMenu.close();
             trigger.focus();
         }
 
@@ -2145,6 +2276,7 @@
         clear.addEventListener("click", function () {
             input.value = "";
             sort.value = "featured";
+            if (searchSortMenu) searchSortMenu.sync();
             render();
             input.focus();
         });

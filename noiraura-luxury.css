@@ -13,11 +13,21 @@
     --panel-strong: rgba(44, 30, 58, 0.72);
     --glass: rgba(12, 10, 16, 0.72);
     --luxury-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
-    --card-aura-shadow: 0 20px 46px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(232, 221, 207, 0.045), 0 0 42px rgba(187, 160, 242, 0.2), 0 0 86px rgba(80, 42, 110, 0.17), inset 0 1px 0 rgba(232, 221, 207, 0.055);
-    --card-aura-hover: 0 30px 78px rgba(0, 0, 0, 0.52), 0 0 0 1px rgba(212, 175, 55, 0.13), 0 0 68px rgba(187, 160, 242, 0.36), 0 0 118px rgba(80, 42, 110, 0.28), inset 0 1px 0 rgba(232, 221, 207, 0.09);
-    --card-border-soft: rgba(232, 221, 207, 0.16);
-    --card-border-glow: rgba(187, 160, 242, 0.42);
-    --noir-header-height: 82px;
+    --card-aura-shadow: 0 18px 46px rgba(0, 0, 0, 0.46), 0 0 0 1px rgba(255, 226, 150, 0.38), 0 0 10px 1px rgba(255, 218, 128, 0.3), 0 0 28px 4px rgba(212, 175, 55, 0.2), 0 0 44px 6px rgba(187, 160, 242, 0.22), inset 0 1px 0 rgba(232, 221, 207, 0.1);
+    --panel-aura-hover: 0 24px 58px rgba(0, 0, 0, 0.52), 0 0 0 1px rgba(255, 231, 164, 0.58), 0 0 14px 2px rgba(255, 218, 128, 0.46), 0 0 34px 5px rgba(212, 175, 55, 0.32), 0 0 60px 8px rgba(187, 160, 242, 0.28), inset 0 1px 0 rgba(232, 221, 207, 0.12);
+    --card-aura-hover: var(--panel-aura-hover);
+    --product-card-border-gradient: linear-gradient(135deg, rgba(255, 232, 164, 0.96) 0%, rgba(202, 168, 255, 0.84) 22%, rgba(255, 216, 115, 0.92) 43%, rgba(193, 149, 255, 0.82) 64%, rgba(255, 241, 195, 0.9) 82%, rgba(202, 168, 255, 0.78) 100%);
+    --product-card-border-gradient-hover: linear-gradient(135deg, rgba(255, 249, 220, 1) 0%, rgba(255, 219, 119, 1) 16%, rgba(216, 174, 255, 1) 31%, rgba(255, 232, 157, 1) 48%, rgba(194, 135, 255, 1) 65%, rgba(255, 247, 210, 1) 82%, rgba(216, 174, 255, 1) 100%);
+    --product-card-aura: none;
+    --product-card-aura-hover: 0 0 0 1px rgba(255, 249, 220, 0.66), 0 0 6px 1px rgba(255, 232, 172, 0.42), 0 0 12px 3px rgba(216, 174, 255, 0.5), 0 0 22px 5px rgba(212, 175, 55, 0.24), 0 0 34px 8px rgba(187, 160, 242, 0.38), 0 20px 46px rgba(0, 0, 0, 0.4);
+    --product-card-filter: none;
+    --product-card-filter-hover: none;
+    --modal-aura-shadow: 0 30px 84px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 226, 150, 0.36), 0 0 24px 2px rgba(212, 175, 55, 0.26), 0 0 64px 8px rgba(187, 160, 242, 0.24), inset 0 1px 0 rgba(232, 221, 207, 0.09);
+    --card-border-soft: rgba(255, 226, 150, 0.42);
+    --card-border-glow: rgba(255, 234, 174, 0.76);
+    --product-card-border: transparent;
+    --product-card-border-hover: transparent;
+    --noir-header-height: 74px;
     --noir-promo-height: 44px;
     --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
     --font-heading: "Oregano", cursive;
@@ -38,8 +48,29 @@
 
 html {
     max-width: 100%;
-    scroll-padding-top: 96px;
+    scrollbar-color: rgba(187, 160, 242, 0.62) rgba(7, 5, 10, 0.98);
+    scrollbar-width: thin;
+    scroll-padding-top: 88px;
     scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.98), rgba(23, 18, 29, 0.96));
+}
+
+::-webkit-scrollbar-thumb {
+    border: 3px solid rgba(7, 5, 10, 0.98);
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(187, 160, 242, 0.68), rgba(151, 117, 205, 0.62));
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(205, 184, 255, 0.78), rgba(174, 139, 226, 0.72));
 }
 
 body {
@@ -53,6 +84,7 @@ body {
     letter-spacing: 0;
     line-height: 1.6;
     overflow-x: hidden;
+    scrollbar-color: rgba(187, 160, 242, 0.62) rgba(7, 5, 10, 0.98);
     margin: 0;
 }
 
@@ -168,7 +200,7 @@ header {
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 1rem 0 !important;
+    padding: 0.78rem 0 !important;
     background: rgba(0, 0, 0, 0.68) !important;
     border-bottom: 1px solid rgba(232, 221, 207, 0.08);
     box-shadow: 0 14px 45px rgba(0, 0, 0, 0.25);
@@ -178,7 +210,7 @@ header {
 
 header.noir-scrolled {
     background: rgba(0, 0, 0, 0.86) !important;
-    padding: 0.8rem 0 !important;
+    padding: 0.64rem 0 !important;
 }
 
 body[data-page="limited"] .promo-bar-container,
@@ -292,12 +324,12 @@ body.noir-promo-hidden[data-page="new-arrivals"] .mega-menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 50px;
-    gap: 1.5rem;
+    min-height: 48px;
+    gap: 1.25rem;
 }
 
 .logo {
-    font-size: clamp(1.55rem, 2vw, 2.05rem) !important;
+    font-size: clamp(1.48rem, 1.75vw, 1.9rem) !important;
     text-transform: none !important;
     letter-spacing: 0 !important;
     line-height: 1;
@@ -313,7 +345,7 @@ body.noir-promo-hidden[data-page="new-arrivals"] .mega-menu {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: clamp(1.1rem, 1.55vw, 1.65rem) !important;
+    gap: clamp(0.95rem, 1.35vw, 1.42rem) !important;
 }
 
 .nav-links li {
@@ -328,12 +360,12 @@ body.noir-promo-hidden[data-page="new-arrivals"] .mega-menu {
     color: rgba(232, 221, 207, 0.78) !important;
     position: relative;
     font-family: var(--font-body) !important;
-    font-size: 0.84rem !important;
+    font-size: 0.8rem !important;
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: 1px !important;
     text-transform: uppercase !important;
-    padding: 0.5rem 0 !important;
+    padding: 0.42rem 0 !important;
     transition: color 260ms var(--ease-luxury);
 }
 
@@ -373,8 +405,8 @@ h2.section-title::after,
 .nav-icons {
     display: flex;
     align-items: center;
-    gap: 1.5rem !important;
-    font-size: 1.2rem !important;
+    gap: 1.18rem !important;
+    font-size: 1.08rem !important;
 }
 
 .nav-icons i,
@@ -439,12 +471,12 @@ h2.section-title::after,
 }
 
 .user-greeting {
-    max-width: 120px;
+    max-width: 112px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     color: rgba(212, 175, 55, 0.84) !important;
-    font-size: 0.76rem !important;
+    font-size: 0.73rem !important;
     margin-right: 0 !important;
 }
 
@@ -974,9 +1006,10 @@ button[type="submit"]:hover::before,
     grid-template-columns: repeat(auto-fit, minmax(230px, min(100%, 280px))) !important;
     justify-content: center;
     gap: clamp(1rem, 2.2vw, 1.45rem) !important;
+    padding-block: clamp(0.65rem, 1.15vw, 0.9rem) clamp(0.7rem, 1.15vw, 0.95rem) !important;
+    overflow: visible !important;
 }
 
-.perfume-card,
 .collection-card,
 .featured-card,
 .recommendation-card,
@@ -1015,35 +1048,28 @@ button[type="submit"]:hover::before,
 }
 
 .perfume-card {
+    isolation: isolate;
+    position: relative;
     width: min(100%, 280px);
     min-height: 0;
     border-radius: 8px !important;
-    overflow: hidden;
+    overflow: visible !important;
     transform: translateY(0);
-    transition: transform 520ms var(--ease-luxury), box-shadow 520ms var(--ease-luxury), border-color 520ms var(--ease-luxury);
-}
-
-.perfume-card::before {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    border-radius: 7px;
-    pointer-events: none;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.045), transparent 34%, rgba(187, 160, 242, 0.05));
-    opacity: 0.75;
-}
-
-.perfume-card:hover {
-    transform: translateY(-5px) !important;
-    border-color: rgba(187, 160, 242, 0.26) !important;
-    box-shadow: 0 24px 62px rgba(0, 0, 0, 0.42), 0 0 0 1px rgba(212, 175, 55, 0.06) !important;
+    z-index: 0;
+    transition:
+        transform 420ms var(--ease-luxury),
+        box-shadow 420ms var(--ease-luxury),
+        filter 420ms var(--ease-luxury),
+        background 420ms var(--ease-luxury),
+        border-color 420ms var(--ease-luxury);
 }
 
 .perfume-img {
     position: relative;
     height: clamp(210px, 26vw, 252px) !important;
+    border-radius: 6px 6px 0 0;
     background-color: rgba(0, 0, 0, 0.24);
-    background-size: contain !important;
+    background-size: cover !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
     transform: scale(1);
@@ -1051,8 +1077,8 @@ button[type="submit"]:hover::before,
 }
 
 .perfume-card:hover .perfume-img {
-    transform: scale(1.035);
-    filter: saturate(1.08) contrast(1.03);
+    transform: none;
+    filter: none;
 }
 
 .perfume-info {
@@ -1181,13 +1207,13 @@ button[type="submit"]:hover::before,
 .modal-content,
 .checkout-content,
 .edit-modal-content {
-    border: 1px solid rgba(232, 221, 207, 0.11) !important;
+    border: 1px solid rgba(212, 175, 55, 0.13) !important;
     border-radius: 8px !important;
     background:
         linear-gradient(145deg, rgba(44, 30, 58, 0.82), rgba(8, 6, 10, 0.98)),
         #0b080d !important;
     color: var(--champagne-ivory);
-    box-shadow: var(--luxury-shadow) !important;
+    box-shadow: var(--modal-aura-shadow) !important;
 }
 
 .modal.active .modal-content,
@@ -1242,7 +1268,7 @@ button[type="submit"]:hover::before,
     background:
         linear-gradient(180deg, rgba(23, 18, 29, 0.55), rgba(0, 0, 0, 0.35)),
         rgba(0, 0, 0, 0.24);
-    background-size: contain !important;
+    background-size: cover !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
 }
@@ -1371,8 +1397,8 @@ button[type="submit"]:hover::before,
     background:
         linear-gradient(180deg, rgba(23, 18, 29, 0.98), rgba(0, 0, 0, 0.98)),
         var(--smoky-mauve) !important;
-    border-left: 1px solid rgba(232, 221, 207, 0.12);
-    box-shadow: -22px 0 64px rgba(0, 0, 0, 0.52) !important;
+    border-left: 1px solid rgba(212, 175, 55, 0.13);
+    box-shadow: -22px 0 64px rgba(0, 0, 0, 0.52), -10px 0 26px rgba(212, 175, 55, 0.075), -18px 0 44px rgba(187, 160, 242, 0.07) !important;
     opacity: 0;
     pointer-events: none;
     visibility: hidden;
@@ -1592,15 +1618,12 @@ body.noir-auth-open {
     max-height: min(92vh, 720px) !important;
     padding: clamp(1rem, 3vw, 1.35rem) !important;
     overflow-y: auto !important;
-    border: 1px solid rgba(232, 221, 207, 0.13) !important;
+    border: 1px solid rgba(212, 175, 55, 0.13) !important;
     border-radius: 8px !important;
     background:
         radial-gradient(circle at 18% 0%, rgba(187, 160, 242, 0.13), transparent 28%),
         linear-gradient(145deg, rgba(36, 25, 47, 0.97), rgba(5, 4, 7, 0.98)) !important;
-    box-shadow:
-        0 28px 84px rgba(0, 0, 0, 0.56),
-        0 0 34px rgba(187, 160, 242, 0.1),
-        inset 0 1px 0 rgba(232, 221, 207, 0.06) !important;
+    box-shadow: var(--modal-aura-shadow) !important;
 }
 
 .auth-modal .modal-tabs {
@@ -2479,8 +2502,8 @@ footer {
 }
 
 .noir-search-trigger {
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
     display: inline-grid;
     place-items: center;
     border: 1px solid rgba(232, 221, 207, 0.12);
@@ -2574,7 +2597,6 @@ footer {
     max-width: 15rem;
 }
 
-.perfume-card,
 .collection-card,
 .featured-card,
 .recommendation-card,
@@ -2597,30 +2619,52 @@ footer {
 }
 
 .perfume-card {
-    border-color: rgba(187, 160, 242, 0.13) !important;
+    border: 2px solid var(--product-card-border) !important;
+    border-color: var(--product-card-border) !important;
+    background:
+        linear-gradient(145deg, rgba(44, 30, 58, 0.68), rgba(23, 18, 29, 0.94)) padding-box,
+        var(--product-card-border-gradient) border-box !important;
+    box-shadow: var(--product-card-aura) !important;
+    filter: var(--product-card-filter) !important;
 }
 
-.perfume-card::after {
-    content: "";
-    position: absolute;
-    inset: auto 12% -18px;
-    height: 36px;
-    border-radius: 50%;
-    pointer-events: none;
-    background: radial-gradient(ellipse at center, rgba(187, 160, 242, 0.16), transparent 68%);
-    opacity: 0.78;
-    filter: blur(10px);
-    transition: opacity 520ms var(--ease-luxury), transform 520ms var(--ease-luxury);
+.perfume-card.noir-reveal.is-visible,
+.perfume-card.fade-up.visible,
+.perfume-card.fade-in.visible,
+.perfume-card.fade-left.visible,
+.perfume-card.fade-right.visible {
+    clip-path: none !important;
+    transition:
+        transform 420ms var(--ease-luxury),
+        box-shadow 420ms var(--ease-luxury),
+        filter 420ms var(--ease-luxury),
+        background 420ms var(--ease-luxury),
+        border-color 420ms var(--ease-luxury) !important;
 }
 
-.perfume-card:hover::after {
-    opacity: 1;
-    transform: scale(1.08);
+.featured-grid.noir-reveal.is-visible,
+.featured-grid.noir-reveal.visible,
+.products-grid.noir-reveal.is-visible,
+.products-grid.noir-reveal.visible {
+    clip-path: none !important;
+    overflow: visible !important;
 }
 
 .perfume-card:hover {
-    box-shadow: var(--card-aura-hover) !important;
+    border-color: var(--product-card-border-hover) !important;
+    background:
+        linear-gradient(145deg, rgba(44, 30, 58, 0.68), rgba(23, 18, 29, 0.94)) padding-box,
+        var(--product-card-border-gradient-hover) border-box !important;
+    box-shadow: var(--product-card-aura-hover) !important;
+    filter: var(--product-card-filter-hover) !important;
     transform: translateY(-5px) !important;
+    transition:
+        transform 420ms var(--ease-luxury),
+        box-shadow 420ms var(--ease-luxury),
+        filter 420ms var(--ease-luxury),
+        background 420ms var(--ease-luxury),
+        border-color 420ms var(--ease-luxury) !important;
+    z-index: 4;
 }
 
 .product-modal {
@@ -2636,6 +2680,7 @@ footer {
     grid-template-columns: minmax(300px, 0.9fr) minmax(340px, 1.1fr);
     grid-template-rows: minmax(0, 1fr);
     overflow: hidden !important;
+    box-shadow: var(--modal-aura-shadow) !important;
 }
 
 .product-image,
@@ -2644,7 +2689,7 @@ footer {
     min-height: min(58vh, 560px) !important;
     max-height: 90vh;
     background-color: #08060b !important;
-    background-size: contain !important;
+    background-size: cover !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
     background-blend-mode: normal !important;
@@ -2722,15 +2767,12 @@ body.noir-search-open {
     width: min(900px, calc(100vw - 28px));
     max-height: min(82vh, 780px);
     overflow: hidden;
-    border: 1px solid rgba(232, 221, 207, 0.13);
+    border: 1px solid rgba(212, 175, 55, 0.13);
     border-radius: 8px;
     background:
         radial-gradient(circle at 18% 0%, rgba(187, 160, 242, 0.16), transparent 28%),
         linear-gradient(145deg, rgba(36, 25, 47, 0.96), rgba(5, 4, 7, 0.98));
-    box-shadow:
-        0 28px 90px rgba(0, 0, 0, 0.56),
-        0 0 42px rgba(187, 160, 242, 0.12),
-        inset 0 1px 0 rgba(232, 221, 207, 0.07);
+    box-shadow: var(--modal-aura-shadow);
     transform: translateY(-14px) scale(0.98);
     transition: transform 380ms var(--ease-luxury);
 }
@@ -2817,25 +2859,27 @@ body.noir-search-open {
     align-items: center;
     min-height: 54px;
     min-width: 0;
-    border: 1px solid rgba(187, 160, 242, 0.22);
+    border: 1px solid rgba(212, 175, 55, 0.14);
     border-radius: 8px;
     background:
         linear-gradient(145deg, rgba(23, 18, 29, 0.96), rgba(0, 0, 0, 0.78)),
         rgba(23, 18, 29, 0.9);
     box-shadow:
         0 0 0 1px rgba(232, 221, 207, 0.025),
-        0 0 22px rgba(187, 160, 242, 0.12);
+        0 0 14px rgba(212, 175, 55, 0.06),
+        0 0 18px rgba(187, 160, 242, 0.07);
     transition: border-color 260ms var(--ease-luxury), box-shadow 260ms var(--ease-luxury), background 260ms var(--ease-luxury);
 }
 
 .noir-search-input-wrap:focus-within {
-    border-color: rgba(187, 160, 242, 0.52);
+    border-color: rgba(212, 175, 55, 0.42);
     background:
         linear-gradient(145deg, rgba(44, 30, 58, 0.7), rgba(0, 0, 0, 0.78)),
         rgba(23, 18, 29, 0.95);
     box-shadow:
-        0 0 0 1px rgba(212, 175, 55, 0.12),
-        0 0 34px rgba(187, 160, 242, 0.2);
+        0 0 0 1px rgba(212, 175, 55, 0.14),
+        0 0 18px rgba(212, 175, 55, 0.13),
+        0 0 30px rgba(187, 160, 242, 0.12);
 }
 
 .noir-search-input-wrap i {
@@ -3111,7 +3155,8 @@ body.noir-search-open {
     background: var(--smoky-mauve);
 }
 
-.noir-filter-select.noir-select-enhanced {
+.noir-filter-select.noir-select-enhanced,
+.noir-search-sort.noir-select-enhanced {
     position: absolute !important;
     width: 1px !important;
     height: 1px !important;
@@ -3122,6 +3167,31 @@ body.noir-search-open {
     clip-path: inset(50%) !important;
     white-space: nowrap !important;
     pointer-events: none !important;
+}
+
+.noir-search-tools .noir-search-sort-select {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    flex: none;
+    box-sizing: border-box;
+}
+
+.noir-search-tools .noir-search-sort-select .noir-custom-select-button {
+    min-height: 54px;
+}
+
+.noir-search-tools .noir-search-sort-select .noir-custom-select-menu {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    left: 0;
+    right: auto;
+    box-sizing: border-box;
+}
+
+.noir-search-tools .noir-search-sort-select .noir-custom-select-option {
+    white-space: normal;
 }
 
 .noir-custom-select {
@@ -3186,12 +3256,13 @@ body.noir-search-open {
 .noir-custom-select-button:focus-visible,
 .noir-custom-select.is-open .noir-custom-select-button {
     outline: none;
-    border-color: rgba(187, 160, 242, 0.4) !important;
+    border-color: rgba(212, 175, 55, 0.34) !important;
     background:
         linear-gradient(135deg, rgba(44, 30, 58, 0.88), rgba(0, 0, 0, 0.72)) !important;
     box-shadow:
         inset 0 1px 0 rgba(232, 221, 207, 0.06),
-        0 0 22px rgba(187, 160, 242, 0.13);
+        0 0 16px rgba(212, 175, 55, 0.1),
+        0 0 24px rgba(187, 160, 242, 0.08);
 }
 
 .noir-custom-select-menu {
@@ -3209,7 +3280,7 @@ body.noir-search-open {
     background:
         radial-gradient(circle at 18% 0%, rgba(187, 160, 242, 0.11), transparent 16rem),
         linear-gradient(145deg, rgba(23, 18, 29, 0.99), rgba(4, 3, 7, 0.99));
-    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.4), 0 0 22px rgba(187, 160, 242, 0.11);
+    box-shadow: var(--card-aura-shadow);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -3328,12 +3399,12 @@ body.noir-search-open {
     overflow-y: auto;
     padding: 1rem;
     margin-top: 0;
-    border-color: rgba(232, 221, 207, 0.09);
+    border-color: rgba(212, 175, 55, 0.12);
     background:
         radial-gradient(circle at 18% 0%, rgba(187, 160, 242, 0.12), transparent 18rem),
         linear-gradient(145deg, rgba(23, 18, 29, 0.985), rgba(4, 3, 7, 0.985)),
         var(--panel);
-    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.42), 0 0 30px rgba(187, 160, 242, 0.14);
+    box-shadow: var(--modal-aura-shadow);
     backdrop-filter: blur(10px);
     opacity: 0;
     pointer-events: none;
@@ -3472,7 +3543,7 @@ body[data-page="dashboard"] .noir-dashboard-page {
 .dashboard-sidebar {
     max-height: calc(100vh - 120px);
     overflow-y: auto;
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.28), 0 0 34px rgba(187, 160, 242, 0.07);
+    box-shadow: var(--card-aura-shadow);
 }
 
 .dashboard-tab {
@@ -3525,7 +3596,6 @@ body[data-page="dashboard"] .noir-dashboard-page {
     transform: translateY(-4px) !important;
 }
 
-.perfume-card,
 .collection-card,
 .featured-card,
 .recommendation-card,
@@ -3597,6 +3667,49 @@ body[data-page="dashboard"] .noir-dashboard-page {
     transform: translateY(-4px) !important;
 }
 
+#ordersModal .orders-list {
+    padding: 0.9rem 0.75rem 1rem !important;
+    overflow-y: auto !important;
+}
+
+#authModal .modal-content,
+#ordersModal .orders-list,
+#checkoutModal .checkout-content,
+.noir-search-results {
+    overflow-y: auto !important;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#authModal .modal-content::-webkit-scrollbar,
+#ordersModal .orders-list::-webkit-scrollbar,
+#checkoutModal .checkout-content::-webkit-scrollbar,
+.noir-search-results::-webkit-scrollbar {
+    display: none;
+}
+
+#ordersModal .order-card {
+    position: relative;
+    z-index: 0;
+    overflow: visible !important;
+    border-color: rgba(255, 226, 150, 0.2) !important;
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.24),
+        0 0 0 1px rgba(255, 226, 150, 0.12),
+        0 0 8px rgba(212, 175, 55, 0.09),
+        0 0 13px rgba(187, 160, 242, 0.08) !important;
+}
+
+#ordersModal .order-card:hover {
+    border-color: rgba(255, 226, 150, 0.26) !important;
+    box-shadow:
+        0 9px 22px rgba(0, 0, 0, 0.26),
+        0 0 0 1px rgba(255, 226, 150, 0.16),
+        0 0 9px rgba(212, 175, 55, 0.1),
+        0 0 15px rgba(187, 160, 242, 0.09) !important;
+    transform: translateY(-1px) !important;
+}
+
 .collection-card img,
 .featured-card img,
 .recommendation-card img,
@@ -3626,6 +3739,71 @@ body[data-page="dashboard"] .noir-dashboard-page {
     filter: saturate(1.06) contrast(1.03);
 }
 
+@media (hover: none) and (pointer: coarse) {
+    .perfume-card:hover {
+        border-color: var(--product-card-border) !important;
+        background:
+            linear-gradient(145deg, rgba(44, 30, 58, 0.68), rgba(23, 18, 29, 0.94)) padding-box,
+            var(--product-card-border-gradient) border-box !important;
+        box-shadow: var(--product-card-aura) !important;
+        filter: var(--product-card-filter) !important;
+        transform: translateY(0) !important;
+        z-index: 0;
+    }
+
+    .perfume-card:hover .perfume-img {
+        transform: none;
+        filter: none;
+    }
+
+    .collection-card:hover,
+    .featured-card:hover,
+    .recommendation-card:hover,
+    .sample-card:hover,
+    .gift-card:hover,
+    .testimonial-card:hover,
+    .review-card:hover,
+    .craftsmanship-card:hover,
+    .contact-card:hover,
+    .video-card:hover,
+    .detail-card:hover,
+    .payment-method:hover,
+    .order-card:hover,
+    .profile-section:hover,
+    .faq-item:hover,
+    .faq-container:hover,
+    .contact-container:hover,
+    .review-form-container:hover,
+    .ai-advisor-container:hover,
+    .help-tracking-card:hover,
+    .tracking-summary:hover,
+    .dashboard-card:hover,
+    .dashboard-panel:hover,
+    .dashboard-order:hover,
+    .dashboard-wishlist-card:hover,
+    .dashboard-address-card:hover,
+    .dashboard-detail-grid:hover {
+        border-color: var(--card-border-soft) !important;
+        box-shadow: var(--card-aura-shadow) !important;
+        transform: translateY(0) !important;
+    }
+
+    .collection-card:hover img,
+    .featured-card:hover img,
+    .recommendation-card:hover img,
+    .sample-card:hover img,
+    .gift-card:hover img,
+    .testimonial-card:hover img,
+    .review-card:hover img,
+    .video-card:hover img,
+    .dashboard-wishlist-card:hover img,
+    .detail-card:hover img,
+    .order-card:hover img {
+        transform: none;
+        filter: none;
+    }
+}
+
 .payment-methods {
     display: grid !important;
     grid-template-columns: 1fr !important;
@@ -3643,14 +3821,15 @@ body[data-page="dashboard"] .noir-dashboard-page {
     width: 100% !important;
     padding: 0.78rem 0.88rem !important;
     overflow: hidden !important;
-    border: 1px solid rgba(232, 221, 207, 0.14) !important;
+    border: 1px solid rgba(212, 175, 55, 0.13) !important;
     border-radius: 8px !important;
     background:
         radial-gradient(circle at 14% 18%, rgba(187, 160, 242, 0.14), transparent 42%),
         linear-gradient(145deg, rgba(44, 30, 58, 0.66), rgba(8, 6, 12, 0.96)) !important;
     box-shadow:
         0 18px 42px rgba(0, 0, 0, 0.44),
-        0 0 34px rgba(187, 160, 242, 0.18),
+        0 0 14px rgba(212, 175, 55, 0.08),
+        0 0 22px rgba(187, 160, 242, 0.08),
         inset 0 1px 0 rgba(232, 221, 207, 0.055) !important;
     cursor: pointer !important;
     transform: translateY(0) !important;
@@ -3668,19 +3847,15 @@ body[data-page="dashboard"] .noir-dashboard-page {
     z-index: -1;
     opacity: 0;
     background:
-        linear-gradient(115deg, rgba(212, 175, 55, 0.12), transparent 28%),
-        radial-gradient(circle at 82% 24%, rgba(187, 160, 242, 0.2), transparent 38%);
+        linear-gradient(115deg, rgba(212, 175, 55, 0.14), transparent 28%),
+        radial-gradient(circle at 82% 24%, rgba(187, 160, 242, 0.12), transparent 38%);
     transition: opacity 540ms var(--ease-luxury);
 }
 
 .payment-method.noir-payment-card:hover,
 .payment-method.noir-payment-card:focus-within {
-    border-color: rgba(187, 160, 242, 0.42) !important;
-    box-shadow:
-        0 24px 58px rgba(0, 0, 0, 0.52),
-        0 0 54px rgba(187, 160, 242, 0.3),
-        0 0 96px rgba(80, 42, 110, 0.22),
-        inset 0 1px 0 rgba(232, 221, 207, 0.08) !important;
+    border-color: rgba(212, 175, 55, 0.38) !important;
+    box-shadow: var(--panel-aura-hover) !important;
     transform: translateY(-4px) !important;
 }
 
@@ -3696,10 +3871,11 @@ body[data-page="dashboard"] .noir-dashboard-page {
         radial-gradient(circle at 16% 18%, rgba(187, 160, 242, 0.2), transparent 44%),
         linear-gradient(145deg, rgba(44, 30, 58, 0.82), rgba(10, 7, 13, 0.98)) !important;
     box-shadow:
-        0 26px 62px rgba(0, 0, 0, 0.55),
-        0 0 58px rgba(187, 160, 242, 0.32),
-        0 0 0 1px rgba(212, 175, 55, 0.12),
-        inset 0 1px 0 rgba(232, 221, 207, 0.095) !important;
+        0 24px 58px rgba(0, 0, 0, 0.52),
+        0 0 0 1px rgba(212, 175, 55, 0.16),
+        0 0 22px rgba(212, 175, 55, 0.18),
+        0 0 34px rgba(187, 160, 242, 0.12),
+        inset 0 1px 0 rgba(232, 221, 207, 0.09) !important;
 }
 
 .payment-method.noir-payment-card input[type="radio"] {
@@ -3939,15 +4115,11 @@ body[data-page="reviews"] .ai-advisor-container {
     overflow: hidden;
     padding: clamp(1.2rem, 3vw, 2rem) !important;
     border-radius: 8px !important;
-    border-color: rgba(187, 160, 242, 0.24) !important;
+    border-color: var(--card-border-soft) !important;
     background:
         linear-gradient(145deg, rgba(44, 30, 58, 0.76), rgba(8, 6, 12, 0.98)),
         var(--panel) !important;
-    box-shadow:
-        0 28px 78px rgba(0, 0, 0, 0.52),
-        0 0 52px rgba(187, 160, 242, 0.22),
-        0 0 96px rgba(80, 42, 110, 0.18),
-        inset 0 1px 0 rgba(232, 221, 207, 0.06) !important;
+    box-shadow: var(--card-aura-shadow) !important;
 }
 
 body[data-page="reviews"] .ai-advisor-container::before {
@@ -3958,21 +4130,17 @@ body[data-page="reviews"] .ai-advisor-container::before {
     border-radius: inherit;
     pointer-events: none;
     background:
-        radial-gradient(circle at 16% 2%, rgba(187, 160, 242, 0.18), transparent 34%),
-        radial-gradient(circle at 92% 30%, rgba(212, 175, 55, 0.09), transparent 28%),
-        linear-gradient(135deg, rgba(232, 221, 207, 0.055), transparent 46%);
+        radial-gradient(circle at 16% 2%, rgba(255, 226, 150, 0.14), transparent 34%),
+        radial-gradient(circle at 92% 30%, rgba(187, 160, 242, 0.13), transparent 30%),
+        linear-gradient(135deg, rgba(232, 221, 207, 0.06), transparent 46%);
     opacity: 0.85;
     transition: opacity 560ms var(--ease-luxury);
 }
 
 body[data-page="reviews"] .ai-advisor-container.is-interacting,
 body[data-page="reviews"] .ai-advisor-container:focus-within {
-    border-color: rgba(187, 160, 242, 0.42) !important;
-    box-shadow:
-        0 32px 86px rgba(0, 0, 0, 0.56),
-        0 0 70px rgba(187, 160, 242, 0.3),
-        0 0 120px rgba(80, 42, 110, 0.24),
-        inset 0 1px 0 rgba(232, 221, 207, 0.08) !important;
+    border-color: var(--card-border-glow) !important;
+    box-shadow: var(--panel-aura-hover) !important;
 }
 
 body[data-page="reviews"] .ai-header {
@@ -4313,11 +4481,8 @@ body[data-page="reviews"] .review-form-container {
     background:
         linear-gradient(145deg, rgba(44, 30, 58, 0.78), rgba(13, 10, 18, 0.96)),
         var(--panel) !important;
-    border-color: rgba(187, 160, 242, 0.24) !important;
-    box-shadow:
-        0 26px 70px rgba(0, 0, 0, 0.48),
-        0 0 42px rgba(187, 160, 242, 0.19),
-        inset 0 1px 0 rgba(232, 221, 207, 0.06) !important;
+    border-color: rgba(212, 175, 55, 0.16) !important;
+    box-shadow: var(--card-aura-shadow) !important;
 }
 
 body[data-page="reviews"] .review-form-container::after {
@@ -4328,8 +4493,9 @@ body[data-page="reviews"] .review-form-container::after {
     border-radius: inherit;
     pointer-events: none;
     background:
-        radial-gradient(circle at 18% 0%, rgba(187, 160, 242, 0.16), transparent 38%),
-        linear-gradient(135deg, rgba(232, 221, 207, 0.055), transparent 45%);
+        radial-gradient(circle at 18% 0%, rgba(212, 175, 55, 0.1), transparent 38%),
+        radial-gradient(circle at 86% 18%, rgba(187, 160, 242, 0.08), transparent 34%),
+        linear-gradient(135deg, rgba(232, 221, 207, 0.045), transparent 45%);
 }
 
 body[data-page="reviews"] .review-form-container h3 {
@@ -4448,11 +4614,8 @@ body[data-page="reviews"] .review-card {
     background:
         linear-gradient(145deg, rgba(44, 30, 58, 0.7), rgba(10, 8, 13, 0.96)),
         var(--panel) !important;
-    border-color: rgba(232, 221, 207, 0.14) !important;
-    box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.42),
-        0 0 34px rgba(187, 160, 242, 0.17),
-        inset 0 1px 0 rgba(232, 221, 207, 0.045) !important;
+    border-color: var(--card-border-soft) !important;
+    box-shadow: var(--card-aura-shadow) !important;
     transform: translateY(0);
     transition:
         transform 560ms var(--ease-luxury),
@@ -4468,19 +4631,16 @@ body[data-page="reviews"] .review-card::before {
     border-radius: inherit;
     pointer-events: none;
     background:
-        radial-gradient(circle at 12% 0%, rgba(187, 160, 242, 0.12), transparent 34%),
-        linear-gradient(135deg, rgba(232, 221, 207, 0.04), transparent 48%);
+        radial-gradient(circle at 12% 0%, rgba(212, 175, 55, 0.08), transparent 34%),
+        radial-gradient(circle at 86% 16%, rgba(187, 160, 242, 0.07), transparent 36%),
+        linear-gradient(135deg, rgba(232, 221, 207, 0.035), transparent 48%);
     opacity: 0.78;
     transition: opacity 560ms var(--ease-luxury);
 }
 
 body[data-page="reviews"] .review-card:hover {
-    border-color: rgba(187, 160, 242, 0.38) !important;
-    box-shadow:
-        0 28px 74px rgba(0, 0, 0, 0.5),
-        0 0 56px rgba(187, 160, 242, 0.28),
-        0 0 100px rgba(80, 42, 110, 0.2),
-        inset 0 1px 0 rgba(232, 221, 207, 0.08) !important;
+    border-color: var(--card-border-glow) !important;
+    box-shadow: var(--panel-aura-hover) !important;
     transform: translateY(-5px) !important;
 }
 
@@ -4663,12 +4823,12 @@ body[data-page="reviews"] .page-ellipsis {
 }
 
 body[data-page="reviews"] .edit-modal-content {
-    border: 1px solid rgba(187, 160, 242, 0.22);
+    border: 1px solid rgba(212, 175, 55, 0.13);
     border-radius: 8px !important;
     background:
         linear-gradient(145deg, rgba(44, 30, 58, 0.88), rgba(13, 10, 18, 0.98)),
         var(--panel) !important;
-    box-shadow: var(--card-aura-hover) !important;
+    box-shadow: var(--modal-aura-shadow) !important;
 }
 
 body[data-page="reviews"] .edit-modal-content h3 {
@@ -5055,9 +5215,9 @@ body[data-page="reviews"] .edit-modal-content h3 {
     .mobile-menu-btn {
         display: inline-grid !important;
         place-items: center;
-        flex: 0 0 44px;
-        width: 44px;
-        height: 44px;
+        flex: 0 0 42px;
+        width: 42px;
+        height: 42px;
         border: 1px solid rgba(232, 221, 207, 0.12);
         border-radius: 999px;
         background:
@@ -5648,12 +5808,12 @@ body[data-page="reviews"] .edit-modal-content h3 {
         overflow-y: auto;
         padding: 1rem;
         margin-top: 0;
-        border-color: rgba(232, 221, 207, 0.09);
+        border-color: rgba(212, 175, 55, 0.12);
         background:
             radial-gradient(circle at 18% 0%, rgba(187, 160, 242, 0.12), transparent 18rem),
             linear-gradient(145deg, rgba(23, 18, 29, 0.985), rgba(4, 3, 7, 0.985)),
             var(--panel);
-        box-shadow: 0 22px 60px rgba(0, 0, 0, 0.42), 0 0 30px rgba(187, 160, 242, 0.14);
+        box-shadow: var(--modal-aura-shadow);
         backdrop-filter: blur(10px);
         transform: translateY(18px);
     }
@@ -5665,12 +5825,12 @@ body[data-page="reviews"] .edit-modal-content h3 {
         overflow-y: auto;
         padding: 1rem;
         margin-top: 0.75rem;
-        border-color: rgba(232, 221, 207, 0.09);
+        border-color: rgba(212, 175, 55, 0.12);
         background:
             radial-gradient(circle at 18% 0%, rgba(187, 160, 242, 0.12), transparent 18rem),
             linear-gradient(145deg, rgba(23, 18, 29, 0.985), rgba(4, 3, 7, 0.985)),
             var(--panel);
-        box-shadow: 0 18px 46px rgba(0, 0, 0, 0.32), 0 0 26px rgba(187, 160, 242, 0.12);
+        box-shadow: var(--card-aura-shadow);
         opacity: 1;
         pointer-events: auto;
         visibility: visible;
@@ -5750,28 +5910,28 @@ body[data-page="reviews"] .edit-modal-content h3 {
     }
 
     .logo {
-        font-size: clamp(1.32rem, 7vw, 1.72rem) !important;
+        font-size: clamp(1.28rem, 6.6vw, 1.62rem) !important;
     }
 
     .mobile-menu-btn {
-        width: 40px;
-        height: 40px;
-        flex-basis: 40px;
+        width: 38px;
+        height: 38px;
+        flex-basis: 38px;
     }
 
     .nav-icons {
-        gap: 0.58rem !important;
+        gap: 0.52rem !important;
         margin-left: auto;
-        font-size: 1rem !important;
+        font-size: 0.96rem !important;
     }
 
     .nav-icons i {
-        font-size: 1rem;
+        font-size: 0.96rem;
     }
 
     .noir-search-trigger {
-        width: 32px;
-        height: 32px;
+        width: 31px;
+        height: 31px;
     }
 
     .user-greeting {
@@ -6037,7 +6197,7 @@ body[data-page="reviews"] .edit-modal-content h3 {
         border-top: 1px solid rgba(232, 221, 207, 0.055);
         border-bottom: 1px solid rgba(232, 221, 207, 0.08);
         background-color: #08060b !important;
-        background-size: contain !important;
+        background-size: cover !important;
         background-repeat: no-repeat !important;
         background-position: center !important;
         box-shadow: inset 0 1px 0 rgba(232, 221, 207, 0.04) !important;
@@ -6128,6 +6288,37 @@ body[data-page="reviews"] .edit-modal-content h3 {
     .noir-search-results {
         padding-right: 0.75rem;
         padding-left: 0.75rem;
+    }
+
+    .noir-search-tools .noir-search-sort,
+    .noir-search-tools .noir-custom-select,
+    .noir-search-tools .noir-custom-select-menu {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    .noir-search-tools .noir-search-sort,
+    .noir-search-tools .noir-custom-select {
+        justify-self: stretch;
+    }
+
+    .noir-search-tools .noir-custom-select-menu {
+        left: 0;
+        right: auto;
+    }
+
+    .noir-search-tools .noir-search-sort-select .noir-custom-select-menu {
+        position: static;
+        margin-top: 0;
+        transform: translateY(-4px);
+    }
+
+    .noir-search-tools .noir-search-sort-select.is-open .noir-custom-select-menu {
+        max-height: min(292px, 46dvh);
+        margin-top: 0.42rem;
+        transform: translateY(0);
     }
 
     .noir-search-result {
