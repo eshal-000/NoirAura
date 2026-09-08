@@ -4,6 +4,10 @@ NoirAura is a luxury perfume e-commerce frontend built as a static HTML, CSS, an
 
 The project focuses on a premium visual identity: noir black backgrounds, deep plum and smoky mauve surfaces, champagne ivory text, lavender aura glows, restrained gold accents, Oregano headings, Bricolage Grotesque body/UI text, and limited Yesteryear decorative accents.
 
+### 🌐 Live Website
+
+[View NoirAura Live](https://eshal-000.github.io/NoirAura/)
+
 ## Overview
 
 NoirAura is designed as a portfolio-ready storefront experience for browsing fragrance collections, opening detailed product modals, saving products, managing a shopping bag, placing demo orders, and tracking account-specific orders. The site is built without a frontend framework or build system, so it can run directly as a static website.
