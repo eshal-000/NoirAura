@@ -1955,7 +1955,9 @@ document.addEventListener('DOMContentLoaded', function() {
     videoCards.forEach(card => {
         const video = card.querySelector('video');
         const playBtn = card.querySelector('.video-play-btn');
+        if (!video || !playBtn) return;
         const icon = playBtn.querySelector('i');
+        if (!icon) return;
         
         playBtn.addEventListener('click', function() {
             if (video.paused) {

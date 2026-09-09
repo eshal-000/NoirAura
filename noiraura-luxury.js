@@ -142,6 +142,145 @@
         rawSet(key, JSON.stringify(value));
     }
 
+    var loaderState = {
+        element: null,
+        promise: null,
+        timers: []
+    };
+    var initialLoaderPromise = null;
+    var loaderSeenKey = "noirAuraInitialLoaderSeen";
+    var dashboardLoaderKey = "noirAuraDashboardLoaderPending";
+
+    function safeSessionGet(key) {
+        try {
+            return sessionStorage.getItem(key);
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function safeSessionSet(key, value) {
+        try {
+            sessionStorage.setItem(key, value);
+        } catch (error) {
+            return false;
+        }
+        return true;
+    }
+
+    function safeSessionRemove(key) {
+        try {
+            sessionStorage.removeItem(key);
+        } catch (error) {
+            return false;
+        }
+        return true;
+    }
+
+    function reducedLoaderMotion() {
+        return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
+
+    function shouldRunInitialLuxuryLoader() {
+        var pendingDashboard = safeSessionGet(dashboardLoaderKey) === "true";
+        if (pendingDashboard) {
+            safeSessionRemove(dashboardLoaderKey);
+            return !!currentUser();
+        }
+
+        var hasSeenLoader = safeSessionGet(loaderSeenKey) === "true";
+        return !hasSeenLoader;
+    }
+
+    function loaderMarkup() {
+        return [
+            '<div class="noir-loader-shell" role="status" aria-live="polite" aria-label="NoirAura loading">',
+            '<div class="noir-loader-aura" aria-hidden="true"></div>',
+            '<div class="noir-loader-mist" aria-hidden="true"><span></span><span></span><span></span><span></span></div>',
+            '<div class="noir-loader-bottle-wrap" aria-hidden="true">',
+            '<svg class="noir-loader-bottle" viewBox="0 0 92 124" focusable="false">',
+            '<path class="noir-loader-bottle-stopper" d="M37 8h18v13H37z"></path>',
+            '<path class="noir-loader-bottle-neck" d="M40 22h12v15H40z"></path>',
+            '<path class="noir-loader-bottle-body" d="M25 37h42c7 0 12 5 12 12v48c0 10-6 16-16 16H29c-10 0-16-6-16-16V49c0-7 5-12 12-12z"></path>',
+            '<path class="noir-loader-bottle-label" d="M34 64h24v24H34z"></path>',
+            '</svg>',
+            '</div>',
+            '<div class="noir-loader-progress" aria-hidden="true"><span class="noir-loader-progress-fill"></span></div>',
+            '<div class="noir-loader-brand"><strong>Noir<span>Aura</span></strong><small>Discover Your Essence</small></div>',
+            '</div>'
+        ].join("");
+    }
+
+    function ensureLuxuryLoader() {
+        if (loaderState.element && document.body.contains(loaderState.element)) return loaderState.element;
+        var loader = document.createElement("div");
+        loader.className = "noir-luxury-loader";
+        loader.innerHTML = loaderMarkup();
+        document.body.appendChild(loader);
+        loaderState.element = loader;
+        return loader;
+    }
+
+    function clearLoaderTimers() {
+        loaderState.timers.forEach(function (timer) {
+            clearTimeout(timer);
+        });
+        loaderState.timers = [];
+    }
+
+    function runLuxuryLoader(reason) {
+        if (loaderState.promise) return loaderState.promise;
+
+        var loader = ensureLuxuryLoader();
+        var duration = reducedLoaderMotion() ? 1180 : 2850;
+        var settleAt = reducedLoaderMotion() ? 900 : 2600;
+        var fadeDuration = reducedLoaderMotion() ? 260 : 520;
+
+        clearLoaderTimers();
+        body.classList.add("noir-loader-active");
+        document.documentElement.classList.add("noir-loader-active");
+        loader.className = "noir-luxury-loader";
+        loader.dataset.reason = reason || "page";
+        loader.setAttribute("aria-hidden", "false");
+
+        loaderState.promise = new Promise(function (resolve) {
+            requestAnimationFrame(function () {
+                loader.classList.add("is-active");
+            });
+
+            loaderState.timers.push(setTimeout(function () {
+                loader.classList.add("is-settling");
+            }, settleAt));
+
+            loaderState.timers.push(setTimeout(function () {
+                loader.classList.add("is-leaving");
+                loaderState.timers.push(setTimeout(function () {
+                    loader.remove();
+                    loaderState.element = null;
+                    clearLoaderTimers();
+                    body.classList.remove("noir-loader-active");
+                    document.documentElement.classList.remove("noir-loader-active");
+                    loaderState.promise = null;
+                    resolve();
+                }, fadeDuration));
+            }, duration));
+        });
+
+        safeSessionSet(loaderSeenKey, "true");
+        return loaderState.promise;
+    }
+
+    function markDashboardLoaderPending() {
+        safeSessionSet(dashboardLoaderKey, "true");
+    }
+
+    function navigateToDashboard() {
+        markDashboardLoaderPending();
+        window.location.href = "dashboard.html";
+    }
+
+    initialLoaderPromise = shouldRunInitialLuxuryLoader() ? runLuxuryLoader("initial") : null;
+
     function normalizeEmail(email) {
         return String(email || "").trim().toLowerCase();
     }
@@ -1456,7 +1595,7 @@
             if (currentUser()) {
                 event.preventDefault();
                 event.stopImmediatePropagation();
-                window.location.href = "dashboard.html";
+                navigateToDashboard();
             }
         }, true);
     }
@@ -1621,7 +1760,10 @@
             authMessage(form, loginResult.message, loginResult.ok ? "success" : "error");
             if (loginResult.ok) {
                 form.reset();
-                setTimeout(closeAuthModal, 360);
+                runLuxuryLoader("auth").then(function () {
+                    closeAuthModal();
+                    restartPageEntranceAnimations(document);
+                });
             }
             return;
         }
@@ -1636,7 +1778,10 @@
         authMessage(form, signupResult.message, signupResult.ok ? "success" : "error");
         if (signupResult.ok) {
             form.reset();
-            setTimeout(closeAuthModal, 420);
+            runLuxuryLoader("auth").then(function () {
+                closeAuthModal();
+                restartPageEntranceAnimations(document);
+            });
         }
     }
 
@@ -1960,8 +2105,17 @@
             if (body.dataset.page !== "dashboard") {
                 event.preventDefault();
                 event.stopImmediatePropagation();
-                window.location.href = "dashboard.html";
+                navigateToDashboard();
             }
+            return;
+        }
+
+        var dashboardLink = target.closest && target.closest('a[href$="dashboard.html"], a[href*="dashboard.html"]');
+        if (dashboardLink && currentUser() && body.dataset.page !== "dashboard") {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            markDashboardLoaderPending();
+            window.location.href = dashboardLink.getAttribute("href") || "dashboard.html";
             return;
         }
 
@@ -2666,6 +2820,7 @@
     }
 
     var revealObserver = null;
+    var legacyFadeObserver = null;
     var revealTargets = [
         ".section-title",
         ".hero h1",
@@ -2839,6 +2994,7 @@
     }
 
     function applyRevealTargets(context) {
+        if (body.classList.contains("noir-loader-active")) return;
         $$(revealTargets, context || document).forEach(function (element, index) {
             if (!isRevealAllowed(element)) return;
             setRevealVariant(element, index);
@@ -2866,6 +3022,61 @@
         }, { threshold: 0.12, rootMargin: "0px 0px -46px 0px" });
 
         applyRevealTargets(document);
+    }
+
+    function revealEntranceNodes(context) {
+        var selector = revealTargets + ", .fade-up, .fade-in, .fade-left, .fade-right";
+        return $$(selector, context || document).filter(isRevealAllowed);
+    }
+
+    function resetPageEntranceAnimations(context) {
+        revealEntranceNodes(context).forEach(function (element) {
+            element.classList.remove("is-visible", "visible");
+            if (revealObserver) revealObserver.unobserve(element);
+            delete element.dataset.noirRevealObserved;
+        });
+        if (legacyFadeObserver) {
+            legacyFadeObserver.disconnect();
+            legacyFadeObserver = null;
+        }
+    }
+
+    function startLegacyFadeAnimations(context) {
+        var nodes = $$(".fade-up, .fade-in, .fade-left, .fade-right", context || document).filter(isRevealAllowed);
+        if (!nodes.length) return;
+
+        nodes.forEach(function (element, index) {
+            element.style.setProperty("--reveal-delay", Math.min(index % 8, 7) * 65 + "ms");
+        });
+
+        if (!("IntersectionObserver" in window) || revealMotionReduced()) {
+            nodes.forEach(function (element) {
+                element.classList.add("visible");
+            });
+            return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: "0px 0px -46px 0px" });
+
+        nodes.forEach(function (element) {
+            observer.observe(element);
+        });
+        legacyFadeObserver = observer;
+    }
+
+    function restartPageEntranceAnimations(context) {
+        if (body.classList.contains("noir-loader-active")) return;
+        resetPageEntranceAnimations(context || document);
+        if (!revealObserver) initRevealSystem();
+        else applyRevealTargets(context || document);
+        startLegacyFadeAnimations(context || document);
     }
 
     function initDashboard() {
@@ -3374,7 +3585,14 @@
         initDeveloperFooterCredit();
         initBackToTop();
         initProductDeepLinks();
-        initRevealSystem();
-        initMutationPolish();
+        if (initialLoaderPromise) {
+            initialLoaderPromise.then(function () {
+                restartPageEntranceAnimations(document);
+                initMutationPolish();
+            });
+        } else {
+            initRevealSystem();
+            initMutationPolish();
+        }
     });
 })();
